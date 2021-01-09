@@ -5,13 +5,14 @@ from igraph import plot
 from abc import ABC, abstractclassmethod, abstractmethod
 import re
 import louvain
+import louvainSmooth
 from sklearn.cluster import KMeans
 import numpy as np
 
 class BuildCommunityGraph(ABC):
 
-    def __init__(self):
-
+    def __init__(self, collectionName):
+        self.collectionName = collectionName
         self.g = Graph()
 
     @abstractmethod
@@ -30,57 +31,44 @@ class BuildCommunityGraph(ABC):
 
         nodesList = self.getNodes(dataset)
 
+        print('Initial N nodes: ', len(nodesList))
+
         edgesList = self.getEdges(dataset)
         edgesList = list(filter(lambda x: x != None, edgesList))
 
-        print(edgesList)
+        # print(edgesList)
 
         self.g.add_vertices(nodesList)
         self.g.add_edges(edgesList)
 
         # remove nodes without edges
-        nodesToRemove = [v.index for v in self.g.vs if v.degree() == 0]
-        self.g.delete_vertices(nodesToRemove)
-
-    def applySpectral(self):
-
-        A = self.g.get_adjacency()
-        # turn into numpy
-        A = np.array(A.data)
-
-        D = np.diag(A.sum(axis=1))
-
-        L = D - A
-
-        values, vectors = np.linalg.eigh(L)
-
-        vectorsKMeans = vectors[:, np.argsort(values)]
-
-        noClusters = 25
-        kmeans = KMeans(n_clusters = noClusters, random_state = 0).fit(vectorsKMeans[:, 1:noClusters])
-
-        partition = VertexClustering(self.g, kmeans.labels_)
-
-        modularity_score = self.g.modularity(kmeans.labels_)
-
-        print('The modularity is ', modularity_score)
-
-        self.updateClusters(partition)
-
-        plot(partition)
+        # nodesToRemove = [v.index for v in self.g.vs if v.degree() == 0]
+        # self.g.delete_vertices(nodesToRemove)
 
     def applyLouvain(self):
 
         part = louvain.find_partition(self.g, louvain.ModularityVertexPartition)
-        plot(part)
+        # plot(part)
+
+        print('The Louvain modularity is ', part.modularity)
 
         # and also show modularity
         clusters = self.g.community_multilevel()
         modularity_score = self.g.modularity(clusters.membership)
 
+        print('The modularity is ', modularity_score)
+
         # self.updateClusters(clusters)
 
-        print('The modularity is ', modularity_score)
+    def applyLouvainSmooth(self):
+
+        louvainS = louvainSmooth.LouvainSmooth(self.g)
+
+        clusters = louvainS.applySimpleLouvain()
+
+        print('The modularity is ', clusters.modularity)
+
+        self.updateClusters(clusters)
 
 class BuildCommentsCommunityGraph(BuildCommunityGraph):
 
@@ -148,7 +136,7 @@ class BuildAuthorsCommunityGraph(BuildCommunityGraph):
             authors = []
             for vertex in subgraph.vs:
                 authors.append(vertex['name'])
-            MongoDBClient.getInstance().updateAuthors(authors, clusterId)
+            MongoDBClient.getInstance().updateAuthors(authors, clusterId, self.collectionName)
             clusterId += 1
 
 class MongoDBClient:
@@ -172,38 +160,48 @@ class MongoDBClient:
 
         return MongoDBClient.__instance
 
-    def updateAuthors(self, authors, clusterId):
+    def updateAuthors(self, authors, clusterId, collectionName):
 
-        print('We have ' + str(len(authors)) + ' authors')
+        db = self.dbClient.communityDetectionUSAElections
 
-        db  = self.dbClient.communityDetectionUSAElections
-        db["twoHours_5_10_5_12"].update_many(
+        db[collectionName].update_many(
             {
             'author': {
                 '$in': authors
                 }
             },{
                 '$set': {
-                    'authorClusterId': clusterId
+                    'authorClusterIdMyLouvain': clusterId
                 }
             })
-
-        print('Updated comments')
-
-commentsCommunity = BuildCommentsCommunityGraph()
 
 dbClient = pymongo.MongoClient('localhost', 27017)
 db = dbClient.communityDetectionUSAElections
 
-allComments = list(db["twoHours_5_10_5_12"].find())
+allCollections = db.list_collection_names()
+
+prefix = 'oneHour'
+allCollections = list(filter(lambda x: prefix in x, allCollections))
+
+# allCollections = ['oneHour_7_20_7_21']
+
+for collectionName in allCollections:
+
+    print('Started processing ' + collectionName)
+
+    allComments = list(db[collectionName].find())
+
+    commentsCommunity = BuildAuthorsCommunityGraph(collectionName)
+    commentsCommunity.buildCommunityGraph(allComments)
+
+    print('MY LOUVAIN')
+    commentsCommunity.applyLouvainSmooth()
+
+    # print('OFFICIAL LOUVAIN')
+    # commentsCommunity.applyLouvain()
+
+    print('Finished processing')
 
 # filter nodes with inexisting parents
-commentsWithoutParents = [comment for comment in allComments if ('parentAuthorId' in comment) and (comment['parentAuthorId'] != False) and (comment['parentAuthorId'] not in [comment['author'] for comment in allComments])]
-print('Comments without parents ', len(commentsWithoutParents))
-
-commentsCommunity = BuildAuthorsCommunityGraph()
-# commentsCommunity.buildCommunityGraph(allComments)
-# commentsCommunity.applySpectral()
-
-commentsCommunity.buildCommunityGraph(allComments)
-commentsCommunity.applyLouvain()
+# commentsWithoutParents = [comment for comment in allComments if ('parentAuthorId' in comment) and (comment['parentAuthorId'] != False) and (comment['parentAuthorId'] not in [comment['author'] for comment in allComments])]
+# print('Comments without parents ', len(commentsWithoutParents))

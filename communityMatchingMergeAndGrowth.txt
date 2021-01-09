@@ -1,0 +1,380 @@
+oneHour_10_00_10_01  -  oneHour_10_01_10_02
+We have  0  merges and  9  growths
+oneHour_10_01_10_02  -  oneHour_10_02_10_03
+We have  0  merges and  15  growths
+oneHour_10_02_10_03  -  oneHour_10_04_10_05
+We have  0  merges and  9  growths
+oneHour_10_04_10_05  -  oneHour_10_07_10_08
+We have  0  merges and  3  growths
+oneHour_10_07_10_08  -  oneHour_10_10_10_11
+We have  0  merges and  1  growths
+oneHour_10_10_10_11  -  oneHour_10_13_10_14
+We have  0  merges and  1  growths
+oneHour_10_13_10_14  -  oneHour_10_15_10_16
+We have  0  merges and  1  growths
+oneHour_10_15_10_16  -  oneHour_10_16_10_17
+We have  0  merges and  6  growths
+oneHour_10_16_10_17  -  oneHour_10_17_10_18
+We have  0  merges and  2  growths
+oneHour_10_17_10_18  -  oneHour_10_18_10_19
+We have  0  merges and  1  growths
+oneHour_10_18_10_19  -  oneHour_10_19_10_20
+We have  0  merges and  1  growths
+oneHour_10_19_10_20  -  oneHour_10_20_10_21
+We have  0  merges and  1  growths
+oneHour_10_20_10_21  -  oneHour_10_21_10_22
+We have  0  merges and  4  growths
+oneHour_10_21_10_22  -  oneHour_10_22_10_23
+We have  0  merges and  2  growths
+oneHour_10_22_10_23  -  oneHour_10_23_11_00
+We have  0  merges and  1  growths
+oneHour_10_23_11_00  -  oneHour_11_01_11_02
+We have  0  merges and  1  growths
+oneHour_11_01_11_02  -  oneHour_11_02_11_03
+We have  0  merges and  1  growths
+oneHour_11_02_11_03  -  oneHour_11_03_11_04
+We have  0  merges and  1  growths
+oneHour_11_03_11_04  -  oneHour_11_04_11_05
+We have  0  merges and  1  growths
+oneHour_11_04_11_05  -  oneHour_11_05_11_06
+We have  0  merges and  1  growths
+oneHour_11_05_11_06  -  oneHour_11_08_11_09
+We have  0  merges and  1  growths
+oneHour_11_08_11_09  -  oneHour_11_09_11_10
+We have  0  merges and  1  growths
+oneHour_11_09_11_10  -  oneHour_11_15_11_16
+We have  0  merges and  1  growths
+oneHour_11_15_11_16  -  oneHour_11_16_11_17
+We have  0  merges and  1  growths
+oneHour_11_16_11_17  -  oneHour_11_17_11_18
+We have  0  merges and  1  growths
+oneHour_11_17_11_18  -  oneHour_11_18_11_19
+We have  0  merges and  1  growths
+oneHour_11_18_11_19  -  oneHour_12_00_12_01
+We have  0  merges and  1  growths
+oneHour_12_00_12_01  -  oneHour_12_02_12_03
+We have  0  merges and  1  growths
+oneHour_12_02_12_03  -  oneHour_12_04_12_05
+We have  0  merges and  1  growths
+oneHour_12_04_12_05  -  oneHour_12_05_12_06
+We have  0  merges and  1  growths
+oneHour_12_05_12_06  -  oneHour_12_07_12_08
+We have  0  merges and  1  growths
+oneHour_12_07_12_08  -  oneHour_12_17_12_18
+We have  0  merges and  1  growths
+oneHour_12_17_12_18  -  oneHour_12_20_12_21
+We have  0  merges and  2  growths
+oneHour_12_20_12_21  -  oneHour_13_00_13_01
+We have  0  merges and  1  growths
+oneHour_13_00_13_01  -  oneHour_13_08_13_09
+We have  0  merges and  2  growths
+oneHour_13_08_13_09  -  oneHour_13_09_13_10
+We have  0  merges and  1  growths
+oneHour_13_09_13_10  -  oneHour_13_13_13_14
+We have  0  merges and  2  growths
+oneHour_13_13_13_14  -  oneHour_13_14_13_15
+We have  0  merges and  1  growths
+oneHour_13_14_13_15  -  oneHour_13_15_13_16
+We have  0  merges and  1  growths
+oneHour_13_15_13_16  -  oneHour_13_22_13_23
+We have  0  merges and  1  growths
+oneHour_13_22_13_23  -  oneHour_14_00_14_01
+We have  0  merges and  1  growths
+oneHour_14_00_14_01  -  oneHour_14_04_14_05
+We have  0  merges and  1  growths
+oneHour_14_04_14_05  -  oneHour_14_06_14_07
+We have  0  merges and  1  growths
+oneHour_14_06_14_07  -  oneHour_14_08_14_09
+We have  0  merges and  1  growths
+oneHour_14_08_14_09  -  oneHour_14_19_14_20
+We have  0  merges and  1  growths
+oneHour_14_19_14_20  -  oneHour_14_22_14_23
+We have  0  merges and  1  growths
+oneHour_14_22_14_23  -  oneHour_15_01_15_02
+We have  0  merges and  1  growths
+oneHour_15_01_15_02  -  oneHour_15_02_15_03
+We have  0  merges and  1  growths
+oneHour_15_02_15_03  -  oneHour_15_03_15_04
+We have  0  merges and  1  growths
+oneHour_15_03_15_04  -  oneHour_15_08_15_09
+We have  0  merges and  1  growths
+oneHour_15_08_15_09  -  oneHour_15_18_15_19
+We have  0  merges and  1  growths
+oneHour_15_18_15_19  -  oneHour_15_23_16_00
+We have  0  merges and  1  growths
+oneHour_15_23_16_00  -  oneHour_16_03_16_04
+We have  0  merges and  1  growths
+oneHour_16_03_16_04  -  oneHour_16_15_16_16
+We have  0  merges and  1  growths
+oneHour_16_15_16_16  -  oneHour_16_16_16_17
+We have  0  merges and  1  growths
+oneHour_16_16_16_17  -  oneHour_17_00_17_01
+We have  0  merges and  1  growths
+oneHour_17_00_17_01  -  oneHour_18_01_18_02
+We have  0  merges and  1  growths
+oneHour_18_01_18_02  -  oneHour_18_02_18_03
+We have  0  merges and  4  growths
+oneHour_18_02_18_03  -  oneHour_18_08_18_09
+We have  0  merges and  2  growths
+oneHour_18_08_18_09  -  oneHour_19_18_19_19
+We have  0  merges and  1  growths
+oneHour_19_18_19_19  -  oneHour_19_19_19_20
+We have  0  merges and  1  growths
+oneHour_19_19_19_20  -  oneHour_19_20_19_21
+We have  0  merges and  1  growths
+oneHour_19_20_19_21  -  oneHour_1_23_2_00
+We have  0  merges and  1  growths
+oneHour_1_23_2_00  -  oneHour_20_04_20_05
+We have  0  merges and  1  growths
+oneHour_20_04_20_05  -  oneHour_20_21_20_22
+We have  0  merges and  1  growths
+oneHour_20_21_20_22  -  oneHour_22_17_22_18
+We have  0  merges and  1  growths
+oneHour_22_17_22_18  -  oneHour_23_03_23_04
+We have  0  merges and  1  growths
+oneHour_23_03_23_04  -  oneHour_23_17_23_18
+We have  0  merges and  1  growths
+oneHour_23_17_23_18  -  oneHour_25_03_25_04
+We have  0  merges and  1  growths
+oneHour_25_03_25_04  -  oneHour_25_18_25_19
+We have  0  merges and  2  growths
+oneHour_25_18_25_19  -  oneHour_26_06_26_07
+We have  0  merges and  1  growths
+oneHour_26_06_26_07  -  oneHour_26_23_27_00
+We have  0  merges and  1  growths
+oneHour_26_23_27_00  -  oneHour_28_06_28_07
+We have  0  merges and  1  growths
+oneHour_28_06_28_07  -  oneHour_29_05_29_06
+We have  0  merges and  1  growths
+oneHour_29_05_29_06  -  oneHour_3_07_3_08
+We have  0  merges and  1  growths
+oneHour_3_07_3_08  -  oneHour_4_00_4_01
+We have  0  merges and  1  growths
+oneHour_4_00_4_01  -  oneHour_5_02_5_03
+We have  0  merges and  1  growths
+oneHour_5_02_5_03  -  oneHour_5_03_5_04
+We have  0  merges and  6724  growths
+oneHour_5_03_5_04  -  oneHour_5_04_5_05
+We have  0  merges and  123201  growths
+oneHour_5_04_5_05  -  oneHour_5_05_5_06
+We have  0  merges and  931434  growths
+oneHour_5_05_5_06  -  oneHour_5_06_5_07
+We have  0  merges and  672546  growths
+oneHour_5_06_5_07  -  oneHour_5_07_5_08
+We have  0  merges and  382161  growths
+oneHour_5_07_5_08  -  oneHour_5_08_5_09
+We have  0  merges and  178555  growths
+oneHour_5_08_5_09  -  oneHour_5_09_5_10
+We have  0  merges and  61305  growths
+oneHour_5_09_5_10  -  oneHour_5_10_5_11
+We have  0  merges and  33489  growths
+oneHour_5_10_5_11  -  oneHour_5_11_5_12
+We have  0  merges and  26832  growths
+oneHour_5_11_5_12  -  oneHour_5_12_5_13
+We have  0  merges and  16641  growths
+oneHour_5_12_5_13  -  oneHour_5_13_5_14
+We have  0  merges and  38556  growths
+oneHour_5_13_5_14  -  oneHour_5_14_5_15
+We have  0  merges and  34398  growths
+oneHour_5_14_5_15  -  oneHour_5_15_5_16
+We have  0  merges and  24570  growths
+oneHour_5_15_5_16  -  oneHour_5_16_5_17
+We have  0  merges and  13500  growths
+oneHour_5_16_5_17  -  oneHour_5_17_5_18
+We have  0  merges and  8800  growths
+oneHour_5_17_5_18  -  oneHour_5_18_5_19
+We have  0  merges and  5192  growths
+oneHour_5_18_5_19  -  oneHour_5_19_5_20
+We have  0  merges and  2537  growths
+oneHour_5_19_5_20  -  oneHour_5_20_5_21
+We have  0  merges and  1118  growths
+oneHour_5_20_5_21  -  oneHour_5_21_5_22
+We have  0  merges and  442  growths
+oneHour_5_21_5_22  -  oneHour_5_22_5_23
+We have  0  merges and  170  growths
+oneHour_5_22_5_23  -  oneHour_5_23_6_00
+We have  0  merges and  100  growths
+oneHour_5_23_6_00  -  oneHour_6_00_6_01
+We have  0  merges and  108  growths
+oneHour_6_00_6_01  -  oneHour_6_01_6_02
+We have  0  merges and  81  growths
+oneHour_6_01_6_02  -  oneHour_6_02_6_03
+We have  0  merges and  144  growths
+oneHour_6_02_6_03  -  oneHour_6_03_6_04
+We have  0  merges and  91  growths
+oneHour_6_03_6_04  -  oneHour_6_04_6_05
+We have  0  merges and  49  growths
+oneHour_6_04_6_05  -  oneHour_6_05_6_06
+We have  0  merges and  48  growths
+oneHour_6_05_6_06  -  oneHour_6_06_6_07
+We have  0  merges and  30  growths
+oneHour_6_06_6_07  -  oneHour_6_07_6_08
+We have  0  merges and  15  growths
+oneHour_6_07_6_08  -  oneHour_6_08_6_09
+We have  0  merges and  9  growths
+oneHour_6_08_6_09  -  oneHour_6_09_6_10
+We have  0  merges and  8  growths
+oneHour_6_09_6_10  -  oneHour_6_10_6_11
+We have  0  merges and  4  growths
+oneHour_6_10_6_11  -  oneHour_6_14_6_15
+We have  0  merges and  4  growths
+oneHour_6_14_6_15  -  oneHour_6_15_6_16
+We have  0  merges and  4  growths
+oneHour_6_15_6_16  -  oneHour_6_19_6_20
+We have  0  merges and  12  growths
+oneHour_6_19_6_20  -  oneHour_6_20_6_21
+We have  0  merges and  9  growths
+oneHour_6_20_6_21  -  oneHour_6_21_6_22
+We have  0  merges and  576  growths
+oneHour_6_21_6_22  -  oneHour_6_22_6_23
+We have  0  merges and  88209  growths
+oneHour_6_22_6_23  -  oneHour_6_23_7_00
+We have  0  merges and  260100  growths
+oneHour_6_23_7_00  -  oneHour_7_00_7_01
+We have  0  merges and  363609  growths
+oneHour_7_00_7_01  -  oneHour_7_01_7_02
+We have  0  merges and  375720  growths
+oneHour_7_01_7_02  -  oneHour_7_02_7_03
+We have  0  merges and  367236  growths
+oneHour_7_02_7_03  -  oneHour_7_03_7_04
+We have  0  merges and  351744  growths
+oneHour_7_03_7_04  -  oneHour_7_04_7_05
+We have  0  merges and  196096  growths
+oneHour_7_04_7_05  -  oneHour_7_05_7_06
+We have  0  merges and  115283  growths
+oneHour_7_05_7_06  -  oneHour_7_06_7_07
+We have  0  merges and  53578  growths
+oneHour_7_06_7_07  -  oneHour_7_07_7_08
+We have  0  merges and  20648  growths
+oneHour_7_07_7_08  -  oneHour_7_08_7_09
+We have  0  merges and  11252  growths
+oneHour_7_08_7_09  -  oneHour_7_09_7_10
+We have  0  merges and  7178  growths
+oneHour_7_09_7_10  -  oneHour_7_10_7_11
+We have  0  merges and  2960  growths
+oneHour_7_10_7_11  -  oneHour_7_11_7_12
+We have  0  merges and  1240  growths
+oneHour_7_11_7_12  -  oneHour_7_12_7_13
+We have  0  merges and  961  growths
+oneHour_7_12_7_13  -  oneHour_7_13_7_14
+We have  0  merges and  1221  growths
+oneHour_7_13_7_14  -  oneHour_7_14_7_15
+We have  0  merges and  1089  growths
+oneHour_7_14_7_15  -  oneHour_7_15_7_16
+We have  0  merges and  1225  growths
+oneHour_7_15_7_16  -  oneHour_7_16_7_17
+We have  0  merges and  1225  growths
+oneHour_7_16_7_17  -  oneHour_7_17_7_18
+We have  0  merges and  625  growths
+oneHour_7_17_7_18  -  oneHour_7_18_7_19
+We have  0  merges and  936  growths
+oneHour_7_18_7_19  -  oneHour_7_19_7_20
+We have  0  merges and  552  growths
+oneHour_7_19_7_20  -  oneHour_7_20_7_21
+We have  0  merges and  529  growths
+oneHour_7_20_7_21  -  oneHour_7_21_7_22
+We have  0  merges and  124609  growths
+oneHour_7_21_7_22  -  oneHour_7_22_7_23
+We have  0  merges and  263169  growths
+oneHour_7_22_7_23  -  oneHour_7_23_8_00
+We have  0  merges and  1915456  growths
+oneHour_7_23_8_00  -  oneHour_8_00_8_01
+We have  0  merges and  3190880  growths
+oneHour_8_00_8_01  -  oneHour_8_01_8_02
+We have  0  merges and  3097600  growths
+oneHour_8_01_8_02  -  oneHour_8_02_8_03
+We have  0  merges and  3736451  growths
+oneHour_8_02_8_03  -  oneHour_8_03_8_04
+We have  0  merges and  1633745  growths
+oneHour_8_03_8_04  -  oneHour_8_04_8_05
+We have  0  merges and  759455  growths
+oneHour_8_04_8_05  -  oneHour_8_05_8_06
+We have  0  merges and  465117  growths
+oneHour_8_05_8_06  -  oneHour_8_06_8_07
+We have  0  merges and  265359  growths
+oneHour_8_06_8_07  -  oneHour_8_07_8_08
+We have  0  merges and  134251  growths
+oneHour_8_07_8_08  -  oneHour_8_08_8_09
+We have  0  merges and  77740  growths
+oneHour_8_08_8_09  -  oneHour_8_09_8_10
+We have  0  merges and  45240  growths
+oneHour_8_09_8_10  -  oneHour_8_10_8_11
+We have  0  merges and  30276  growths
+oneHour_8_10_8_11  -  oneHour_8_11_8_12
+We have  0  merges and  24472  growths
+oneHour_8_11_8_12  -  oneHour_8_12_8_13
+We have  0  merges and  12502  growths
+oneHour_8_12_8_13  -  oneHour_8_13_8_14
+We have  0  merges and  8836  growths
+oneHour_8_13_8_14  -  oneHour_8_14_8_15
+We have  0  merges and  14161  growths
+oneHour_8_14_8_15  -  oneHour_8_15_8_16
+We have  0  merges and  17956  growths
+oneHour_8_15_8_16  -  oneHour_8_16_8_17
+We have  0  merges and  16472  growths
+oneHour_8_16_8_17  -  oneHour_8_17_8_18
+We have  0  merges and  13224  growths
+oneHour_8_17_8_18  -  oneHour_8_18_8_19
+We have  0  merges and  12996  growths
+oneHour_8_18_8_19  -  oneHour_8_19_8_20
+We have  0  merges and  37840  growths
+oneHour_8_19_8_20  -  oneHour_8_20_8_21
+We have  0  merges and  30976  growths
+oneHour_8_20_8_21  -  oneHour_8_21_8_22
+We have  0  merges and  86620  growths
+oneHour_8_21_8_22  -  oneHour_8_22_8_23
+We have  0  merges and  78952  growths
+oneHour_8_22_8_23  -  oneHour_8_23_9_00
+We have  0  merges and  77284  growths
+oneHour_8_23_9_00  -  oneHour_9_00_9_01
+We have  0  merges and  129792  growths
+oneHour_9_00_9_01  -  oneHour_9_01_9_02
+We have  0  merges and  76726  growths
+oneHour_9_01_9_02  -  oneHour_9_02_9_03
+We have  0  merges and  40406  growths
+oneHour_9_02_9_03  -  oneHour_9_03_9_04
+We have  0  merges and  26700  growths
+oneHour_9_03_9_04  -  oneHour_9_04_9_05
+We have  0  merges and  20850  growths
+oneHour_9_04_9_05  -  oneHour_9_05_9_06
+We have  0  merges and  15846  growths
+oneHour_9_05_9_06  -  oneHour_9_06_9_07
+We have  0  merges and  11172  growths
+oneHour_9_06_9_07  -  oneHour_9_07_9_08
+We have  0  merges and  6958  growths
+oneHour_9_07_9_08  -  oneHour_9_08_9_09
+We have  0  merges and  3550  growths
+oneHour_9_08_9_09  -  oneHour_9_09_9_10
+We have  0  merges and  1650  growths
+oneHour_9_09_9_10  -  oneHour_9_10_9_11
+We have  0  merges and  858  growths
+oneHour_9_10_9_11  -  oneHour_9_11_9_12
+We have  0  merges and  624  growths
+oneHour_9_11_9_12  -  oneHour_9_12_9_13
+We have  0  merges and  456  growths
+oneHour_9_12_9_13  -  oneHour_9_13_9_14
+We have  0  merges and  361  growths
+oneHour_9_13_9_14  -  oneHour_9_14_9_15
+We have  0  merges and  336  growths
+oneHour_9_14_9_15  -  oneHour_9_15_9_16
+We have  0  merges and  256  growths
+oneHour_9_15_9_16  -  oneHour_9_16_9_17
+We have  0  merges and  361  growths
+oneHour_9_16_9_17  -  oneHour_9_17_9_18
+We have  0  merges and  247  growths
+oneHour_9_17_9_18  -  oneHour_9_18_9_19
+We have  0  merges and  117  growths
+oneHour_9_18_9_19  -  oneHour_9_19_9_20
+We have  0  merges and  81  growths
+oneHour_9_19_9_20  -  oneHour_9_20_9_21
+We have  0  merges and  99  growths
+oneHour_9_20_9_21  -  oneHour_9_21_9_22
+We have  0  merges and  36  growths
+oneHour_9_21_9_22  -  oneHour_9_22_9_23
+We have  0  merges and  8  growths
+oneHour_9_22_9_23  -  oneHour_9_23_10_00
+We have  0  merges and  4  growths
+FINAL_G!
+[('oneHour_10_00_10_01', ' - ', 'oneHour_10_01_10_02', 9), ('oneHour_10_01_10_02', ' - ', 'oneHour_10_02_10_03', 15), ('oneHour_10_02_10_03', ' - ', 'oneHour_10_04_10_05', 9), ('oneHour_10_04_10_05', ' - ', 'oneHour_10_07_10_08', 3), ('oneHour_10_07_10_08', ' - ', 'oneHour_10_10_10_11', 1), ('oneHour_10_10_10_11', ' - ', 'oneHour_10_13_10_14', 1), ('oneHour_10_13_10_14', ' - ', 'oneHour_10_15_10_16', 1), ('oneHour_10_15_10_16', ' - ', 'oneHour_10_16_10_17', 6), ('oneHour_10_16_10_17', ' - ', 'oneHour_10_17_10_18', 2), ('oneHour_10_17_10_18', ' - ', 'oneHour_10_18_10_19', 1), ('oneHour_10_18_10_19', ' - ', 'oneHour_10_19_10_20', 1), ('oneHour_10_19_10_20', ' - ', 'oneHour_10_20_10_21', 1), ('oneHour_10_20_10_21', ' - ', 'oneHour_10_21_10_22', 4), ('oneHour_10_21_10_22', ' - ', 'oneHour_10_22_10_23', 2), ('oneHour_10_22_10_23', ' - ', 'oneHour_10_23_11_00', 1), ('oneHour_10_23_11_00', ' - ', 'oneHour_11_01_11_02', 1), ('oneHour_11_01_11_02', ' - ', 'oneHour_11_02_11_03', 1), ('oneHour_11_02_11_03', ' - ', 'oneHour_11_03_11_04', 1), ('oneHour_11_03_11_04', ' - ', 'oneHour_11_04_11_05', 1), ('oneHour_11_04_11_05', ' - ', 'oneHour_11_05_11_06', 1), ('oneHour_11_05_11_06', ' - ', 'oneHour_11_08_11_09', 1), ('oneHour_11_08_11_09', ' - ', 'oneHour_11_09_11_10', 1), ('oneHour_11_09_11_10', ' - ', 'oneHour_11_15_11_16', 1), ('oneHour_11_15_11_16', ' - ', 'oneHour_11_16_11_17', 1), ('oneHour_11_16_11_17', ' - ', 'oneHour_11_17_11_18', 1), ('oneHour_11_17_11_18', ' - ', 'oneHour_11_18_11_19', 1), ('oneHour_11_18_11_19', ' - ', 'oneHour_12_00_12_01', 1), ('oneHour_12_00_12_01', ' - ', 'oneHour_12_02_12_03', 1), ('oneHour_12_02_12_03', ' - ', 'oneHour_12_04_12_05', 1), ('oneHour_12_04_12_05', ' - ', 'oneHour_12_05_12_06', 1), ('oneHour_12_05_12_06', ' - ', 'oneHour_12_07_12_08', 1), ('oneHour_12_07_12_08', ' - ', 'oneHour_12_17_12_18', 1), ('oneHour_12_17_12_18', ' - ', 'oneHour_12_20_12_21', 2), ('oneHour_12_20_12_21', ' - ', 'oneHour_13_00_13_01', 1), ('oneHour_13_00_13_01', ' - ', 'oneHour_13_08_13_09', 2), ('oneHour_13_08_13_09', ' - ', 'oneHour_13_09_13_10', 1), ('oneHour_13_09_13_10', ' - ', 'oneHour_13_13_13_14', 2), ('oneHour_13_13_13_14', ' - ', 'oneHour_13_14_13_15', 1), ('oneHour_13_14_13_15', ' - ', 'oneHour_13_15_13_16', 1), ('oneHour_13_15_13_16', ' - ', 'oneHour_13_22_13_23', 1), ('oneHour_13_22_13_23', ' - ', 'oneHour_14_00_14_01', 1), ('oneHour_14_00_14_01', ' - ', 'oneHour_14_04_14_05', 1), ('oneHour_14_04_14_05', ' - ', 'oneHour_14_06_14_07', 1), ('oneHour_14_06_14_07', ' - ', 'oneHour_14_08_14_09', 1), ('oneHour_14_08_14_09', ' - ', 'oneHour_14_19_14_20', 1), ('oneHour_14_19_14_20', ' - ', 'oneHour_14_22_14_23', 1), ('oneHour_14_22_14_23', ' - ', 'oneHour_15_01_15_02', 1), ('oneHour_15_01_15_02', ' - ', 'oneHour_15_02_15_03', 1), ('oneHour_15_02_15_03', ' - ', 'oneHour_15_03_15_04', 1), ('oneHour_15_03_15_04', ' - ', 'oneHour_15_08_15_09', 1), ('oneHour_15_08_15_09', ' - ', 'oneHour_15_18_15_19', 1), ('oneHour_15_18_15_19', ' - ', 'oneHour_15_23_16_00', 1), ('oneHour_15_23_16_00', ' - ', 'oneHour_16_03_16_04', 1), ('oneHour_16_03_16_04', ' - ', 'oneHour_16_15_16_16', 1), ('oneHour_16_15_16_16', ' - ', 'oneHour_16_16_16_17', 1), ('oneHour_16_16_16_17', ' - ', 'oneHour_17_00_17_01', 1), ('oneHour_17_00_17_01', ' - ', 'oneHour_18_01_18_02', 1), ('oneHour_18_01_18_02', ' - ', 'oneHour_18_02_18_03', 4), ('oneHour_18_02_18_03', ' - ', 'oneHour_18_08_18_09', 2), ('oneHour_18_08_18_09', ' - ', 'oneHour_19_18_19_19', 1), ('oneHour_19_18_19_19', ' - ', 'oneHour_19_19_19_20', 1), ('oneHour_19_19_19_20', ' - ', 'oneHour_19_20_19_21', 1), ('oneHour_19_20_19_21', ' - ', 'oneHour_1_23_2_00', 1), ('oneHour_1_23_2_00', ' - ', 'oneHour_20_04_20_05', 1), ('oneHour_20_04_20_05', ' - ', 'oneHour_20_21_20_22', 1), ('oneHour_20_21_20_22', ' - ', 'oneHour_22_17_22_18', 1), ('oneHour_22_17_22_18', ' - ', 'oneHour_23_03_23_04', 1), ('oneHour_23_03_23_04', ' - ', 'oneHour_23_17_23_18', 1), ('oneHour_23_17_23_18', ' - ', 'oneHour_25_03_25_04', 1), ('oneHour_25_03_25_04', ' - ', 'oneHour_25_18_25_19', 2), ('oneHour_25_18_25_19', ' - ', 'oneHour_26_06_26_07', 1), ('oneHour_26_06_26_07', ' - ', 'oneHour_26_23_27_00', 1), ('oneHour_26_23_27_00', ' - ', 'oneHour_28_06_28_07', 1), ('oneHour_28_06_28_07', ' - ', 'oneHour_29_05_29_06', 1), ('oneHour_29_05_29_06', ' - ', 'oneHour_3_07_3_08', 1), ('oneHour_3_07_3_08', ' - ', 'oneHour_4_00_4_01', 1), ('oneHour_4_00_4_01', ' - ', 'oneHour_5_02_5_03', 1), ('oneHour_5_02_5_03', ' - ', 'oneHour_5_03_5_04', 6724), ('oneHour_5_03_5_04', ' - ', 'oneHour_5_04_5_05', 123201), ('oneHour_5_04_5_05', ' - ', 'oneHour_5_05_5_06', 931434), ('oneHour_5_05_5_06', ' - ', 'oneHour_5_06_5_07', 672546), ('oneHour_5_06_5_07', ' - ', 'oneHour_5_07_5_08', 382161), ('oneHour_5_07_5_08', ' - ', 'oneHour_5_08_5_09', 178555), ('oneHour_5_08_5_09', ' - ', 'oneHour_5_09_5_10', 61305), ('oneHour_5_09_5_10', ' - ', 'oneHour_5_10_5_11', 33489), ('oneHour_5_10_5_11', ' - ', 'oneHour_5_11_5_12', 26832), ('oneHour_5_11_5_12', ' - ', 'oneHour_5_12_5_13', 16641), ('oneHour_5_12_5_13', ' - ', 'oneHour_5_13_5_14', 38556), ('oneHour_5_13_5_14', ' - ', 'oneHour_5_14_5_15', 34398), ('oneHour_5_14_5_15', ' - ', 'oneHour_5_15_5_16', 24570), ('oneHour_5_15_5_16', ' - ', 'oneHour_5_16_5_17', 13500), ('oneHour_5_16_5_17', ' - ', 'oneHour_5_17_5_18', 8800), ('oneHour_5_17_5_18', ' - ', 'oneHour_5_18_5_19', 5192), ('oneHour_5_18_5_19', ' - ', 'oneHour_5_19_5_20', 2537), ('oneHour_5_19_5_20', ' - ', 'oneHour_5_20_5_21', 1118), ('oneHour_5_20_5_21', ' - ', 'oneHour_5_21_5_22', 442), ('oneHour_5_21_5_22', ' - ', 'oneHour_5_22_5_23', 170), ('oneHour_5_22_5_23', ' - ', 'oneHour_5_23_6_00', 100), ('oneHour_5_23_6_00', ' - ', 'oneHour_6_00_6_01', 108), ('oneHour_6_00_6_01', ' - ', 'oneHour_6_01_6_02', 81), ('oneHour_6_01_6_02', ' - ', 'oneHour_6_02_6_03', 144), ('oneHour_6_02_6_03', ' - ', 'oneHour_6_03_6_04', 91), ('oneHour_6_03_6_04', ' - ', 'oneHour_6_04_6_05', 49), ('oneHour_6_04_6_05', ' - ', 'oneHour_6_05_6_06', 48), ('oneHour_6_05_6_06', ' - ', 'oneHour_6_06_6_07', 30), ('oneHour_6_06_6_07', ' - ', 'oneHour_6_07_6_08', 15), ('oneHour_6_07_6_08', ' - ', 'oneHour_6_08_6_09', 9), ('oneHour_6_08_6_09', ' - ', 'oneHour_6_09_6_10', 8), ('oneHour_6_09_6_10', ' - ', 'oneHour_6_10_6_11', 4), ('oneHour_6_10_6_11', ' - ', 'oneHour_6_14_6_15', 4), ('oneHour_6_14_6_15', ' - ', 'oneHour_6_15_6_16', 4), ('oneHour_6_15_6_16', ' - ', 'oneHour_6_19_6_20', 12), ('oneHour_6_19_6_20', ' - ', 'oneHour_6_20_6_21', 9), ('oneHour_6_20_6_21', ' - ', 'oneHour_6_21_6_22', 576), ('oneHour_6_21_6_22', ' - ', 'oneHour_6_22_6_23', 88209), ('oneHour_6_22_6_23', ' - ', 'oneHour_6_23_7_00', 260100), ('oneHour_6_23_7_00', ' - ', 'oneHour_7_00_7_01', 363609), ('oneHour_7_00_7_01', ' - ', 'oneHour_7_01_7_02', 375720), ('oneHour_7_01_7_02', ' - ', 'oneHour_7_02_7_03', 367236), ('oneHour_7_02_7_03', ' - ', 'oneHour_7_03_7_04', 351744), ('oneHour_7_03_7_04', ' - ', 'oneHour_7_04_7_05', 196096), ('oneHour_7_04_7_05', ' - ', 'oneHour_7_05_7_06', 115283), ('oneHour_7_05_7_06', ' - ', 'oneHour_7_06_7_07', 53578), ('oneHour_7_06_7_07', ' - ', 'oneHour_7_07_7_08', 20648), ('oneHour_7_07_7_08', ' - ', 'oneHour_7_08_7_09', 11252), ('oneHour_7_08_7_09', ' - ', 'oneHour_7_09_7_10', 7178), ('oneHour_7_09_7_10', ' - ', 'oneHour_7_10_7_11', 2960), ('oneHour_7_10_7_11', ' - ', 'oneHour_7_11_7_12', 1240), ('oneHour_7_11_7_12', ' - ', 'oneHour_7_12_7_13', 961), ('oneHour_7_12_7_13', ' - ', 'oneHour_7_13_7_14', 1221), ('oneHour_7_13_7_14', ' - ', 'oneHour_7_14_7_15', 1089), ('oneHour_7_14_7_15', ' - ', 'oneHour_7_15_7_16', 1225), ('oneHour_7_15_7_16', ' - ', 'oneHour_7_16_7_17', 1225), ('oneHour_7_16_7_17', ' - ', 'oneHour_7_17_7_18', 625), ('oneHour_7_17_7_18', ' - ', 'oneHour_7_18_7_19', 936), ('oneHour_7_18_7_19', ' - ', 'oneHour_7_19_7_20', 552), ('oneHour_7_19_7_20', ' - ', 'oneHour_7_20_7_21', 529), ('oneHour_7_20_7_21', ' - ', 'oneHour_7_21_7_22', 124609), ('oneHour_7_21_7_22', ' - ', 'oneHour_7_22_7_23', 263169), ('oneHour_7_22_7_23', ' - ', 'oneHour_7_23_8_00', 1915456), ('oneHour_7_23_8_00', ' - ', 'oneHour_8_00_8_01', 3190880), ('oneHour_8_00_8_01', ' - ', 'oneHour_8_01_8_02', 3097600), ('oneHour_8_01_8_02', ' - ', 'oneHour_8_02_8_03', 3736451), ('oneHour_8_02_8_03', ' - ', 'oneHour_8_03_8_04', 1633745), ('oneHour_8_03_8_04', ' - ', 'oneHour_8_04_8_05', 759455), ('oneHour_8_04_8_05', ' - ', 'oneHour_8_05_8_06', 465117), ('oneHour_8_05_8_06', ' - ', 'oneHour_8_06_8_07', 265359), ('oneHour_8_06_8_07', ' - ', 'oneHour_8_07_8_08', 134251), ('oneHour_8_07_8_08', ' - ', 'oneHour_8_08_8_09', 77740), ('oneHour_8_08_8_09', ' - ', 'oneHour_8_09_8_10', 45240), ('oneHour_8_09_8_10', ' - ', 'oneHour_8_10_8_11', 30276), ('oneHour_8_10_8_11', ' - ', 'oneHour_8_11_8_12', 24472), ('oneHour_8_11_8_12', ' - ', 'oneHour_8_12_8_13', 12502), ('oneHour_8_12_8_13', ' - ', 'oneHour_8_13_8_14', 8836), ('oneHour_8_13_8_14', ' - ', 'oneHour_8_14_8_15', 14161), ('oneHour_8_14_8_15', ' - ', 'oneHour_8_15_8_16', 17956), ('oneHour_8_15_8_16', ' - ', 'oneHour_8_16_8_17', 16472), ('oneHour_8_16_8_17', ' - ', 'oneHour_8_17_8_18', 13224), ('oneHour_8_17_8_18', ' - ', 'oneHour_8_18_8_19', 12996), ('oneHour_8_18_8_19', ' - ', 'oneHour_8_19_8_20', 37840), ('oneHour_8_19_8_20', ' - ', 'oneHour_8_20_8_21', 30976), ('oneHour_8_20_8_21', ' - ', 'oneHour_8_21_8_22', 86620), ('oneHour_8_21_8_22', ' - ', 'oneHour_8_22_8_23', 78952), ('oneHour_8_22_8_23', ' - ', 'oneHour_8_23_9_00', 77284), ('oneHour_8_23_9_00', ' - ', 'oneHour_9_00_9_01', 129792), ('oneHour_9_00_9_01', ' - ', 'oneHour_9_01_9_02', 76726), ('oneHour_9_01_9_02', ' - ', 'oneHour_9_02_9_03', 40406), ('oneHour_9_02_9_03', ' - ', 'oneHour_9_03_9_04', 26700), ('oneHour_9_03_9_04', ' - ', 'oneHour_9_04_9_05', 20850), ('oneHour_9_04_9_05', ' - ', 'oneHour_9_05_9_06', 15846), ('oneHour_9_05_9_06', ' - ', 'oneHour_9_06_9_07', 11172), ('oneHour_9_06_9_07', ' - ', 'oneHour_9_07_9_08', 6958), ('oneHour_9_07_9_08', ' - ', 'oneHour_9_08_9_09', 3550), ('oneHour_9_08_9_09', ' - ', 'oneHour_9_09_9_10', 1650), ('oneHour_9_09_9_10', ' - ', 'oneHour_9_10_9_11', 858), ('oneHour_9_10_9_11', ' - ', 'oneHour_9_11_9_12', 624), ('oneHour_9_11_9_12', ' - ', 'oneHour_9_12_9_13', 456), ('oneHour_9_12_9_13', ' - ', 'oneHour_9_13_9_14', 361), ('oneHour_9_13_9_14', ' - ', 'oneHour_9_14_9_15', 336), ('oneHour_9_14_9_15', ' - ', 'oneHour_9_15_9_16', 256), ('oneHour_9_15_9_16', ' - ', 'oneHour_9_16_9_17', 361), ('oneHour_9_16_9_17', ' - ', 'oneHour_9_17_9_18', 247), ('oneHour_9_17_9_18', ' - ', 'oneHour_9_18_9_19', 117), ('oneHour_9_18_9_19', ' - ', 'oneHour_9_19_9_20', 81), ('oneHour_9_19_9_20', ' - ', 'oneHour_9_20_9_21', 99), ('oneHour_9_20_9_21', ' - ', 'oneHour_9_21_9_22', 36), ('oneHour_9_21_9_22', ' - ', 'oneHour_9_22_9_23', 8), ('oneHour_9_22_9_23', ' - ', 'oneHour_9_23_10_00', 4)]
+FINAL_M!
+[('oneHour_10_00_10_01', ' - ', 'oneHour_10_01_10_02', 0), ('oneHour_10_01_10_02', ' - ', 'oneHour_10_02_10_03', 0), ('oneHour_10_02_10_03', ' - ', 'oneHour_10_04_10_05', 0), ('oneHour_10_04_10_05', ' - ', 'oneHour_10_07_10_08', 0), ('oneHour_10_07_10_08', ' - ', 'oneHour_10_10_10_11', 0), ('oneHour_10_10_10_11', ' - ', 'oneHour_10_13_10_14', 0), ('oneHour_10_13_10_14', ' - ', 'oneHour_10_15_10_16', 0), ('oneHour_10_15_10_16', ' - ', 'oneHour_10_16_10_17', 0), ('oneHour_10_16_10_17', ' - ', 'oneHour_10_17_10_18', 0), ('oneHour_10_17_10_18', ' - ', 'oneHour_10_18_10_19', 0), ('oneHour_10_18_10_19', ' - ', 'oneHour_10_19_10_20', 0), ('oneHour_10_19_10_20', ' - ', 'oneHour_10_20_10_21', 0), ('oneHour_10_20_10_21', ' - ', 'oneHour_10_21_10_22', 0), ('oneHour_10_21_10_22', ' - ', 'oneHour_10_22_10_23', 0), ('oneHour_10_22_10_23', ' - ', 'oneHour_10_23_11_00', 0), ('oneHour_10_23_11_00', ' - ', 'oneHour_11_01_11_02', 0), ('oneHour_11_01_11_02', ' - ', 'oneHour_11_02_11_03', 0), ('oneHour_11_02_11_03', ' - ', 'oneHour_11_03_11_04', 0), ('oneHour_11_03_11_04', ' - ', 'oneHour_11_04_11_05', 0), ('oneHour_11_04_11_05', ' - ', 'oneHour_11_05_11_06', 0), ('oneHour_11_05_11_06', ' - ', 'oneHour_11_08_11_09', 0), ('oneHour_11_08_11_09', ' - ', 'oneHour_11_09_11_10', 0), ('oneHour_11_09_11_10', ' - ', 'oneHour_11_15_11_16', 0), ('oneHour_11_15_11_16', ' - ', 'oneHour_11_16_11_17', 0), ('oneHour_11_16_11_17', ' - ', 'oneHour_11_17_11_18', 0), ('oneHour_11_17_11_18', ' - ', 'oneHour_11_18_11_19', 0), ('oneHour_11_18_11_19', ' - ', 'oneHour_12_00_12_01', 0), ('oneHour_12_00_12_01', ' - ', 'oneHour_12_02_12_03', 0), ('oneHour_12_02_12_03', ' - ', 'oneHour_12_04_12_05', 0), ('oneHour_12_04_12_05', ' - ', 'oneHour_12_05_12_06', 0), ('oneHour_12_05_12_06', ' - ', 'oneHour_12_07_12_08', 0), ('oneHour_12_07_12_08', ' - ', 'oneHour_12_17_12_18', 0), ('oneHour_12_17_12_18', ' - ', 'oneHour_12_20_12_21', 0), ('oneHour_12_20_12_21', ' - ', 'oneHour_13_00_13_01', 0), ('oneHour_13_00_13_01', ' - ', 'oneHour_13_08_13_09', 0), ('oneHour_13_08_13_09', ' - ', 'oneHour_13_09_13_10', 0), ('oneHour_13_09_13_10', ' - ', 'oneHour_13_13_13_14', 0), ('oneHour_13_13_13_14', ' - ', 'oneHour_13_14_13_15', 0), ('oneHour_13_14_13_15', ' - ', 'oneHour_13_15_13_16', 0), ('oneHour_13_15_13_16', ' - ', 'oneHour_13_22_13_23', 0), ('oneHour_13_22_13_23', ' - ', 'oneHour_14_00_14_01', 0), ('oneHour_14_00_14_01', ' - ', 'oneHour_14_04_14_05', 0), ('oneHour_14_04_14_05', ' - ', 'oneHour_14_06_14_07', 0), ('oneHour_14_06_14_07', ' - ', 'oneHour_14_08_14_09', 0), ('oneHour_14_08_14_09', ' - ', 'oneHour_14_19_14_20', 0), ('oneHour_14_19_14_20', ' - ', 'oneHour_14_22_14_23', 0), ('oneHour_14_22_14_23', ' - ', 'oneHour_15_01_15_02', 0), ('oneHour_15_01_15_02', ' - ', 'oneHour_15_02_15_03', 0), ('oneHour_15_02_15_03', ' - ', 'oneHour_15_03_15_04', 0), ('oneHour_15_03_15_04', ' - ', 'oneHour_15_08_15_09', 0), ('oneHour_15_08_15_09', ' - ', 'oneHour_15_18_15_19', 0), ('oneHour_15_18_15_19', ' - ', 'oneHour_15_23_16_00', 0), ('oneHour_15_23_16_00', ' - ', 'oneHour_16_03_16_04', 0), ('oneHour_16_03_16_04', ' - ', 'oneHour_16_15_16_16', 0), ('oneHour_16_15_16_16', ' - ', 'oneHour_16_16_16_17', 0), ('oneHour_16_16_16_17', ' - ', 'oneHour_17_00_17_01', 0), ('oneHour_17_00_17_01', ' - ', 'oneHour_18_01_18_02', 0), ('oneHour_18_01_18_02', ' - ', 'oneHour_18_02_18_03', 0), ('oneHour_18_02_18_03', ' - ', 'oneHour_18_08_18_09', 0), ('oneHour_18_08_18_09', ' - ', 'oneHour_19_18_19_19', 0), ('oneHour_19_18_19_19', ' - ', 'oneHour_19_19_19_20', 0), ('oneHour_19_19_19_20', ' - ', 'oneHour_19_20_19_21', 0), ('oneHour_19_20_19_21', ' - ', 'oneHour_1_23_2_00', 0), ('oneHour_1_23_2_00', ' - ', 'oneHour_20_04_20_05', 0), ('oneHour_20_04_20_05', ' - ', 'oneHour_20_21_20_22', 0), ('oneHour_20_21_20_22', ' - ', 'oneHour_22_17_22_18', 0), ('oneHour_22_17_22_18', ' - ', 'oneHour_23_03_23_04', 0), ('oneHour_23_03_23_04', ' - ', 'oneHour_23_17_23_18', 0), ('oneHour_23_17_23_18', ' - ', 'oneHour_25_03_25_04', 0), ('oneHour_25_03_25_04', ' - ', 'oneHour_25_18_25_19', 0), ('oneHour_25_18_25_19', ' - ', 'oneHour_26_06_26_07', 0), ('oneHour_26_06_26_07', ' - ', 'oneHour_26_23_27_00', 0), ('oneHour_26_23_27_00', ' - ', 'oneHour_28_06_28_07', 0), ('oneHour_28_06_28_07', ' - ', 'oneHour_29_05_29_06', 0), ('oneHour_29_05_29_06', ' - ', 'oneHour_3_07_3_08', 0), ('oneHour_3_07_3_08', ' - ', 'oneHour_4_00_4_01', 0), ('oneHour_4_00_4_01', ' - ', 'oneHour_5_02_5_03', 0), ('oneHour_5_02_5_03', ' - ', 'oneHour_5_03_5_04', 0), ('oneHour_5_03_5_04', ' - ', 'oneHour_5_04_5_05', 0), ('oneHour_5_04_5_05', ' - ', 'oneHour_5_05_5_06', 0), ('oneHour_5_05_5_06', ' - ', 'oneHour_5_06_5_07', 0), ('oneHour_5_06_5_07', ' - ', 'oneHour_5_07_5_08', 0), ('oneHour_5_07_5_08', ' - ', 'oneHour_5_08_5_09', 0), ('oneHour_5_08_5_09', ' - ', 'oneHour_5_09_5_10', 0), ('oneHour_5_09_5_10', ' - ', 'oneHour_5_10_5_11', 0), ('oneHour_5_10_5_11', ' - ', 'oneHour_5_11_5_12', 0), ('oneHour_5_11_5_12', ' - ', 'oneHour_5_12_5_13', 0), ('oneHour_5_12_5_13', ' - ', 'oneHour_5_13_5_14', 0), ('oneHour_5_13_5_14', ' - ', 'oneHour_5_14_5_15', 0), ('oneHour_5_14_5_15', ' - ', 'oneHour_5_15_5_16', 0), ('oneHour_5_15_5_16', ' - ', 'oneHour_5_16_5_17', 0), ('oneHour_5_16_5_17', ' - ', 'oneHour_5_17_5_18', 0), ('oneHour_5_17_5_18', ' - ', 'oneHour_5_18_5_19', 0), ('oneHour_5_18_5_19', ' - ', 'oneHour_5_19_5_20', 0), ('oneHour_5_19_5_20', ' - ', 'oneHour_5_20_5_21', 0), ('oneHour_5_20_5_21', ' - ', 'oneHour_5_21_5_22', 0), ('oneHour_5_21_5_22', ' - ', 'oneHour_5_22_5_23', 0), ('oneHour_5_22_5_23', ' - ', 'oneHour_5_23_6_00', 0), ('oneHour_5_23_6_00', ' - ', 'oneHour_6_00_6_01', 0), ('oneHour_6_00_6_01', ' - ', 'oneHour_6_01_6_02', 0), ('oneHour_6_01_6_02', ' - ', 'oneHour_6_02_6_03', 0), ('oneHour_6_02_6_03', ' - ', 'oneHour_6_03_6_04', 0), ('oneHour_6_03_6_04', ' - ', 'oneHour_6_04_6_05', 0), ('oneHour_6_04_6_05', ' - ', 'oneHour_6_05_6_06', 0), ('oneHour_6_05_6_06', ' - ', 'oneHour_6_06_6_07', 0), ('oneHour_6_06_6_07', ' - ', 'oneHour_6_07_6_08', 0), ('oneHour_6_07_6_08', ' - ', 'oneHour_6_08_6_09', 0), ('oneHour_6_08_6_09', ' - ', 'oneHour_6_09_6_10', 0), ('oneHour_6_09_6_10', ' - ', 'oneHour_6_10_6_11', 0), ('oneHour_6_10_6_11', ' - ', 'oneHour_6_14_6_15', 0), ('oneHour_6_14_6_15', ' - ', 'oneHour_6_15_6_16', 0), ('oneHour_6_15_6_16', ' - ', 'oneHour_6_19_6_20', 0), ('oneHour_6_19_6_20', ' - ', 'oneHour_6_20_6_21', 0), ('oneHour_6_20_6_21', ' - ', 'oneHour_6_21_6_22', 0), ('oneHour_6_21_6_22', ' - ', 'oneHour_6_22_6_23', 0), ('oneHour_6_22_6_23', ' - ', 'oneHour_6_23_7_00', 0), ('oneHour_6_23_7_00', ' - ', 'oneHour_7_00_7_01', 0), ('oneHour_7_00_7_01', ' - ', 'oneHour_7_01_7_02', 0), ('oneHour_7_01_7_02', ' - ', 'oneHour_7_02_7_03', 0), ('oneHour_7_02_7_03', ' - ', 'oneHour_7_03_7_04', 0), ('oneHour_7_03_7_04', ' - ', 'oneHour_7_04_7_05', 0), ('oneHour_7_04_7_05', ' - ', 'oneHour_7_05_7_06', 0), ('oneHour_7_05_7_06', ' - ', 'oneHour_7_06_7_07', 0), ('oneHour_7_06_7_07', ' - ', 'oneHour_7_07_7_08', 0), ('oneHour_7_07_7_08', ' - ', 'oneHour_7_08_7_09', 0), ('oneHour_7_08_7_09', ' - ', 'oneHour_7_09_7_10', 0), ('oneHour_7_09_7_10', ' - ', 'oneHour_7_10_7_11', 0), ('oneHour_7_10_7_11', ' - ', 'oneHour_7_11_7_12', 0), ('oneHour_7_11_7_12', ' - ', 'oneHour_7_12_7_13', 0), ('oneHour_7_12_7_13', ' - ', 'oneHour_7_13_7_14', 0), ('oneHour_7_13_7_14', ' - ', 'oneHour_7_14_7_15', 0), ('oneHour_7_14_7_15', ' - ', 'oneHour_7_15_7_16', 0), ('oneHour_7_15_7_16', ' - ', 'oneHour_7_16_7_17', 0), ('oneHour_7_16_7_17', ' - ', 'oneHour_7_17_7_18', 0), ('oneHour_7_17_7_18', ' - ', 'oneHour_7_18_7_19', 0), ('oneHour_7_18_7_19', ' - ', 'oneHour_7_19_7_20', 0), ('oneHour_7_19_7_20', ' - ', 'oneHour_7_20_7_21', 0), ('oneHour_7_20_7_21', ' - ', 'oneHour_7_21_7_22', 0), ('oneHour_7_21_7_22', ' - ', 'oneHour_7_22_7_23', 0), ('oneHour_7_22_7_23', ' - ', 'oneHour_7_23_8_00', 0), ('oneHour_7_23_8_00', ' - ', 'oneHour_8_00_8_01', 0), ('oneHour_8_00_8_01', ' - ', 'oneHour_8_01_8_02', 0), ('oneHour_8_01_8_02', ' - ', 'oneHour_8_02_8_03', 0), ('oneHour_8_02_8_03', ' - ', 'oneHour_8_03_8_04', 0), ('oneHour_8_03_8_04', ' - ', 'oneHour_8_04_8_05', 0), ('oneHour_8_04_8_05', ' - ', 'oneHour_8_05_8_06', 0), ('oneHour_8_05_8_06', ' - ', 'oneHour_8_06_8_07', 0), ('oneHour_8_06_8_07', ' - ', 'oneHour_8_07_8_08', 0), ('oneHour_8_07_8_08', ' - ', 'oneHour_8_08_8_09', 0), ('oneHour_8_08_8_09', ' - ', 'oneHour_8_09_8_10', 0), ('oneHour_8_09_8_10', ' - ', 'oneHour_8_10_8_11', 0), ('oneHour_8_10_8_11', ' - ', 'oneHour_8_11_8_12', 0), ('oneHour_8_11_8_12', ' - ', 'oneHour_8_12_8_13', 0), ('oneHour_8_12_8_13', ' - ', 'oneHour_8_13_8_14', 0), ('oneHour_8_13_8_14', ' - ', 'oneHour_8_14_8_15', 0), ('oneHour_8_14_8_15', ' - ', 'oneHour_8_15_8_16', 0), ('oneHour_8_15_8_16', ' - ', 'oneHour_8_16_8_17', 0), ('oneHour_8_16_8_17', ' - ', 'oneHour_8_17_8_18', 0), ('oneHour_8_17_8_18', ' - ', 'oneHour_8_18_8_19', 0), ('oneHour_8_18_8_19', ' - ', 'oneHour_8_19_8_20', 0), ('oneHour_8_19_8_20', ' - ', 'oneHour_8_20_8_21', 0), ('oneHour_8_20_8_21', ' - ', 'oneHour_8_21_8_22', 0), ('oneHour_8_21_8_22', ' - ', 'oneHour_8_22_8_23', 0), ('oneHour_8_22_8_23', ' - ', 'oneHour_8_23_9_00', 0), ('oneHour_8_23_9_00', ' - ', 'oneHour_9_00_9_01', 0), ('oneHour_9_00_9_01', ' - ', 'oneHour_9_01_9_02', 0), ('oneHour_9_01_9_02', ' - ', 'oneHour_9_02_9_03', 0), ('oneHour_9_02_9_03', ' - ', 'oneHour_9_03_9_04', 0), ('oneHour_9_03_9_04', ' - ', 'oneHour_9_04_9_05', 0), ('oneHour_9_04_9_05', ' - ', 'oneHour_9_05_9_06', 0), ('oneHour_9_05_9_06', ' - ', 'oneHour_9_06_9_07', 0), ('oneHour_9_06_9_07', ' - ', 'oneHour_9_07_9_08', 0), ('oneHour_9_07_9_08', ' - ', 'oneHour_9_08_9_09', 0), ('oneHour_9_08_9_09', ' - ', 'oneHour_9_09_9_10', 0), ('oneHour_9_09_9_10', ' - ', 'oneHour_9_10_9_11', 0), ('oneHour_9_10_9_11', ' - ', 'oneHour_9_11_9_12', 0), ('oneHour_9_11_9_12', ' - ', 'oneHour_9_12_9_13', 0), ('oneHour_9_12_9_13', ' - ', 'oneHour_9_13_9_14', 0), ('oneHour_9_13_9_14', ' - ', 'oneHour_9_14_9_15', 0), ('oneHour_9_14_9_15', ' - ', 'oneHour_9_15_9_16', 0), ('oneHour_9_15_9_16', ' - ', 'oneHour_9_16_9_17', 0), ('oneHour_9_16_9_17', ' - ', 'oneHour_9_17_9_18', 0), ('oneHour_9_17_9_18', ' - ', 'oneHour_9_18_9_19', 0), ('oneHour_9_18_9_19', ' - ', 'oneHour_9_19_9_20', 0), ('oneHour_9_19_9_20', ' - ', 'oneHour_9_20_9_21', 0), ('oneHour_9_20_9_21', ' - ', 'oneHour_9_21_9_22', 0), ('oneHour_9_21_9_22', ' - ', 'oneHour_9_22_9_23', 0), ('oneHour_9_22_9_23', ' - ', 'oneHour_9_23_10_00', 0)]
