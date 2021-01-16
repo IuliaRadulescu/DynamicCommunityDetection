@@ -26,12 +26,16 @@ def convertTimestampIntervalToReadableInterval(timestampInterval):
     datetimeObj1 = datetime.fromtimestamp(int(timestamps[0]))
     datetimeObj2 = datetime.fromtimestamp(int(timestamps[1]))
 
-    humanReadableInterval  = 'oneHour_' + str(datetimeObj1.day) + '_' + str(datetimeObj1.strftime("%H")) + '_' \
-        + str(datetimeObj2.day) + '_' + str(datetimeObj2.strftime("%H"))
+    day1Padded0 = str(datetimeObj1.day) if int(datetimeObj1.day) > 9 else str(datetimeObj1.day).zfill(2)
+    day2Padded0 = str(datetimeObj2.day) if int(datetimeObj2.day) > 9 else str(datetimeObj2.day).zfill(2)
+
+    humanReadableInterval  = 'quarter_' \
+        + day1Padded0 + '_' + str(datetimeObj1.strftime('%H')) + '_' + str(datetimeObj1.strftime('%M')) + '_' \
+        + day2Padded0 + '_' + str(datetimeObj2.strftime('%H')) + '_' + str(datetimeObj2.strftime('%M'))
 
     return humanReadableInterval        
  
-intervalInSeconds = 3600 * 1
+intervalInSeconds = 60 * 15
 startTimestamp = 1604534436
 endTimestamp = 1608158481
 

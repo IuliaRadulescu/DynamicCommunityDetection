@@ -221,14 +221,12 @@ def getCommentsCommunity(collectionName):
 dbClient = pymongo.MongoClient('localhost', 27017)
 db = dbClient.communityDetectionUSAElections
 
-# allCollections = db.list_collection_names()
+allCollections = db.list_collection_names()
 
-# prefix = 'oneHour'
-# allCollections = list(filter(lambda x: prefix in x, allCollections))
+prefix = 'quarter'
+allCollections = list(filter(lambda x: prefix in x, allCollections))
 
-# allCollections = sorted(allCollections)
-
-allCollections = ['oneHour_05_02_05_03', 'oneHour_05_03_05_04']
+allCollections = sorted(allCollections)
 
 for collectionIdx in range(1, len(allCollections)):
 
@@ -242,21 +240,14 @@ for collectionIdx in range(1, len(allCollections)):
     curCommunity = getCommentsCommunity(curCollection)
 
     # print('MY LOUVAIN')
-    # if (collectionIdx == 1):
-    #     # if first pass, need to do Louvain on the first collection
-    #     applyLouvainSmooth(prevCollection, prevCommunity.getGraph())
-    #     prevCommunity = getCommentsCommunity(prevCollection)
-    #     prevCommunity.augumentAuthorNodesWithCommunityId()
-    #     applyLouvainSmooth(curCollection, curCommunity.getGraph(), prevCommunity.getGraph())
-    # else:
-    prevCommunity.augumentAuthorNodesWithCommunityId()
-    applyLouvainSmooth(curCollection, curCommunity.getGraph(), prevCommunity.getGraph())
-
-    # print('OFFICIAL LOUVAIN')
-    # curCommunity.applyLouvain()
+    if (collectionIdx == 1):
+        # if first pass, need to do Louvain on the first collection
+        applyLouvainSmooth(prevCollection, prevCommunity.getGraph())
+        prevCommunity = getCommentsCommunity(prevCollection)
+        prevCommunity.augumentAuthorNodesWithCommunityId()
+        applyLouvainSmooth(curCollection, curCommunity.getGraph(), prevCommunity.getGraph())
+    else:
+        prevCommunity.augumentAuthorNodesWithCommunityId()
+        applyLouvainSmooth(curCollection, curCommunity.getGraph(), prevCommunity.getGraph())
 
     print('Finished processing')
-
-# filter nodes with inexisting parents
-# commentsWithoutParents = [comment for comment in allComments if ('parentAuthorId' in comment) and (comment['parentAuthorId'] != False) and (comment['parentAuthorId'] not in [comment['author'] for comment in allComments])]
-# print('Comments without parents ', len(commentsWithoutParents))
