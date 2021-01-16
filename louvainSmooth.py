@@ -27,21 +27,17 @@ class LouvainSmooth():
         
         vectors = np.array([node['tfIdfVector'] for node in subgr.vs])
 
-        length = vectors.shape[0]
+        if (len(vectors) == 0):
+            return np.array([])
 
-        centroid = []
-
-        for noDims in range(vectors.shape[1]):
-            centroid.append(np.sum(vectors[:, noDims])/length)
-
-        return np.array(centroid)
+        return vectors.mean(axis = 0)
 
 
     '''
     compute the modularity gain obtained by moving node 'n' in community 'neighCommunity'
     applySmoothing = True/ False
     '''
-    def computeModularityGain(self, n, neighCommunity, g, applySmoothing, oldClusters = None):
+    def computeModularityGain(self, n, neighCommunity, g, applySmoothing, gOld = None, oldClusters = None):
        
         m = np.sum(np.array(g.es['weight']))
         k_n_neighCommunity = np.sum(np.array([g[n.index, g.vs.find(j['name']).index] for j in list(neighCommunity.vs)]))
@@ -57,13 +53,24 @@ class LouvainSmooth():
 
         modularityGain = (1/m) * ( (k_n_neighCommunity) - (sum_neighCommunity * k_n)/(2*m) )
 
-        if (applySmoothing and oldClusters != None):
-            centroidOld = self.getCentroid(oldClusters.subgraph(n.index))
+        if (applySmoothing and oldClusters != None and gOld != None):
+            
+            if (n['name'] not in list(set([node['name'] for node in self.gOld.vs]))):
+                return modularityGain
+
+            oldNodeCommunity = gOld.vs.find(n['name'])['community']
+
+            centroidOld = self.getCentroid(oldClusters.subgraph(oldNodeCommunity))
             centroidCandidate = self.getCentroid(neighCommunity)
-            textualGain = dot(centroidOld, centroidCandidate)/(norm(centroidOld)*norm(centroidCandidate))
+
+            if (len(centroidOld) == 0 or len(centroidCandidate) == 0):
+                textualGain = 0
+            else:
+                textualGain = dot(centroidOld, centroidCandidate)/(norm(centroidOld)*norm(centroidCandidate))
+
             modularityGain += textualGain
 
-        return (1/m) * ( (k_n_neighCommunity) - (sum_neighCommunity * k_n)/(2*m) )
+        return modularityGain
 
     
     def removeLinks(self, comments):
@@ -75,17 +82,14 @@ class LouvainSmooth():
     def removePunctuation(self, comments):
         return list(map(lambda x: re.sub('[,.!?"\'\\n:*]', '', x), comments))
 
-    def prepareForClustering(self, comments):
+    def getFeatureVectors(self, comments):
 
-        vectorizer = TfidfVectorizer(stop_words='english')
-        X = vectorizer.fit_transform(comments)
-
-        return X.toarray()
-
+        vectorizer = TfidfVectorizer(use_idf=True, stop_words='english')
+        return vectorizer.fit_transform(comments).toarray()
 
     def augumentGraphsWithVectors(self):
 
-        allComments = []
+        docs = []
 
         for node in list(self.g.vs) + list(self.gOld.vs):
             comments = node['comments']
@@ -95,12 +99,14 @@ class LouvainSmooth():
 
             commentsConcat = ' '.join(comments)
 
-            allComments.append(commentsConcat)
+            docs.append(commentsConcat)
 
-        X = self.prepareForClustering(allComments)
+        featureVectors = self.getFeatureVectors(docs)
 
-        self.g.vs['tfIdfVector'] = X[0:len(self.g.vs)]
-        self.gOld.vs['tfIdfVector'] = X[len(self.g.vs): len(self.g.vs) + len(self.gOld.vs)]
+        self.g.vs['tfIdfVector'] = featureVectors[0:len(self.g.vs)]
+        self.gOld.vs['tfIdfVector'] = featureVectors[len(self.g.vs): len(self.g.vs) + len(self.gOld.vs)]
+
+        print('Augumented graphs')
 
     
     def applyLouvain(self, applySmoothing = True):
@@ -125,6 +131,8 @@ class LouvainSmooth():
             return finalMembershipList
 
         def firstPhase(g, gOld, applySmoothing):
+
+            print('Started Louvain Smooth first phase')
 
             theta = 0.01
 
@@ -156,7 +164,7 @@ class LouvainSmooth():
                     for neigh in neis:
                         neighCommunity = clusters.subgraph(g.vs[neigh]['community'])
                         nodeCommunity = clusters.subgraph(node['community'])
-                        fullModularityGain = self.computeModularityGain(node, neighCommunity, g, applySmoothing, oldClusters) + self.computeModularityGain(node, nodeCommunity, g, applySmoothing, oldClusters)
+                        fullModularityGain = self.computeModularityGain(node, neighCommunity, g, applySmoothing, gOld, oldClusters) + self.computeModularityGain(node, nodeCommunity, g, applySmoothing, gOld, oldClusters)
 
                         if (fullModularityGain > 0):
                             modularityGains.append((int(neigh), fullModularityGain))

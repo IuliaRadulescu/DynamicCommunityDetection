@@ -118,7 +118,7 @@ class BuildAuthorsCommunityGraph(CommunityGraphBuilder):
 
     def augumentAuthorNodesWithCommunityId(self):
 
-        self.augumentNodesWithField('authorClusterIdMyLouvain', 'community')
+        self.augumentNodesWithField('clusterIdSmooth', 'community')
 
     def getGraph(self):
         return self.g
@@ -190,7 +190,7 @@ def applyLouvainSmooth(collectionName, g, gOld = None):
 
     clusters = louvainS.applyLouvain()
 
-    plot(clusters)
+    # plot(clusters)
 
     print('The modularity is ', clusters.modularity)
 
@@ -221,33 +221,36 @@ def getCommentsCommunity(collectionName):
 dbClient = pymongo.MongoClient('localhost', 27017)
 db = dbClient.communityDetectionUSAElections
 
-allCollections = db.list_collection_names()
+# allCollections = db.list_collection_names()
 
 # prefix = 'oneHour'
 # allCollections = list(filter(lambda x: prefix in x, allCollections))
 
-allCollections = ['oneHour_8_08_8_09', 'oneHour_8_09_8_10']
+# allCollections = sorted(allCollections)
+
+allCollections = ['oneHour_05_02_05_03', 'oneHour_05_03_05_04']
 
 for collectionIdx in range(1, len(allCollections)):
 
     prevCollection = allCollections[collectionIdx - 1]
     curCollection = allCollections[collectionIdx]
 
-    print('Started processing ' + curCollection)
+    print('Started processing ' + curCollection + ' prev collection is ', prevCollection)
 
     prevCommunity = getCommentsCommunity(prevCollection)
 
     curCommunity = getCommentsCommunity(curCollection)
 
     # print('MY LOUVAIN')
-    if (collectionIdx == 1):
-        # if first pass, need to do Louvain on the first collection
-        applyLouvainSmooth(prevCollection, prevCommunity.getGraph())
-        prevCommunity = getCommentsCommunity(prevCollection)
-        prevCommunity.augumentAuthorNodesWithCommunityId()
-        applyLouvainSmooth(curCollection, curCommunity.getGraph(), prevCommunity.getGraph())
-    else:
-        applyLouvainSmooth(curCollection, curCommunity.getGraph(), prevCommunity.getGraph())
+    # if (collectionIdx == 1):
+    #     # if first pass, need to do Louvain on the first collection
+    #     applyLouvainSmooth(prevCollection, prevCommunity.getGraph())
+    #     prevCommunity = getCommentsCommunity(prevCollection)
+    #     prevCommunity.augumentAuthorNodesWithCommunityId()
+    #     applyLouvainSmooth(curCollection, curCommunity.getGraph(), prevCommunity.getGraph())
+    # else:
+    prevCommunity.augumentAuthorNodesWithCommunityId()
+    applyLouvainSmooth(curCollection, curCommunity.getGraph(), prevCommunity.getGraph())
 
     # print('OFFICIAL LOUVAIN')
     # curCommunity.applyLouvain()
