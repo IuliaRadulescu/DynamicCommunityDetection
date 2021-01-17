@@ -1,0 +1,3660 @@
+Started processing quarter_03_07_45_03_08_00 prev collection is  quarter_01_23_30_01_23_45
+Initial N nodes:  1
+Initial N nodes:  1
+Started Louvain Smooth first phase
+The modularity is  0.0
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_04_00_45_04_01_00 prev collection is  quarter_03_07_45_03_08_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_05_02_00_05_02_15 prev collection is  quarter_04_00_45_04_01_00
+Initial N nodes:  1
+Initial N nodes:  130
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.6458662860229161
+Finished processing
+Started processing quarter_05_02_15_05_02_30 prev collection is  quarter_05_02_00_05_02_15
+Initial N nodes:  130
+Initial N nodes:  1005
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.4613890861275472
+Finished processing
+Started processing quarter_05_02_30_05_02_45 prev collection is  quarter_05_02_15_05_02_30
+Initial N nodes:  1005
+Initial N nodes:  984
+Augumented graphs
+Started Louvain Smooth first phase
+/home/iuliamaria/COMMUNITY_DETECTION_REDDIT/louvainSmooth.py:69: RuntimeWarning: invalid value encountered in double_scalars
+  textualGain = dot(centroidOld, centroidCandidate)/(norm(centroidOld)*norm(centroidCandidate))
+The modularity is  0.37756824308471665
+Finished processing
+Started processing quarter_05_02_45_05_03_00 prev collection is  quarter_05_02_30_05_02_45
+Initial N nodes:  984
+Initial N nodes:  974
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.49894679307686013
+Finished processing
+Started processing quarter_05_03_00_05_03_15 prev collection is  quarter_05_02_45_05_03_00
+Initial N nodes:  974
+Initial N nodes:  1263
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.369952996677054
+Finished processing
+Started processing quarter_05_03_15_05_03_30 prev collection is  quarter_05_03_00_05_03_15
+Initial N nodes:  1263
+Initial N nodes:  1206
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.4883735086437785
+Finished processing
+Started processing quarter_05_03_30_05_03_45 prev collection is  quarter_05_03_15_05_03_30
+Initial N nodes:  1206
+Initial N nodes:  1076
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.41847753156433154
+Finished processing
+Started processing quarter_05_03_45_05_04_00 prev collection is  quarter_05_03_30_05_03_45
+Initial N nodes:  1076
+Initial N nodes:  570
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.9283154121863789
+Finished processing
+Started processing quarter_05_04_00_05_04_15 prev collection is  quarter_05_03_45_05_04_00
+Initial N nodes:  570
+Initial N nodes:  351
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.9385986328125
+Finished processing
+Started processing quarter_05_04_15_05_04_30 prev collection is  quarter_05_04_00_05_04_15
+Initial N nodes:  351
+Initial N nodes:  342
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.9599375650364195
+Finished processing
+Started processing quarter_05_04_30_05_04_45 prev collection is  quarter_05_04_15_05_04_30
+Initial N nodes:  342
+Initial N nodes:  421
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8967346938775504
+Finished processing
+Started processing quarter_05_04_45_05_05_00 prev collection is  quarter_05_04_30_05_04_45
+Initial N nodes:  421
+Initial N nodes:  388
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.9400000000000001
+Finished processing
+Started processing quarter_05_05_00_05_05_15 prev collection is  quarter_05_04_45_05_05_00
+Initial N nodes:  388
+Initial N nodes:  310
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8845155709342563
+Finished processing
+Started processing quarter_05_05_15_05_05_30 prev collection is  quarter_05_05_00_05_05_15
+Initial N nodes:  310
+Initial N nodes:  328
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8899954730647346
+Finished processing
+Started processing quarter_05_05_30_05_05_45 prev collection is  quarter_05_05_15_05_05_30
+Initial N nodes:  328
+Initial N nodes:  323
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8926530612244897
+Finished processing
+Started processing quarter_05_05_45_05_06_00 prev collection is  quarter_05_05_30_05_05_45
+Initial N nodes:  323
+Initial N nodes:  262
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7856099342585829
+Finished processing
+Started processing quarter_05_06_00_05_06_15 prev collection is  quarter_05_05_45_05_06_00
+Initial N nodes:  262
+Initial N nodes:  241
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8843537414965984
+Finished processing
+Started processing quarter_05_06_15_05_06_30 prev collection is  quarter_05_06_00_05_06_15
+Initial N nodes:  241
+Initial N nodes:  241
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.798469387755102
+Finished processing
+Started processing quarter_05_06_30_05_06_45 prev collection is  quarter_05_06_15_05_06_30
+Initial N nodes:  241
+Initial N nodes:  268
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.734721593481213
+Finished processing
+Started processing quarter_05_06_45_05_07_00 prev collection is  quarter_05_06_30_05_06_45
+Initial N nodes:  268
+Initial N nodes:  269
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8754325259515571
+Finished processing
+Started processing quarter_05_07_00_05_07_15 prev collection is  quarter_05_06_45_05_07_00
+Initial N nodes:  269
+Initial N nodes:  243
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8915187376725837
+Finished processing
+Started processing quarter_05_07_15_05_07_30 prev collection is  quarter_05_07_00_05_07_15
+Initial N nodes:  243
+Initial N nodes:  186
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8223140495867769
+Finished processing
+Started processing quarter_05_07_30_05_07_45 prev collection is  quarter_05_07_15_05_07_30
+Initial N nodes:  186
+Initial N nodes:  166
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8086734693877551
+Finished processing
+Started processing quarter_05_07_45_05_08_00 prev collection is  quarter_05_07_30_05_07_45
+Initial N nodes:  166
+Initial N nodes:  149
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7755102040816326
+Finished processing
+Started processing quarter_05_08_00_05_08_15 prev collection is  quarter_05_07_45_05_08_00
+Initial N nodes:  149
+Initial N nodes:  152
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7777777777777778
+Finished processing
+Started processing quarter_05_08_15_05_08_30 prev collection is  quarter_05_08_00_05_08_15
+Initial N nodes:  152
+Initial N nodes:  125
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7035123966942145
+Finished processing
+Started processing quarter_05_08_30_05_08_45 prev collection is  quarter_05_08_15_05_08_30
+Initial N nodes:  125
+Initial N nodes:  144
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8256
+Finished processing
+Started processing quarter_05_08_45_05_09_00 prev collection is  quarter_05_08_30_05_08_45
+Initial N nodes:  144
+Initial N nodes:  123
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.754325259515571
+Finished processing
+Started processing quarter_05_09_00_05_09_15 prev collection is  quarter_05_08_45_05_09_00
+Initial N nodes:  123
+Initial N nodes:  83
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8472222222222221
+Finished processing
+Started processing quarter_05_09_15_05_09_30 prev collection is  quarter_05_09_00_05_09_15
+Initial N nodes:  83
+Initial N nodes:  84
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.5663265306122447
+Finished processing
+Started processing quarter_05_09_30_05_09_45 prev collection is  quarter_05_09_15_05_09_30
+Initial N nodes:  84
+Initial N nodes:  59
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_05_09_45_05_10_00 prev collection is  quarter_05_09_30_05_09_45
+Initial N nodes:  59
+Initial N nodes:  76
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.78125
+Finished processing
+Started processing quarter_05_10_00_05_10_15 prev collection is  quarter_05_09_45_05_10_00
+Initial N nodes:  76
+Initial N nodes:  87
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.691358024691358
+Finished processing
+Started processing quarter_05_10_15_05_10_30 prev collection is  quarter_05_10_00_05_10_15
+Initial N nodes:  87
+Initial N nodes:  54
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7755102040816326
+Finished processing
+Started processing quarter_05_10_30_05_10_45 prev collection is  quarter_05_10_15_05_10_30
+Initial N nodes:  54
+Initial N nodes:  65
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7222222222222222
+Finished processing
+Started processing quarter_05_10_45_05_11_00 prev collection is  quarter_05_10_30_05_10_45
+Initial N nodes:  65
+Initial N nodes:  58
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.48611111111111094
+Finished processing
+Started processing quarter_05_11_00_05_11_15 prev collection is  quarter_05_10_45_05_11_00
+Initial N nodes:  58
+Initial N nodes:  53
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.64
+Finished processing
+Started processing quarter_05_11_15_05_11_30 prev collection is  quarter_05_11_00_05_11_15
+Initial N nodes:  53
+Initial N nodes:  39
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.5
+Finished processing
+Started processing quarter_05_11_30_05_11_45 prev collection is  quarter_05_11_15_05_11_30
+Initial N nodes:  39
+Initial N nodes:  49
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_05_11_45_05_12_00 prev collection is  quarter_05_11_30_05_11_45
+Initial N nodes:  49
+Initial N nodes:  49
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0703125
+Finished processing
+Started processing quarter_05_12_00_05_12_15 prev collection is  quarter_05_11_45_05_12_00
+Initial N nodes:  49
+Initial N nodes:  51
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.6666666666666667
+Finished processing
+Started processing quarter_05_12_15_05_12_30 prev collection is  quarter_05_12_00_05_12_15
+Initial N nodes:  51
+Initial N nodes:  39
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_05_12_30_05_12_45 prev collection is  quarter_05_12_15_05_12_30
+Initial N nodes:  39
+Initial N nodes:  74
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_05_12_45_05_13_00 prev collection is  quarter_05_12_30_05_12_45
+Initial N nodes:  74
+Initial N nodes:  53
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_05_13_00_05_13_15 prev collection is  quarter_05_12_45_05_13_00
+Initial N nodes:  53
+Initial N nodes:  58
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_05_13_15_05_13_30 prev collection is  quarter_05_13_00_05_13_15
+Initial N nodes:  58
+Initial N nodes:  62
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7755102040816326
+Finished processing
+Started processing quarter_05_13_30_05_13_45 prev collection is  quarter_05_13_15_05_13_30
+Initial N nodes:  62
+Initial N nodes:  54
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.25
+Finished processing
+Started processing quarter_05_13_45_05_14_00 prev collection is  quarter_05_13_30_05_13_45
+Initial N nodes:  54
+Initial N nodes:  51
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_05_14_00_05_14_15 prev collection is  quarter_05_13_45_05_14_00
+Initial N nodes:  51
+Initial N nodes:  54
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.72
+Finished processing
+Started processing quarter_05_14_15_05_14_30 prev collection is  quarter_05_14_00_05_14_15
+Initial N nodes:  54
+Initial N nodes:  51
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_05_14_30_05_14_45 prev collection is  quarter_05_14_15_05_14_30
+Initial N nodes:  51
+Initial N nodes:  58
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.6666666666666667
+Finished processing
+Started processing quarter_05_14_45_05_15_00 prev collection is  quarter_05_14_30_05_14_45
+Initial N nodes:  58
+Initial N nodes:  52
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_05_15_00_05_15_15 prev collection is  quarter_05_14_45_05_15_00
+Initial N nodes:  52
+Initial N nodes:  39
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_05_15_15_05_15_30 prev collection is  quarter_05_15_00_05_15_15
+Initial N nodes:  39
+Initial N nodes:  32
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_05_15_30_05_15_45 prev collection is  quarter_05_15_15_05_15_30
+Initial N nodes:  32
+Initial N nodes:  43
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_05_15_45_05_16_00 prev collection is  quarter_05_15_30_05_15_45
+Initial N nodes:  43
+Initial N nodes:  43
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.5
+Finished processing
+Started processing quarter_05_16_00_05_16_15 prev collection is  quarter_05_15_45_05_16_00
+Initial N nodes:  43
+Initial N nodes:  30
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.6399999999999999
+Finished processing
+Started processing quarter_05_16_15_05_16_30 prev collection is  quarter_05_16_00_05_16_15
+Initial N nodes:  30
+Initial N nodes:  31
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_05_16_30_05_16_45 prev collection is  quarter_05_16_15_05_16_30
+Initial N nodes:  31
+Initial N nodes:  34
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.6399999999999999
+Finished processing
+Started processing quarter_05_16_45_05_17_00 prev collection is  quarter_05_16_30_05_16_45
+Initial N nodes:  34
+Initial N nodes:  35
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7755102040816326
+Finished processing
+Started processing quarter_05_17_00_05_17_15 prev collection is  quarter_05_16_45_05_17_00
+Initial N nodes:  35
+Initial N nodes:  30
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_05_17_15_05_17_30 prev collection is  quarter_05_17_00_05_17_15
+Initial N nodes:  30
+Initial N nodes:  16
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_05_17_30_05_17_45 prev collection is  quarter_05_17_15_05_17_30
+Initial N nodes:  16
+Initial N nodes:  29
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.6666666666666667
+Finished processing
+Started processing quarter_05_17_45_05_18_00 prev collection is  quarter_05_17_30_05_17_45
+Initial N nodes:  29
+Initial N nodes:  26
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_05_18_00_05_18_15 prev collection is  quarter_05_17_45_05_18_00
+Initial N nodes:  26
+Initial N nodes:  22
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_05_18_15_05_18_30 prev collection is  quarter_05_18_00_05_18_15
+Initial N nodes:  22
+Initial N nodes:  11
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_05_18_30_05_18_45 prev collection is  quarter_05_18_15_05_18_30
+Initial N nodes:  11
+Initial N nodes:  18
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_05_18_45_05_19_00 prev collection is  quarter_05_18_30_05_18_45
+Initial N nodes:  18
+Initial N nodes:  18
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_05_19_00_05_19_15 prev collection is  quarter_05_18_45_05_19_00
+Initial N nodes:  18
+Initial N nodes:  15
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_05_19_15_05_19_30 prev collection is  quarter_05_19_00_05_19_15
+Initial N nodes:  15
+Initial N nodes:  12
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_05_19_30_05_19_45 prev collection is  quarter_05_19_15_05_19_30
+Initial N nodes:  12
+Initial N nodes:  12
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_05_19_45_05_20_00 prev collection is  quarter_05_19_30_05_19_45
+Initial N nodes:  12
+Initial N nodes:  12
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_05_20_00_05_20_15 prev collection is  quarter_05_19_45_05_20_00
+Initial N nodes:  12
+Initial N nodes:  9
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_05_20_15_05_20_30 prev collection is  quarter_05_20_00_05_20_15
+Initial N nodes:  9
+Initial N nodes:  7
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_05_20_30_05_20_45 prev collection is  quarter_05_20_15_05_20_30
+Initial N nodes:  7
+Initial N nodes:  5
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_05_20_45_05_21_00 prev collection is  quarter_05_20_30_05_20_45
+Initial N nodes:  5
+Initial N nodes:  6
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_05_21_00_05_21_15 prev collection is  quarter_05_20_45_05_21_00
+Initial N nodes:  6
+Initial N nodes:  6
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_05_21_15_05_21_30 prev collection is  quarter_05_21_00_05_21_15
+Initial N nodes:  6
+Initial N nodes:  7
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_05_21_30_05_21_45 prev collection is  quarter_05_21_15_05_21_30
+Initial N nodes:  7
+Initial N nodes:  4
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_05_21_45_05_22_00 prev collection is  quarter_05_21_30_05_21_45
+Initial N nodes:  4
+Initial N nodes:  4
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_05_22_00_05_22_15 prev collection is  quarter_05_21_45_05_22_00
+Initial N nodes:  4
+Initial N nodes:  2
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_05_22_15_05_22_30 prev collection is  quarter_05_22_00_05_22_15
+Initial N nodes:  2
+Initial N nodes:  3
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_05_22_30_05_22_45 prev collection is  quarter_05_22_15_05_22_30
+Initial N nodes:  3
+Initial N nodes:  6
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_05_23_00_05_23_15 prev collection is  quarter_05_22_30_05_22_45
+Initial N nodes:  6
+Initial N nodes:  6
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_05_23_15_05_23_30 prev collection is  quarter_05_23_00_05_23_15
+Initial N nodes:  6
+Initial N nodes:  3
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_05_23_30_05_23_45 prev collection is  quarter_05_23_15_05_23_30
+Initial N nodes:  3
+Initial N nodes:  3
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_05_23_45_06_00_00 prev collection is  quarter_05_23_30_05_23_45
+Initial N nodes:  3
+Initial N nodes:  2
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_00_00_06_00_15 prev collection is  quarter_05_23_45_06_00_00
+Initial N nodes:  2
+Initial N nodes:  3
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_00_15_06_00_30 prev collection is  quarter_06_00_00_06_00_15
+Initial N nodes:  3
+Initial N nodes:  5
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_00_30_06_00_45 prev collection is  quarter_06_00_15_06_00_30
+Initial N nodes:  5
+Initial N nodes:  4
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_06_00_45_06_01_00 prev collection is  quarter_06_00_30_06_00_45
+Initial N nodes:  4
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_01_00_06_01_15 prev collection is  quarter_06_00_45_06_01_00
+Initial N nodes:  1
+Initial N nodes:  5
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_01_15_06_01_30 prev collection is  quarter_06_01_00_06_01_15
+Initial N nodes:  5
+Initial N nodes:  4
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_06_01_30_06_01_45 prev collection is  quarter_06_01_15_06_01_30
+Initial N nodes:  4
+Initial N nodes:  2
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_01_45_06_02_00 prev collection is  quarter_06_01_30_06_01_45
+Initial N nodes:  2
+Initial N nodes:  6
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_02_00_06_02_15 prev collection is  quarter_06_01_45_06_02_00
+Initial N nodes:  6
+Initial N nodes:  3
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_06_02_15_06_02_30 prev collection is  quarter_06_02_00_06_02_15
+Initial N nodes:  3
+Initial N nodes:  6
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_02_30_06_02_45 prev collection is  quarter_06_02_15_06_02_30
+Initial N nodes:  6
+Initial N nodes:  5
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_06_02_45_06_03_00 prev collection is  quarter_06_02_30_06_02_45
+Initial N nodes:  5
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_03_00_06_03_15 prev collection is  quarter_06_02_45_06_03_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_03_15_06_03_30 prev collection is  quarter_06_03_00_06_03_15
+Initial N nodes:  1
+Initial N nodes:  2
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_03_30_06_03_45 prev collection is  quarter_06_03_15_06_03_30
+Initial N nodes:  2
+Initial N nodes:  3
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_03_45_06_04_00 prev collection is  quarter_06_03_30_06_03_45
+Initial N nodes:  3
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_04_00_06_04_15 prev collection is  quarter_06_03_45_06_04_00
+Initial N nodes:  1
+Initial N nodes:  2
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_04_15_06_04_30 prev collection is  quarter_06_04_00_06_04_15
+Initial N nodes:  2
+Initial N nodes:  2
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_04_30_06_04_45 prev collection is  quarter_06_04_15_06_04_30
+Initial N nodes:  2
+Initial N nodes:  3
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_04_45_06_05_00 prev collection is  quarter_06_04_30_06_04_45
+Initial N nodes:  3
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_05_00_06_05_15 prev collection is  quarter_06_04_45_06_05_00
+Initial N nodes:  1
+Initial N nodes:  2
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_05_15_06_05_30 prev collection is  quarter_06_05_00_06_05_15
+Initial N nodes:  2
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_05_30_06_05_45 prev collection is  quarter_06_05_15_06_05_30
+Initial N nodes:  1
+Initial N nodes:  3
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_06_00_06_06_15 prev collection is  quarter_06_05_30_06_05_45
+Initial N nodes:  3
+Initial N nodes:  2
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_06_15_06_06_30 prev collection is  quarter_06_06_00_06_06_15
+Initial N nodes:  2
+Initial N nodes:  2
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_06_30_06_06_45 prev collection is  quarter_06_06_15_06_06_30
+Initial N nodes:  2
+Initial N nodes:  3
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_06_45_06_07_00 prev collection is  quarter_06_06_30_06_06_45
+Initial N nodes:  3
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_07_00_06_07_15 prev collection is  quarter_06_06_45_06_07_00
+Initial N nodes:  1
+Initial N nodes:  3
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_06_07_15_06_07_30 prev collection is  quarter_06_07_00_06_07_15
+Initial N nodes:  3
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_07_30_06_07_45 prev collection is  quarter_06_07_15_06_07_30
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_08_15_06_08_30 prev collection is  quarter_06_07_30_06_07_45
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_08_30_06_08_45 prev collection is  quarter_06_08_15_06_08_30
+Initial N nodes:  1
+Initial N nodes:  3
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_08_45_06_09_00 prev collection is  quarter_06_08_30_06_08_45
+Initial N nodes:  3
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_09_00_06_09_15 prev collection is  quarter_06_08_45_06_09_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_09_15_06_09_30 prev collection is  quarter_06_09_00_06_09_15
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_10_00_06_10_15 prev collection is  quarter_06_09_15_06_09_30
+Initial N nodes:  1
+Initial N nodes:  2
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_14_00_06_14_15 prev collection is  quarter_06_10_00_06_10_15
+Initial N nodes:  2
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_14_30_06_14_45 prev collection is  quarter_06_14_00_06_14_15
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_15_15_06_15_30 prev collection is  quarter_06_14_30_06_14_45
+Initial N nodes:  1
+Initial N nodes:  2
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_15_30_06_15_45 prev collection is  quarter_06_15_15_06_15_30
+Initial N nodes:  2
+Initial N nodes:  2
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_15_45_06_16_00 prev collection is  quarter_06_15_30_06_15_45
+Initial N nodes:  2
+Initial N nodes:  2
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_19_30_06_19_45 prev collection is  quarter_06_15_45_06_16_00
+Initial N nodes:  2
+Initial N nodes:  2
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_19_45_06_20_00 prev collection is  quarter_06_19_30_06_19_45
+Initial N nodes:  2
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_06_20_00_06_20_15 prev collection is  quarter_06_19_45_06_20_00
+Initial N nodes:  1
+Initial N nodes:  106
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.641019842840183
+Finished processing
+Started processing quarter_06_20_15_06_20_30 prev collection is  quarter_06_20_00_06_20_15
+Initial N nodes:  106
+Initial N nodes:  214
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.704589724859995
+Finished processing
+Started processing quarter_06_20_30_06_20_45 prev collection is  quarter_06_20_15_06_20_30
+Initial N nodes:  214
+Initial N nodes:  218
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.646944294213088
+Finished processing
+Started processing quarter_06_20_45_06_21_00 prev collection is  quarter_06_20_30_06_20_45
+Initial N nodes:  218
+Initial N nodes:  553
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.6666091230727536
+Finished processing
+Started processing quarter_06_21_00_06_21_15 prev collection is  quarter_06_20_45_06_21_00
+Initial N nodes:  553
+Initial N nodes:  818
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8202554169816072
+Finished processing
+Started processing quarter_06_21_15_06_21_30 prev collection is  quarter_06_21_00_06_21_15
+Initial N nodes:  818
+Initial N nodes:  862
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8320784023668625
+Finished processing
+Started processing quarter_06_21_30_06_21_45 prev collection is  quarter_06_21_15_06_21_30
+Initial N nodes:  862
+Initial N nodes:  927
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.5439843426503045
+Finished processing
+Started processing quarter_06_21_45_06_22_00 prev collection is  quarter_06_21_30_06_21_45
+Initial N nodes:  927
+Initial N nodes:  863
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.5546402391975305
+Finished processing
+Started processing quarter_06_22_00_06_22_15 prev collection is  quarter_06_21_45_06_22_00
+Initial N nodes:  863
+Initial N nodes:  1216
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.3827466189706062
+Finished processing
+Started processing quarter_06_22_15_06_22_30 prev collection is  quarter_06_22_00_06_22_15
+Initial N nodes:  1216
+Initial N nodes:  921
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.2683850093001992
+Finished processing
+Started processing quarter_06_22_30_06_22_45 prev collection is  quarter_06_22_15_06_22_30
+Initial N nodes:  921
+Initial N nodes:  801
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.9013324337999657
+Finished processing
+Started processing quarter_06_22_45_06_23_00 prev collection is  quarter_06_22_30_06_22_45
+Initial N nodes:  801
+Initial N nodes:  730
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.9584000000000001
+Finished processing
+Started processing quarter_06_23_00_06_23_15 prev collection is  quarter_06_22_45_06_23_00
+Initial N nodes:  730
+Initial N nodes:  396
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.5052227991788428
+Finished processing
+Started processing quarter_06_23_15_06_23_30 prev collection is  quarter_06_23_00_06_23_15
+Initial N nodes:  396
+Initial N nodes:  234
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.9344432882414149
+Finished processing
+Started processing quarter_06_23_30_06_23_45 prev collection is  quarter_06_23_15_06_23_30
+Initial N nodes:  234
+Initial N nodes:  194
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.9090909090909091
+Finished processing
+Started processing quarter_06_23_45_07_00_00 prev collection is  quarter_06_23_30_06_23_45
+Initial N nodes:  194
+Initial N nodes:  218
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7160000000000001
+Finished processing
+Started processing quarter_07_00_00_07_00_15 prev collection is  quarter_06_23_45_07_00_00
+Initial N nodes:  218
+Initial N nodes:  255
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8419408579758436
+Finished processing
+Started processing quarter_07_00_15_07_00_30 prev collection is  quarter_07_00_00_07_00_15
+Initial N nodes:  255
+Initial N nodes:  259
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8148530762167124
+Finished processing
+Started processing quarter_07_00_30_07_00_45 prev collection is  quarter_07_00_15_07_00_30
+Initial N nodes:  259
+Initial N nodes:  218
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7444564629529475
+Finished processing
+Started processing quarter_07_00_45_07_01_00 prev collection is  quarter_07_00_30_07_00_45
+Initial N nodes:  218
+Initial N nodes:  236
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7233796296296298
+Finished processing
+Started processing quarter_07_01_00_07_01_15 prev collection is  quarter_07_00_45_07_01_00
+Initial N nodes:  236
+Initial N nodes:  223
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.79296875
+Finished processing
+Started processing quarter_07_01_15_07_01_30 prev collection is  quarter_07_01_00_07_01_15
+Initial N nodes:  223
+Initial N nodes:  215
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8112244897959182
+Finished processing
+Started processing quarter_07_01_30_07_01_45 prev collection is  quarter_07_01_15_07_01_30
+Initial N nodes:  215
+Initial N nodes:  214
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8964497041420119
+Finished processing
+Started processing quarter_07_01_45_07_02_00 prev collection is  quarter_07_01_30_07_01_45
+Initial N nodes:  214
+Initial N nodes:  207
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.9164370982552799
+Finished processing
+Started processing quarter_07_02_00_07_02_15 prev collection is  quarter_07_01_45_07_02_00
+Initial N nodes:  207
+Initial N nodes:  211
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.853515625
+Finished processing
+Started processing quarter_07_02_15_07_02_30 prev collection is  quarter_07_02_00_07_02_15
+Initial N nodes:  211
+Initial N nodes:  250
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.9179548156956003
+Finished processing
+Started processing quarter_07_02_30_07_02_45 prev collection is  quarter_07_02_15_07_02_30
+Initial N nodes:  250
+Initial N nodes:  214
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8828125
+Finished processing
+Started processing quarter_07_02_45_07_03_00 prev collection is  quarter_07_02_30_07_02_45
+Initial N nodes:  214
+Initial N nodes:  224
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8673469387755103
+Finished processing
+Started processing quarter_07_03_00_07_03_15 prev collection is  quarter_07_02_45_07_03_00
+Initial N nodes:  224
+Initial N nodes:  195
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8781887755102041
+Finished processing
+Started processing quarter_07_03_15_07_03_30 prev collection is  quarter_07_03_00_07_03_15
+Initial N nodes:  195
+Initial N nodes:  154
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7901234567901234
+Finished processing
+Started processing quarter_07_03_30_07_03_45 prev collection is  quarter_07_03_15_07_03_30
+Initial N nodes:  154
+Initial N nodes:  158
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7313019390581716
+Finished processing
+Started processing quarter_07_03_45_07_04_00 prev collection is  quarter_07_03_30_07_03_45
+Initial N nodes:  158
+Initial N nodes:  150
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8650519031141869
+Finished processing
+Started processing quarter_07_04_00_07_04_15 prev collection is  quarter_07_03_45_07_04_00
+Initial N nodes:  150
+Initial N nodes:  129
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7603305785123967
+Finished processing
+Started processing quarter_07_04_15_07_04_30 prev collection is  quarter_07_04_00_07_04_15
+Initial N nodes:  129
+Initial N nodes:  128
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.78
+Finished processing
+Started processing quarter_07_04_30_07_04_45 prev collection is  quarter_07_04_15_07_04_30
+Initial N nodes:  128
+Initial N nodes:  117
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8264462809917356
+Finished processing
+Started processing quarter_07_04_45_07_05_00 prev collection is  quarter_07_04_30_07_04_45
+Initial N nodes:  117
+Initial N nodes:  95
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.75
+Finished processing
+Started processing quarter_07_05_00_07_05_15 prev collection is  quarter_07_04_45_07_05_00
+Initial N nodes:  95
+Initial N nodes:  105
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.653061224489796
+Finished processing
+Started processing quarter_07_05_15_07_05_30 prev collection is  quarter_07_05_00_07_05_15
+Initial N nodes:  105
+Initial N nodes:  99
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8520710059171597
+Finished processing
+Started processing quarter_07_05_30_07_05_45 prev collection is  quarter_07_05_15_07_05_30
+Initial N nodes:  99
+Initial N nodes:  81
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.125
+Finished processing
+Started processing quarter_07_05_45_07_06_00 prev collection is  quarter_07_05_30_07_05_45
+Initial N nodes:  81
+Initial N nodes:  77
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.125
+Finished processing
+Started processing quarter_07_06_00_07_06_15 prev collection is  quarter_07_05_45_07_06_00
+Initial N nodes:  77
+Initial N nodes:  64
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.125
+Finished processing
+Started processing quarter_07_06_15_07_06_30 prev collection is  quarter_07_06_00_07_06_15
+Initial N nodes:  64
+Initial N nodes:  50
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7755102040816326
+Finished processing
+Started processing quarter_07_06_30_07_06_45 prev collection is  quarter_07_06_15_07_06_30
+Initial N nodes:  50
+Initial N nodes:  45
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_07_06_45_07_07_00 prev collection is  quarter_07_06_30_07_06_45
+Initial N nodes:  45
+Initial N nodes:  45
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_07_00_07_07_15 prev collection is  quarter_07_06_45_07_07_00
+Initial N nodes:  45
+Initial N nodes:  37
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_07_07_15_07_07_30 prev collection is  quarter_07_07_00_07_07_15
+Initial N nodes:  37
+Initial N nodes:  32
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_07_30_07_07_45 prev collection is  quarter_07_07_15_07_07_30
+Initial N nodes:  32
+Initial N nodes:  34
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_07_07_45_07_08_00 prev collection is  quarter_07_07_30_07_07_45
+Initial N nodes:  34
+Initial N nodes:  28
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_08_00_07_08_15 prev collection is  quarter_07_07_45_07_08_00
+Initial N nodes:  28
+Initial N nodes:  33
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_07_08_15_07_08_30 prev collection is  quarter_07_08_00_07_08_15
+Initial N nodes:  33
+Initial N nodes:  26
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_07_08_30_07_08_45 prev collection is  quarter_07_08_15_07_08_30
+Initial N nodes:  26
+Initial N nodes:  17
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_08_45_07_09_00 prev collection is  quarter_07_08_30_07_08_45
+Initial N nodes:  17
+Initial N nodes:  26
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_09_00_07_09_15 prev collection is  quarter_07_08_45_07_09_00
+Initial N nodes:  26
+Initial N nodes:  27
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_07_09_15_07_09_30 prev collection is  quarter_07_09_00_07_09_15
+Initial N nodes:  27
+Initial N nodes:  15
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_09_30_07_09_45 prev collection is  quarter_07_09_15_07_09_30
+Initial N nodes:  15
+Initial N nodes:  26
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_07_09_45_07_10_00 prev collection is  quarter_07_09_30_07_09_45
+Initial N nodes:  26
+Initial N nodes:  15
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_10_00_07_10_15 prev collection is  quarter_07_09_45_07_10_00
+Initial N nodes:  15
+Initial N nodes:  8
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_10_15_07_10_30 prev collection is  quarter_07_10_00_07_10_15
+Initial N nodes:  8
+Initial N nodes:  13
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_10_30_07_10_45 prev collection is  quarter_07_10_15_07_10_30
+Initial N nodes:  13
+Initial N nodes:  11
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_10_45_07_11_00 prev collection is  quarter_07_10_30_07_10_45
+Initial N nodes:  11
+Initial N nodes:  15
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_07_11_00_07_11_15 prev collection is  quarter_07_10_45_07_11_00
+Initial N nodes:  15
+Initial N nodes:  10
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_11_15_07_11_30 prev collection is  quarter_07_11_00_07_11_15
+Initial N nodes:  10
+Initial N nodes:  7
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_11_30_07_11_45 prev collection is  quarter_07_11_15_07_11_30
+Initial N nodes:  7
+Initial N nodes:  6
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_11_45_07_12_00 prev collection is  quarter_07_11_30_07_11_45
+Initial N nodes:  6
+Initial N nodes:  10
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_12_00_07_12_15 prev collection is  quarter_07_11_45_07_12_00
+Initial N nodes:  10
+Initial N nodes:  14
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_07_12_15_07_12_30 prev collection is  quarter_07_12_00_07_12_15
+Initial N nodes:  14
+Initial N nodes:  16
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_12_30_07_12_45 prev collection is  quarter_07_12_15_07_12_30
+Initial N nodes:  16
+Initial N nodes:  7
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_12_45_07_13_00 prev collection is  quarter_07_12_30_07_12_45
+Initial N nodes:  7
+Initial N nodes:  3
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_13_00_07_13_15 prev collection is  quarter_07_12_45_07_13_00
+Initial N nodes:  3
+Initial N nodes:  8
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_13_15_07_13_30 prev collection is  quarter_07_13_00_07_13_15
+Initial N nodes:  8
+Initial N nodes:  11
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_07_13_30_07_13_45 prev collection is  quarter_07_13_15_07_13_30
+Initial N nodes:  11
+Initial N nodes:  6
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_13_45_07_14_00 prev collection is  quarter_07_13_30_07_13_45
+Initial N nodes:  6
+Initial N nodes:  11
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_14_00_07_14_15 prev collection is  quarter_07_13_45_07_14_00
+Initial N nodes:  11
+Initial N nodes:  8
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_14_15_07_14_30 prev collection is  quarter_07_14_00_07_14_15
+Initial N nodes:  8
+Initial N nodes:  10
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_14_30_07_14_45 prev collection is  quarter_07_14_15_07_14_30
+Initial N nodes:  10
+Initial N nodes:  13
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_14_45_07_15_00 prev collection is  quarter_07_14_30_07_14_45
+Initial N nodes:  13
+Initial N nodes:  5
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_15_00_07_15_15 prev collection is  quarter_07_14_45_07_15_00
+Initial N nodes:  5
+Initial N nodes:  12
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_15_15_07_15_30 prev collection is  quarter_07_15_00_07_15_15
+Initial N nodes:  12
+Initial N nodes:  18
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_15_30_07_15_45 prev collection is  quarter_07_15_15_07_15_30
+Initial N nodes:  18
+Initial N nodes:  10
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_15_45_07_16_00 prev collection is  quarter_07_15_30_07_15_45
+Initial N nodes:  10
+Initial N nodes:  11
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_16_00_07_16_15 prev collection is  quarter_07_15_45_07_16_00
+Initial N nodes:  11
+Initial N nodes:  8
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_16_15_07_16_30 prev collection is  quarter_07_16_00_07_16_15
+Initial N nodes:  8
+Initial N nodes:  7
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_16_30_07_16_45 prev collection is  quarter_07_16_15_07_16_30
+Initial N nodes:  7
+Initial N nodes:  12
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_07_16_45_07_17_00 prev collection is  quarter_07_16_30_07_16_45
+Initial N nodes:  12
+Initial N nodes:  6
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_07_17_00_07_17_15 prev collection is  quarter_07_16_45_07_17_00
+Initial N nodes:  6
+Initial N nodes:  14
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_17_15_07_17_30 prev collection is  quarter_07_17_00_07_17_15
+Initial N nodes:  14
+Initial N nodes:  12
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_07_17_30_07_17_45 prev collection is  quarter_07_17_15_07_17_30
+Initial N nodes:  12
+Initial N nodes:  8
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_07_17_45_07_18_00 prev collection is  quarter_07_17_30_07_17_45
+Initial N nodes:  8
+Initial N nodes:  8
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_18_00_07_18_15 prev collection is  quarter_07_17_45_07_18_00
+Initial N nodes:  8
+Initial N nodes:  8
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_18_15_07_18_30 prev collection is  quarter_07_18_00_07_18_15
+Initial N nodes:  8
+Initial N nodes:  5
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_18_30_07_18_45 prev collection is  quarter_07_18_15_07_18_30
+Initial N nodes:  5
+Initial N nodes:  9
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_07_18_45_07_19_00 prev collection is  quarter_07_18_30_07_18_45
+Initial N nodes:  9
+Initial N nodes:  4
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_07_19_00_07_19_15 prev collection is  quarter_07_18_45_07_19_00
+Initial N nodes:  4
+Initial N nodes:  51
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.6561792666364871
+Finished processing
+Started processing quarter_07_19_15_07_19_30 prev collection is  quarter_07_19_00_07_19_15
+Initial N nodes:  51
+Initial N nodes:  78
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7144402379664684
+Finished processing
+Started processing quarter_07_19_30_07_19_45 prev collection is  quarter_07_19_15_07_19_30
+Initial N nodes:  78
+Initial N nodes:  89
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7126627218934913
+Finished processing
+Started processing quarter_07_19_45_07_20_00 prev collection is  quarter_07_19_30_07_19_45
+Initial N nodes:  89
+Initial N nodes:  178
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7136873267825649
+Finished processing
+Started processing quarter_07_20_00_07_20_15 prev collection is  quarter_07_19_45_07_20_00
+Initial N nodes:  178
+Initial N nodes:  251
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.6886483125105997
+Finished processing
+Started processing quarter_07_20_15_07_20_30 prev collection is  quarter_07_20_00_07_20_15
+Initial N nodes:  251
+Initial N nodes:  375
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8221296296296285
+Finished processing
+Started processing quarter_07_20_30_07_20_45 prev collection is  quarter_07_20_15_07_20_30
+Initial N nodes:  375
+Initial N nodes:  472
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7500129237704328
+Finished processing
+Started processing quarter_07_20_45_07_21_00 prev collection is  quarter_07_20_30_07_20_45
+Initial N nodes:  472
+Initial N nodes:  479
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7727570117594385
+Finished processing
+Started processing quarter_07_21_00_07_21_15 prev collection is  quarter_07_20_45_07_21_00
+Initial N nodes:  479
+Initial N nodes:  523
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.6434943706682728
+Finished processing
+Started processing quarter_07_21_15_07_21_30 prev collection is  quarter_07_21_00_07_21_15
+Initial N nodes:  523
+Initial N nodes:  536
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.78115393183337
+Finished processing
+Started processing quarter_07_21_30_07_21_45 prev collection is  quarter_07_21_15_07_21_30
+Initial N nodes:  536
+Initial N nodes:  645
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7144777321648661
+Finished processing
+Started processing quarter_07_21_45_07_22_00 prev collection is  quarter_07_21_30_07_21_45
+Initial N nodes:  645
+Initial N nodes:  802
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8619702176403192
+Finished processing
+Started processing quarter_07_22_00_07_22_15 prev collection is  quarter_07_21_45_07_22_00
+Initial N nodes:  802
+Initial N nodes:  746
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8652312162495537
+Finished processing
+Started processing quarter_07_22_15_07_22_30 prev collection is  quarter_07_22_00_07_22_15
+Initial N nodes:  746
+Initial N nodes:  728
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8956982676161126
+Finished processing
+Started processing quarter_07_22_30_07_22_45 prev collection is  quarter_07_22_15_07_22_30
+Initial N nodes:  728
+Initial N nodes:  718
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8638014712615597
+Finished processing
+Started processing quarter_07_22_45_07_23_00 prev collection is  quarter_07_22_30_07_22_45
+Initial N nodes:  718
+Initial N nodes:  798
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8539454447522308
+Finished processing
+Started processing quarter_07_23_00_07_23_15 prev collection is  quarter_07_22_45_07_23_00
+Initial N nodes:  798
+Initial N nodes:  809
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8843485358636868
+Finished processing
+Started processing quarter_07_23_15_07_23_30 prev collection is  quarter_07_23_00_07_23_15
+Initial N nodes:  809
+Initial N nodes:  842
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8212911888517921
+Finished processing
+Started processing quarter_07_23_30_07_23_45 prev collection is  quarter_07_23_15_07_23_30
+Initial N nodes:  842
+Initial N nodes:  860
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8105197482638886
+Finished processing
+Started processing quarter_07_23_45_08_00_00 prev collection is  quarter_07_23_30_07_23_45
+Initial N nodes:  860
+Initial N nodes:  848
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.9385370720436882
+Finished processing
+Started processing quarter_08_00_00_08_00_15 prev collection is  quarter_07_23_45_08_00_00
+Initial N nodes:  848
+Initial N nodes:  836
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8012626262626263
+Finished processing
+Started processing quarter_08_00_15_08_00_30 prev collection is  quarter_08_00_00_08_00_15
+Initial N nodes:  836
+Initial N nodes:  872
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.9224516435267596
+Finished processing
+Started processing quarter_08_00_30_08_00_45 prev collection is  quarter_08_00_15_08_00_30
+Initial N nodes:  872
+Initial N nodes:  817
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.9361575487811191
+Finished processing
+Started processing quarter_08_00_45_08_01_00 prev collection is  quarter_08_00_30_08_00_45
+Initial N nodes:  817
+Initial N nodes:  873
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.9687248051599029
+Finished processing
+Started processing quarter_08_01_00_08_01_15 prev collection is  quarter_08_00_45_08_01_00
+Initial N nodes:  873
+Initial N nodes:  847
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.948606680427847
+Finished processing
+Started processing quarter_08_01_15_08_01_30 prev collection is  quarter_08_01_00_08_01_15
+Initial N nodes:  847
+Initial N nodes:  826
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.9339770610724452
+Finished processing
+Started processing quarter_08_01_30_08_01_45 prev collection is  quarter_08_01_15_08_01_30
+Initial N nodes:  826
+Initial N nodes:  797
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.9479046520569007
+Finished processing
+Started processing quarter_08_01_45_08_02_00 prev collection is  quarter_08_01_30_08_01_45
+Initial N nodes:  797
+Initial N nodes:  797
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.9263580246913575
+Finished processing
+Started processing quarter_08_02_00_08_02_15 prev collection is  quarter_08_01_45_08_02_00
+Initial N nodes:  797
+Initial N nodes:  795
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8485976454293631
+Finished processing
+Started processing quarter_08_02_15_08_02_30 prev collection is  quarter_08_02_00_08_02_15
+Initial N nodes:  795
+Initial N nodes:  685
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.9550045913682269
+Finished processing
+Started processing quarter_08_02_30_08_02_45 prev collection is  quarter_08_02_15_08_02_30
+Initial N nodes:  685
+Initial N nodes:  641
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.9323538414447501
+Finished processing
+Started processing quarter_08_02_45_08_03_00 prev collection is  quarter_08_02_30_08_02_45
+Initial N nodes:  641
+Initial N nodes:  551
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.9271914648212222
+Finished processing
+Started processing quarter_08_03_00_08_03_15 prev collection is  quarter_08_02_45_08_03_00
+Initial N nodes:  551
+Initial N nodes:  445
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.9499054820415875
+Finished processing
+Started processing quarter_08_03_15_08_03_30 prev collection is  quarter_08_03_00_08_03_15
+Initial N nodes:  445
+Initial N nodes:  399
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.9058837890625
+Finished processing
+Started processing quarter_08_03_30_08_03_45 prev collection is  quarter_08_03_15_08_03_30
+Initial N nodes:  399
+Initial N nodes:  298
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8798185941043081
+Finished processing
+Started processing quarter_08_03_45_08_04_00 prev collection is  quarter_08_03_30_08_03_45
+Initial N nodes:  298
+Initial N nodes:  248
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.915
+Finished processing
+Started processing quarter_08_04_00_08_04_15 prev collection is  quarter_08_03_45_08_04_00
+Initial N nodes:  248
+Initial N nodes:  323
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7453604342886001
+Finished processing
+Started processing quarter_08_04_15_08_04_30 prev collection is  quarter_08_04_00_08_04_15
+Initial N nodes:  323
+Initial N nodes:  322
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.9218407596785974
+Finished processing
+Started processing quarter_08_04_30_08_04_45 prev collection is  quarter_08_04_15_08_04_30
+Initial N nodes:  322
+Initial N nodes:  270
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.9173553719008267
+Finished processing
+Started processing quarter_08_04_45_08_05_00 prev collection is  quarter_08_04_30_08_04_45
+Initial N nodes:  270
+Initial N nodes:  235
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8966942148760332
+Finished processing
+Started processing quarter_08_05_00_08_05_15 prev collection is  quarter_08_04_45_08_05_00
+Initial N nodes:  235
+Initial N nodes:  239
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.669008875739645
+Finished processing
+Started processing quarter_08_05_15_08_05_30 prev collection is  quarter_08_05_00_08_05_15
+Initial N nodes:  239
+Initial N nodes:  207
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.9050000000000002
+Finished processing
+Started processing quarter_08_05_30_08_05_45 prev collection is  quarter_08_05_15_08_05_30
+Initial N nodes:  207
+Initial N nodes:  195
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8650519031141869
+Finished processing
+Started processing quarter_08_05_45_08_06_00 prev collection is  quarter_08_05_30_08_05_45
+Initial N nodes:  195
+Initial N nodes:  159
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8520710059171597
+Finished processing
+Started processing quarter_08_06_00_08_06_15 prev collection is  quarter_08_05_45_08_06_00
+Initial N nodes:  159
+Initial N nodes:  160
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7448979591836733
+Finished processing
+Started processing quarter_08_06_15_08_06_30 prev collection is  quarter_08_06_00_08_06_15
+Initial N nodes:  160
+Initial N nodes:  144
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.6666666666666667
+Finished processing
+Started processing quarter_08_06_30_08_06_45 prev collection is  quarter_08_06_15_08_06_30
+Initial N nodes:  144
+Initial N nodes:  135
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8165680473372781
+Finished processing
+Started processing quarter_08_06_45_08_07_00 prev collection is  quarter_08_06_30_08_06_45
+Initial N nodes:  135
+Initial N nodes:  124
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.64
+Finished processing
+Started processing quarter_08_07_00_08_07_15 prev collection is  quarter_08_06_45_08_07_00
+Initial N nodes:  124
+Initial N nodes:  118
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8888888888888887
+Finished processing
+Started processing quarter_08_07_15_08_07_30 prev collection is  quarter_08_07_00_08_07_15
+Initial N nodes:  118
+Initial N nodes:  118
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8703703703703702
+Finished processing
+Started processing quarter_08_07_30_08_07_45 prev collection is  quarter_08_07_15_08_07_30
+Initial N nodes:  118
+Initial N nodes:  95
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.25
+Finished processing
+Started processing quarter_08_07_45_08_08_00 prev collection is  quarter_08_07_30_08_07_45
+Initial N nodes:  95
+Initial N nodes:  96
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8400713436385252
+Finished processing
+Started processing quarter_08_08_00_08_08_15 prev collection is  quarter_08_07_45_08_08_00
+Initial N nodes:  96
+Initial N nodes:  100
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.5
+Finished processing
+Started processing quarter_08_08_15_08_08_30 prev collection is  quarter_08_08_00_08_08_15
+Initial N nodes:  100
+Initial N nodes:  77
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.6423611111111113
+Finished processing
+Started processing quarter_08_08_30_08_08_45 prev collection is  quarter_08_08_15_08_08_30
+Initial N nodes:  77
+Initial N nodes:  92
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.3203125
+Finished processing
+Started processing quarter_08_08_45_08_09_00 prev collection is  quarter_08_08_30_08_08_45
+Initial N nodes:  92
+Initial N nodes:  71
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.6666666666666667
+Finished processing
+Started processing quarter_08_09_00_08_09_15 prev collection is  quarter_08_08_45_08_09_00
+Initial N nodes:  71
+Initial N nodes:  67
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.64
+Finished processing
+Started processing quarter_08_09_15_08_09_30 prev collection is  quarter_08_09_00_08_09_15
+Initial N nodes:  67
+Initial N nodes:  69
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.5289256198347108
+Finished processing
+Started processing quarter_08_09_30_08_09_45 prev collection is  quarter_08_09_15_08_09_30
+Initial N nodes:  69
+Initial N nodes:  74
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.45867768595041325
+Finished processing
+Started processing quarter_08_09_45_08_10_00 prev collection is  quarter_08_09_30_08_09_45
+Initial N nodes:  74
+Initial N nodes:  54
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_08_10_00_08_10_15 prev collection is  quarter_08_09_45_08_10_00
+Initial N nodes:  54
+Initial N nodes:  58
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.64
+Finished processing
+Started processing quarter_08_10_15_08_10_30 prev collection is  quarter_08_10_00_08_10_15
+Initial N nodes:  58
+Initial N nodes:  45
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.4444444444444445
+Finished processing
+Started processing quarter_08_10_30_08_10_45 prev collection is  quarter_08_10_15_08_10_30
+Initial N nodes:  45
+Initial N nodes:  63
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_08_10_45_08_11_00 prev collection is  quarter_08_10_30_08_10_45
+Initial N nodes:  63
+Initial N nodes:  54
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_08_11_00_08_11_15 prev collection is  quarter_08_10_45_08_11_00
+Initial N nodes:  54
+Initial N nodes:  34
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_08_11_15_08_11_30 prev collection is  quarter_08_11_00_08_11_15
+Initial N nodes:  34
+Initial N nodes:  43
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_08_11_30_08_11_45 prev collection is  quarter_08_11_15_08_11_30
+Initial N nodes:  43
+Initial N nodes:  40
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_08_11_45_08_12_00 prev collection is  quarter_08_11_30_08_11_45
+Initial N nodes:  40
+Initial N nodes:  40
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.25
+Finished processing
+Started processing quarter_08_12_00_08_12_15 prev collection is  quarter_08_11_45_08_12_00
+Initial N nodes:  40
+Initial N nodes:  40
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_08_12_15_08_12_30 prev collection is  quarter_08_12_00_08_12_15
+Initial N nodes:  40
+Initial N nodes:  30
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_08_12_30_08_12_45 prev collection is  quarter_08_12_15_08_12_30
+Initial N nodes:  30
+Initial N nodes:  25
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.2222222222222222
+Finished processing
+Started processing quarter_08_12_45_08_13_00 prev collection is  quarter_08_12_30_08_12_45
+Initial N nodes:  25
+Initial N nodes:  27
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_08_13_00_08_13_15 prev collection is  quarter_08_12_45_08_13_00
+Initial N nodes:  27
+Initial N nodes:  35
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_08_13_15_08_13_30 prev collection is  quarter_08_13_00_08_13_15
+Initial N nodes:  35
+Initial N nodes:  36
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_08_13_30_08_13_45 prev collection is  quarter_08_13_15_08_13_30
+Initial N nodes:  36
+Initial N nodes:  27
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_08_13_45_08_14_00 prev collection is  quarter_08_13_30_08_13_45
+Initial N nodes:  27
+Initial N nodes:  37
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_08_14_00_08_14_15 prev collection is  quarter_08_13_45_08_14_00
+Initial N nodes:  37
+Initial N nodes:  41
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.625
+Finished processing
+Started processing quarter_08_14_15_08_14_30 prev collection is  quarter_08_14_00_08_14_15
+Initial N nodes:  41
+Initial N nodes:  39
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_08_14_30_08_14_45 prev collection is  quarter_08_14_15_08_14_30
+Initial N nodes:  39
+Initial N nodes:  36
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_08_14_45_08_15_00 prev collection is  quarter_08_14_30_08_14_45
+Initial N nodes:  36
+Initial N nodes:  50
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.625
+Finished processing
+Started processing quarter_08_15_00_08_15_15 prev collection is  quarter_08_14_45_08_15_00
+Initial N nodes:  50
+Initial N nodes:  47
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_08_15_15_08_15_30 prev collection is  quarter_08_15_00_08_15_15
+Initial N nodes:  47
+Initial N nodes:  43
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_08_15_30_08_15_45 prev collection is  quarter_08_15_15_08_15_30
+Initial N nodes:  43
+Initial N nodes:  39
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_08_15_45_08_16_00 prev collection is  quarter_08_15_30_08_15_45
+Initial N nodes:  39
+Initial N nodes:  34
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.6666666666666667
+Finished processing
+Started processing quarter_08_16_00_08_16_15 prev collection is  quarter_08_15_45_08_16_00
+Initial N nodes:  34
+Initial N nodes:  39
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_08_16_15_08_16_30 prev collection is  quarter_08_16_00_08_16_15
+Initial N nodes:  39
+Initial N nodes:  28
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.5
+Finished processing
+Started processing quarter_08_16_30_08_16_45 prev collection is  quarter_08_16_15_08_16_30
+Initial N nodes:  28
+Initial N nodes:  45
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.4921875
+Finished processing
+Started processing quarter_08_16_45_08_17_00 prev collection is  quarter_08_16_30_08_16_45
+Initial N nodes:  45
+Initial N nodes:  72
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.6431660899653978
+Finished processing
+Started processing quarter_08_17_00_08_17_15 prev collection is  quarter_08_16_45_08_17_00
+Initial N nodes:  72
+Initial N nodes:  67
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.6648000000000001
+Finished processing
+Started processing quarter_08_17_15_08_17_30 prev collection is  quarter_08_17_00_08_17_15
+Initial N nodes:  67
+Initial N nodes:  60
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7585733882030177
+Finished processing
+Started processing quarter_08_17_30_08_17_45 prev collection is  quarter_08_17_15_08_17_30
+Initial N nodes:  60
+Initial N nodes:  77
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8162500000000003
+Finished processing
+Started processing quarter_08_17_45_08_18_00 prev collection is  quarter_08_17_30_08_17_45
+Initial N nodes:  77
+Initial N nodes:  88
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8958333333333333
+Finished processing
+Started processing quarter_08_18_00_08_18_15 prev collection is  quarter_08_17_45_08_18_00
+Initial N nodes:  88
+Initial N nodes:  85
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7857142857142856
+Finished processing
+Started processing quarter_08_18_15_08_18_30 prev collection is  quarter_08_18_00_08_18_15
+Initial N nodes:  85
+Initial N nodes:  111
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8388429752066116
+Finished processing
+Started processing quarter_08_18_30_08_18_45 prev collection is  quarter_08_18_15_08_18_30
+Initial N nodes:  111
+Initial N nodes:  115
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8230609418282546
+Finished processing
+Started processing quarter_08_18_45_08_19_00 prev collection is  quarter_08_18_30_08_18_45
+Initial N nodes:  115
+Initial N nodes:  80
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.75
+Finished processing
+Started processing quarter_08_19_00_08_19_15 prev collection is  quarter_08_18_45_08_19_00
+Initial N nodes:  80
+Initial N nodes:  86
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.42152199762187875
+Finished processing
+Started processing quarter_08_19_15_08_19_30 prev collection is  quarter_08_19_00_08_19_15
+Initial N nodes:  86
+Initial N nodes:  89
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8429752066115704
+Finished processing
+Started processing quarter_08_19_30_08_19_45 prev collection is  quarter_08_19_15_08_19_30
+Initial N nodes:  89
+Initial N nodes:  109
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7897085068411662
+Finished processing
+Started processing quarter_08_19_45_08_20_00 prev collection is  quarter_08_19_30_08_19_45
+Initial N nodes:  109
+Initial N nodes:  88
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.6612500000000002
+Finished processing
+Started processing quarter_08_20_00_08_20_15 prev collection is  quarter_08_19_45_08_20_00
+Initial N nodes:  88
+Initial N nodes:  100
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8580246913580245
+Finished processing
+Started processing quarter_08_20_15_08_20_30 prev collection is  quarter_08_20_00_08_20_15
+Initial N nodes:  100
+Initial N nodes:  137
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8557406305770375
+Finished processing
+Started processing quarter_08_20_30_08_20_45 prev collection is  quarter_08_20_15_08_20_30
+Initial N nodes:  137
+Initial N nodes:  148
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.9182825484764543
+Finished processing
+Started processing quarter_08_20_45_08_21_00 prev collection is  quarter_08_20_30_08_20_45
+Initial N nodes:  148
+Initial N nodes:  125
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8750000000000002
+Finished processing
+Started processing quarter_08_21_00_08_21_15 prev collection is  quarter_08_20_45_08_21_00
+Initial N nodes:  125
+Initial N nodes:  106
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7889273356401383
+Finished processing
+Started processing quarter_08_21_15_08_21_30 prev collection is  quarter_08_21_00_08_21_15
+Initial N nodes:  106
+Initial N nodes:  102
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8444444444444443
+Finished processing
+Started processing quarter_08_21_30_08_21_45 prev collection is  quarter_08_21_15_08_21_30
+Initial N nodes:  102
+Initial N nodes:  107
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.888429752066116
+Finished processing
+Started processing quarter_08_21_45_08_22_00 prev collection is  quarter_08_21_30_08_21_45
+Initial N nodes:  107
+Initial N nodes:  90
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8088888888888888
+Finished processing
+Started processing quarter_08_22_00_08_22_15 prev collection is  quarter_08_21_45_08_22_00
+Initial N nodes:  90
+Initial N nodes:  109
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7977839335180057
+Finished processing
+Started processing quarter_08_22_15_08_22_30 prev collection is  quarter_08_22_00_08_22_15
+Initial N nodes:  109
+Initial N nodes:  96
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8086419753086418
+Finished processing
+Started processing quarter_08_22_30_08_22_45 prev collection is  quarter_08_22_15_08_22_30
+Initial N nodes:  96
+Initial N nodes:  94
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.71875
+Finished processing
+Started processing quarter_08_22_45_08_23_00 prev collection is  quarter_08_22_30_08_22_45
+Initial N nodes:  94
+Initial N nodes:  119
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8798185941043081
+Finished processing
+Started processing quarter_08_23_00_08_23_15 prev collection is  quarter_08_22_45_08_23_00
+Initial N nodes:  119
+Initial N nodes:  106
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8055555555555556
+Finished processing
+Started processing quarter_08_23_15_08_23_30 prev collection is  quarter_08_23_00_08_23_15
+Initial N nodes:  106
+Initial N nodes:  147
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.625
+Finished processing
+Started processing quarter_08_23_30_08_23_45 prev collection is  quarter_08_23_15_08_23_30
+Initial N nodes:  147
+Initial N nodes:  165
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.9248242293131425
+Finished processing
+Started processing quarter_08_23_45_09_00_00 prev collection is  quarter_08_23_30_08_23_45
+Initial N nodes:  165
+Initial N nodes:  154
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8846611177170033
+Finished processing
+Started processing quarter_09_00_00_09_00_15 prev collection is  quarter_08_23_45_09_00_00
+Initial N nodes:  154
+Initial N nodes:  112
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7426035502958581
+Finished processing
+Started processing quarter_09_00_15_09_00_30 prev collection is  quarter_09_00_00_09_00_15
+Initial N nodes:  112
+Initial N nodes:  140
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.849609375
+Finished processing
+Started processing quarter_09_00_30_09_00_45 prev collection is  quarter_09_00_15_09_00_30
+Initial N nodes:  140
+Initial N nodes:  98
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8099173553719009
+Finished processing
+Started processing quarter_09_00_45_09_01_00 prev collection is  quarter_09_00_30_09_00_45
+Initial N nodes:  98
+Initial N nodes:  118
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8799999999999999
+Finished processing
+Started processing quarter_09_01_00_09_01_15 prev collection is  quarter_09_00_45_09_01_00
+Initial N nodes:  118
+Initial N nodes:  138
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.6807655954631379
+Finished processing
+Started processing quarter_09_01_15_09_01_30 prev collection is  quarter_09_01_00_09_01_15
+Initial N nodes:  138
+Initial N nodes:  137
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.3274739583333334
+Finished processing
+Started processing quarter_09_01_30_09_01_45 prev collection is  quarter_09_01_15_09_01_30
+Initial N nodes:  137
+Initial N nodes:  94
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.8264462809917357
+Finished processing
+Started processing quarter_09_01_45_09_02_00 prev collection is  quarter_09_01_30_09_01_45
+Initial N nodes:  94
+Initial N nodes:  54
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7346938775510203
+Finished processing
+Started processing quarter_09_02_00_09_02_15 prev collection is  quarter_09_01_45_09_02_00
+Initial N nodes:  54
+Initial N nodes:  60
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.3265306122448979
+Finished processing
+Started processing quarter_09_02_15_09_02_30 prev collection is  quarter_09_02_00_09_02_15
+Initial N nodes:  60
+Initial N nodes:  58
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_02_30_09_02_45 prev collection is  quarter_09_02_15_09_02_30
+Initial N nodes:  58
+Initial N nodes:  47
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_09_02_45_09_03_00 prev collection is  quarter_09_02_30_09_02_45
+Initial N nodes:  47
+Initial N nodes:  51
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.25
+Finished processing
+Started processing quarter_09_03_00_09_03_15 prev collection is  quarter_09_02_45_09_03_00
+Initial N nodes:  51
+Initial N nodes:  44
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_09_03_15_09_03_30 prev collection is  quarter_09_03_00_09_03_15
+Initial N nodes:  44
+Initial N nodes:  56
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_03_30_09_03_45 prev collection is  quarter_09_03_15_09_03_30
+Initial N nodes:  56
+Initial N nodes:  51
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.71875
+Finished processing
+Started processing quarter_09_03_45_09_04_00 prev collection is  quarter_09_03_30_09_03_45
+Initial N nodes:  51
+Initial N nodes:  38
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.5289256198347109
+Finished processing
+Started processing quarter_09_04_00_09_04_15 prev collection is  quarter_09_03_45_09_04_00
+Initial N nodes:  38
+Initial N nodes:  57
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.7455621301775148
+Finished processing
+Started processing quarter_09_04_15_09_04_30 prev collection is  quarter_09_04_00_09_04_15
+Initial N nodes:  57
+Initial N nodes:  43
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.611111111111111
+Finished processing
+Started processing quarter_09_04_30_09_04_45 prev collection is  quarter_09_04_15_09_04_30
+Initial N nodes:  43
+Initial N nodes:  40
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_04_45_09_05_00 prev collection is  quarter_09_04_30_09_04_45
+Initial N nodes:  40
+Initial N nodes:  31
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.4444444444444445
+Finished processing
+Started processing quarter_09_05_00_09_05_15 prev collection is  quarter_09_04_45_09_05_00
+Initial N nodes:  31
+Initial N nodes:  35
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_05_15_09_05_30 prev collection is  quarter_09_05_00_09_05_15
+Initial N nodes:  35
+Initial N nodes:  33
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_05_30_09_05_45 prev collection is  quarter_09_05_15_09_05_30
+Initial N nodes:  33
+Initial N nodes:  46
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.78125
+Finished processing
+Started processing quarter_09_05_45_09_06_00 prev collection is  quarter_09_05_30_09_05_45
+Initial N nodes:  46
+Initial N nodes:  30
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_06_00_09_06_15 prev collection is  quarter_09_05_45_09_06_00
+Initial N nodes:  30
+Initial N nodes:  32
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_06_15_09_06_30 prev collection is  quarter_09_06_00_09_06_15
+Initial N nodes:  32
+Initial N nodes:  35
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.653061224489796
+Finished processing
+Started processing quarter_09_06_30_09_06_45 prev collection is  quarter_09_06_15_09_06_30
+Initial N nodes:  35
+Initial N nodes:  25
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_06_45_09_07_00 prev collection is  quarter_09_06_30_09_06_45
+Initial N nodes:  25
+Initial N nodes:  25
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_09_07_00_09_07_15 prev collection is  quarter_09_06_45_09_07_00
+Initial N nodes:  25
+Initial N nodes:  22
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_07_15_09_07_30 prev collection is  quarter_09_07_00_09_07_15
+Initial N nodes:  22
+Initial N nodes:  18
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_07_30_09_07_45 prev collection is  quarter_09_07_15_09_07_30
+Initial N nodes:  18
+Initial N nodes:  19
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.25
+Finished processing
+Started processing quarter_09_07_45_09_08_00 prev collection is  quarter_09_07_30_09_07_45
+Initial N nodes:  19
+Initial N nodes:  19
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_09_08_00_09_08_15 prev collection is  quarter_09_07_45_09_08_00
+Initial N nodes:  19
+Initial N nodes:  15
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_08_15_09_08_30 prev collection is  quarter_09_08_00_09_08_15
+Initial N nodes:  15
+Initial N nodes:  12
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_08_30_09_08_45 prev collection is  quarter_09_08_15_09_08_30
+Initial N nodes:  12
+Initial N nodes:  17
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_09_08_45_09_09_00 prev collection is  quarter_09_08_30_09_08_45
+Initial N nodes:  17
+Initial N nodes:  8
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_09_00_09_09_15 prev collection is  quarter_09_08_45_09_09_00
+Initial N nodes:  8
+Initial N nodes:  7
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_09_15_09_09_30 prev collection is  quarter_09_09_00_09_09_15
+Initial N nodes:  7
+Initial N nodes:  11
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_09_30_09_09_45 prev collection is  quarter_09_09_15_09_09_30
+Initial N nodes:  11
+Initial N nodes:  11
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_09_45_09_10_00 prev collection is  quarter_09_09_30_09_09_45
+Initial N nodes:  11
+Initial N nodes:  9
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_10_00_09_10_15 prev collection is  quarter_09_09_45_09_10_00
+Initial N nodes:  9
+Initial N nodes:  6
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_10_15_09_10_30 prev collection is  quarter_09_10_00_09_10_15
+Initial N nodes:  6
+Initial N nodes:  9
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_10_30_09_10_45 prev collection is  quarter_09_10_15_09_10_30
+Initial N nodes:  9
+Initial N nodes:  4
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_10_45_09_11_00 prev collection is  quarter_09_10_30_09_10_45
+Initial N nodes:  4
+Initial N nodes:  10
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_11_00_09_11_15 prev collection is  quarter_09_10_45_09_11_00
+Initial N nodes:  10
+Initial N nodes:  8
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_09_11_15_09_11_30 prev collection is  quarter_09_11_00_09_11_15
+Initial N nodes:  8
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_11_30_09_11_45 prev collection is  quarter_09_11_15_09_11_30
+Initial N nodes:  1
+Initial N nodes:  6
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_11_45_09_12_00 prev collection is  quarter_09_11_30_09_11_45
+Initial N nodes:  6
+Initial N nodes:  10
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_12_00_09_12_15 prev collection is  quarter_09_11_45_09_12_00
+Initial N nodes:  10
+Initial N nodes:  5
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_12_15_09_12_30 prev collection is  quarter_09_12_00_09_12_15
+Initial N nodes:  5
+Initial N nodes:  7
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_12_30_09_12_45 prev collection is  quarter_09_12_15_09_12_30
+Initial N nodes:  7
+Initial N nodes:  4
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_12_45_09_13_00 prev collection is  quarter_09_12_30_09_12_45
+Initial N nodes:  4
+Initial N nodes:  4
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_13_00_09_13_15 prev collection is  quarter_09_12_45_09_13_00
+Initial N nodes:  4
+Initial N nodes:  4
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_13_15_09_13_30 prev collection is  quarter_09_13_00_09_13_15
+Initial N nodes:  4
+Initial N nodes:  5
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_13_30_09_13_45 prev collection is  quarter_09_13_15_09_13_30
+Initial N nodes:  5
+Initial N nodes:  7
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_13_45_09_14_00 prev collection is  quarter_09_13_30_09_13_45
+Initial N nodes:  7
+Initial N nodes:  8
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_09_14_00_09_14_15 prev collection is  quarter_09_13_45_09_14_00
+Initial N nodes:  8
+Initial N nodes:  3
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_14_15_09_14_30 prev collection is  quarter_09_14_00_09_14_15
+Initial N nodes:  3
+Initial N nodes:  7
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_14_30_09_14_45 prev collection is  quarter_09_14_15_09_14_30
+Initial N nodes:  7
+Initial N nodes:  3
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_14_45_09_15_00 prev collection is  quarter_09_14_30_09_14_45
+Initial N nodes:  3
+Initial N nodes:  5
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_15_00_09_15_15 prev collection is  quarter_09_14_45_09_15_00
+Initial N nodes:  5
+Initial N nodes:  5
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_15_15_09_15_30 prev collection is  quarter_09_15_00_09_15_15
+Initial N nodes:  5
+Initial N nodes:  6
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_15_30_09_15_45 prev collection is  quarter_09_15_15_09_15_30
+Initial N nodes:  6
+Initial N nodes:  6
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_15_45_09_16_00 prev collection is  quarter_09_15_30_09_15_45
+Initial N nodes:  6
+Initial N nodes:  3
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_09_16_00_09_16_15 prev collection is  quarter_09_15_45_09_16_00
+Initial N nodes:  3
+Initial N nodes:  8
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_16_15_09_16_30 prev collection is  quarter_09_16_00_09_16_15
+Initial N nodes:  8
+Initial N nodes:  9
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_16_30_09_16_45 prev collection is  quarter_09_16_15_09_16_30
+Initial N nodes:  9
+Initial N nodes:  3
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_16_45_09_17_00 prev collection is  quarter_09_16_30_09_16_45
+Initial N nodes:  3
+Initial N nodes:  2
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_17_15_09_17_30 prev collection is  quarter_09_16_45_09_17_00
+Initial N nodes:  2
+Initial N nodes:  6
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_17_30_09_17_45 prev collection is  quarter_09_17_15_09_17_30
+Initial N nodes:  6
+Initial N nodes:  9
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_09_17_45_09_18_00 prev collection is  quarter_09_17_30_09_17_45
+Initial N nodes:  9
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_18_00_09_18_15 prev collection is  quarter_09_17_45_09_18_00
+Initial N nodes:  1
+Initial N nodes:  4
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_18_15_09_18_30 prev collection is  quarter_09_18_00_09_18_15
+Initial N nodes:  4
+Initial N nodes:  3
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_18_45_09_19_00 prev collection is  quarter_09_18_15_09_18_30
+Initial N nodes:  3
+Initial N nodes:  3
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_19_00_09_19_15 prev collection is  quarter_09_18_45_09_19_00
+Initial N nodes:  3
+Initial N nodes:  3
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_19_15_09_19_30 prev collection is  quarter_09_19_00_09_19_15
+Initial N nodes:  3
+Initial N nodes:  4
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_19_30_09_19_45 prev collection is  quarter_09_19_15_09_19_30
+Initial N nodes:  4
+Initial N nodes:  3
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_19_45_09_20_00 prev collection is  quarter_09_19_30_09_19_45
+Initial N nodes:  3
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_20_00_09_20_15 prev collection is  quarter_09_19_45_09_20_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_20_15_09_20_30 prev collection is  quarter_09_20_00_09_20_15
+Initial N nodes:  1
+Initial N nodes:  3
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_20_30_09_20_45 prev collection is  quarter_09_20_15_09_20_30
+Initial N nodes:  3
+Initial N nodes:  2
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_20_45_09_21_00 prev collection is  quarter_09_20_30_09_20_45
+Initial N nodes:  2
+Initial N nodes:  3
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_21_15_09_21_30 prev collection is  quarter_09_20_45_09_21_00
+Initial N nodes:  3
+Initial N nodes:  2
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_21_30_09_21_45 prev collection is  quarter_09_21_15_09_21_30
+Initial N nodes:  2
+Initial N nodes:  2
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_22_15_09_22_30 prev collection is  quarter_09_21_30_09_21_45
+Initial N nodes:  2
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_22_30_09_22_45 prev collection is  quarter_09_22_15_09_22_30
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_23_00_09_23_15 prev collection is  quarter_09_22_30_09_22_45
+Initial N nodes:  1
+Initial N nodes:  3
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_23_15_09_23_30 prev collection is  quarter_09_23_00_09_23_15
+Initial N nodes:  3
+Initial N nodes:  2
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_09_23_30_09_23_45 prev collection is  quarter_09_23_15_09_23_30
+Initial N nodes:  2
+Initial N nodes:  2
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_10_00_00_10_00_15 prev collection is  quarter_09_23_30_09_23_45
+Initial N nodes:  2
+Initial N nodes:  2
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_10_00_30_10_00_45 prev collection is  quarter_10_00_00_10_00_15
+Initial N nodes:  2
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_10_01_15_10_01_30 prev collection is  quarter_10_00_30_10_00_45
+Initial N nodes:  1
+Initial N nodes:  3
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_10_01_30_10_01_45 prev collection is  quarter_10_01_15_10_01_30
+Initial N nodes:  3
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_10_01_45_10_02_00 prev collection is  quarter_10_01_30_10_01_45
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_10_02_00_10_02_15 prev collection is  quarter_10_01_45_10_02_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_10_02_15_10_02_30 prev collection is  quarter_10_02_00_10_02_15
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_10_02_30_10_02_45 prev collection is  quarter_10_02_15_10_02_30
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_10_04_15_10_04_30 prev collection is  quarter_10_02_30_10_02_45
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_10_04_30_10_04_45 prev collection is  quarter_10_04_15_10_04_30
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_10_04_45_10_05_00 prev collection is  quarter_10_04_30_10_04_45
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_10_07_30_10_07_45 prev collection is  quarter_10_04_45_10_05_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_10_10_45_10_11_00 prev collection is  quarter_10_07_30_10_07_45
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_10_13_45_10_14_00 prev collection is  quarter_10_10_45_10_11_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_10_15_30_10_15_45 prev collection is  quarter_10_13_45_10_14_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_10_15_45_10_16_00 prev collection is  quarter_10_15_30_10_15_45
+Initial N nodes:  1
+Initial N nodes:  2
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_10_16_15_10_16_30 prev collection is  quarter_10_15_45_10_16_00
+Initial N nodes:  2
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_10_16_45_10_17_00 prev collection is  quarter_10_16_15_10_16_30
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_10_17_45_10_18_00 prev collection is  quarter_10_16_45_10_17_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_10_18_15_10_18_30 prev collection is  quarter_10_17_45_10_18_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_10_19_45_10_20_00 prev collection is  quarter_10_18_15_10_18_30
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_10_20_00_10_20_15 prev collection is  quarter_10_19_45_10_20_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_10_20_15_10_20_30 prev collection is  quarter_10_20_00_10_20_15
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_10_21_00_10_21_15 prev collection is  quarter_10_20_15_10_20_30
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_10_21_15_10_21_30 prev collection is  quarter_10_21_00_10_21_15
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_10_22_45_10_23_00 prev collection is  quarter_10_21_15_10_21_30
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_10_23_00_10_23_15 prev collection is  quarter_10_22_45_10_23_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_11_01_00_11_01_15 prev collection is  quarter_10_23_00_10_23_15
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_11_02_00_11_02_15 prev collection is  quarter_11_01_00_11_01_15
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_11_03_00_11_03_15 prev collection is  quarter_11_02_00_11_02_15
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_11_04_15_11_04_30 prev collection is  quarter_11_03_00_11_03_15
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_11_05_45_11_06_00 prev collection is  quarter_11_04_15_11_04_30
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_11_08_30_11_08_45 prev collection is  quarter_11_05_45_11_06_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_11_09_45_11_10_00 prev collection is  quarter_11_08_30_11_08_45
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_11_15_45_11_16_00 prev collection is  quarter_11_09_45_11_10_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_11_16_30_11_16_45 prev collection is  quarter_11_15_45_11_16_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_11_17_00_11_17_15 prev collection is  quarter_11_16_30_11_16_45
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_11_17_15_11_17_30 prev collection is  quarter_11_17_00_11_17_15
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_11_18_45_11_19_00 prev collection is  quarter_11_17_15_11_17_30
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_12_00_00_12_00_15 prev collection is  quarter_11_18_45_11_19_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_12_02_45_12_03_00 prev collection is  quarter_12_00_00_12_00_15
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_12_04_45_12_05_00 prev collection is  quarter_12_02_45_12_03_00
+Initial N nodes:  1
+Initial N nodes:  2
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  -0.5
+Finished processing
+Started processing quarter_12_05_30_12_05_45 prev collection is  quarter_12_04_45_12_05_00
+Initial N nodes:  2
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_12_07_30_12_07_45 prev collection is  quarter_12_05_30_12_05_45
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_12_17_00_12_17_15 prev collection is  quarter_12_07_30_12_07_45
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_12_17_30_12_17_45 prev collection is  quarter_12_17_00_12_17_15
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_12_20_30_12_20_45 prev collection is  quarter_12_17_30_12_17_45
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_13_00_15_13_00_30 prev collection is  quarter_12_20_30_12_20_45
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_13_00_30_13_00_45 prev collection is  quarter_13_00_15_13_00_30
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_13_08_15_13_08_30 prev collection is  quarter_13_00_30_13_00_45
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_13_09_15_13_09_30 prev collection is  quarter_13_08_15_13_08_30
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_13_09_45_13_10_00 prev collection is  quarter_13_09_15_13_09_30
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_13_13_15_13_13_30 prev collection is  quarter_13_09_45_13_10_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_13_14_15_13_14_30 prev collection is  quarter_13_13_15_13_13_30
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_13_15_45_13_16_00 prev collection is  quarter_13_14_15_13_14_30
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_13_22_15_13_22_30 prev collection is  quarter_13_15_45_13_16_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_14_00_15_14_00_30 prev collection is  quarter_13_22_15_13_22_30
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_14_04_45_14_05_00 prev collection is  quarter_14_00_15_14_00_30
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_14_06_15_14_06_30 prev collection is  quarter_14_04_45_14_05_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_14_08_45_14_09_00 prev collection is  quarter_14_06_15_14_06_30
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_14_19_00_14_19_15 prev collection is  quarter_14_08_45_14_09_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_14_22_15_14_22_30 prev collection is  quarter_14_19_00_14_19_15
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_15_01_15_15_01_30 prev collection is  quarter_14_22_15_14_22_30
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_15_01_45_15_02_00 prev collection is  quarter_15_01_15_15_01_30
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_15_02_45_15_03_00 prev collection is  quarter_15_01_45_15_02_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_15_03_45_15_04_00 prev collection is  quarter_15_02_45_15_03_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_15_08_15_15_08_30 prev collection is  quarter_15_03_45_15_04_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_15_18_30_15_18_45 prev collection is  quarter_15_08_15_15_08_30
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_15_23_15_15_23_30 prev collection is  quarter_15_18_30_15_18_45
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_16_03_30_16_03_45 prev collection is  quarter_15_23_15_15_23_30
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_16_15_45_16_16_00 prev collection is  quarter_16_03_30_16_03_45
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_16_16_45_16_17_00 prev collection is  quarter_16_15_45_16_16_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_17_00_15_17_00_30 prev collection is  quarter_16_16_45_16_17_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_17_00_30_17_00_45 prev collection is  quarter_17_00_15_17_00_30
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_18_01_45_18_02_00 prev collection is  quarter_17_00_30_17_00_45
+Initial N nodes:  1
+Initial N nodes:  2
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_18_02_00_18_02_15 prev collection is  quarter_18_01_45_18_02_00
+Initial N nodes:  2
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_18_02_45_18_03_00 prev collection is  quarter_18_02_00_18_02_15
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_18_08_45_18_09_00 prev collection is  quarter_18_02_45_18_03_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_19_18_45_19_19_00 prev collection is  quarter_18_08_45_18_09_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_19_19_00_19_19_15 prev collection is  quarter_19_18_45_19_19_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_19_20_15_19_20_30 prev collection is  quarter_19_19_00_19_19_15
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_20_04_15_20_04_30 prev collection is  quarter_19_20_15_19_20_30
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_20_21_15_20_21_30 prev collection is  quarter_20_04_15_20_04_30
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_22_17_00_22_17_15 prev collection is  quarter_20_21_15_20_21_30
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_23_03_45_23_04_00 prev collection is  quarter_22_17_00_22_17_15
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_23_17_45_23_18_00 prev collection is  quarter_23_03_45_23_04_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_25_03_30_25_03_45 prev collection is  quarter_23_17_45_23_18_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_25_03_45_25_04_00 prev collection is  quarter_25_03_30_25_03_45
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_25_18_00_25_18_15 prev collection is  quarter_25_03_45_25_04_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_26_06_45_26_07_00 prev collection is  quarter_25_18_00_25_18_15
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_26_23_15_26_23_30 prev collection is  quarter_26_06_45_26_07_00
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_28_06_15_28_06_30 prev collection is  quarter_26_23_15_26_23_30
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+Started processing quarter_29_05_15_29_05_30 prev collection is  quarter_28_06_15_28_06_30
+Initial N nodes:  1
+Initial N nodes:  1
+Augumented graphs
+Started Louvain Smooth first phase
+The modularity is  0.0
+Finished processing
+

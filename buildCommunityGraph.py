@@ -274,12 +274,16 @@ def applySimpleLouvainOnAllCollections():
         applyLouvain(collectionName, community.getGraph())
 
 
-def plotCollection(collectionName):
+def plotCollection(collectionName, attributeField):
 
     community = getCommentsCommunity(collectionName, True)
-    community.plotGraph()
+    community.plotGraph(attributeField)
 
-applySimpleLouvainOnAllCollections()
 
-# plotCollection('quarter_06_21_15_06_21_30')
-# plotCollection('quarter_06_21_30_06_21_45')
+applyLouvainSmoothOnAllCollections()
+
+# plotCollection('quarter_06_21_15_06_21_30', 'clusterIdSmooth')
+# plotCollection('quarter_06_21_15_06_21_30', 'clusterIdSimple')
+
+# plotCollection('quarter_06_21_30_06_21_45', 'clusterIdSmooth')
+# plotCollection('quarter_06_21_30_06_21_45', 'clusterIdSimple')
