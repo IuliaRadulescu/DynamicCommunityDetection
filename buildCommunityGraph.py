@@ -23,7 +23,7 @@ class CommunityGraphBuilder(ABC):
     def getNodes(self):
         return
 
-    def buildCommunityGraph(self):
+    def buildCommunityGraph(self, justNodesWithEdges = False):
 
         nodesList = self.getNodes()
 
@@ -38,13 +38,14 @@ class CommunityGraphBuilder(ABC):
         self.g.add_edges(edgesList)
 
         # remove nodes without edges
-        # nodesToRemove = [v.index for v in self.g.vs if v.degree() == 0]
-        # self.g.delete_vertices(nodesToRemove)
+        if (justNodesWithEdges):
+            nodesToRemove = [v.index for v in self.g.vs if v.degree() == 0]
+            self.g.delete_vertices(nodesToRemove)
 
 
 class BuildAuthorsCommunityGraph(CommunityGraphBuilder):
 
-    def buildCommunityGraph(self):
+    def buildCommunityGraph(self, justNodesWithEdges = False):
 
         nodesList = self.getNodes()
 
@@ -57,6 +58,10 @@ class BuildAuthorsCommunityGraph(CommunityGraphBuilder):
 
         self.g.add_vertices(nodesList)
         self.g.add_edges(edgesList)
+
+        if (justNodesWithEdges):
+            nodesToRemove = [v.index for v in self.g.vs if v.degree() == 0]
+            self.g.delete_vertices(nodesToRemove)
 
         self.augumentAuthorNodesWithComments()
 
@@ -123,7 +128,7 @@ class BuildAuthorsCommunityGraph(CommunityGraphBuilder):
     def getGraph(self):
         return self.g
 
-    def plotGraph(self, attributeField = 'authorClusterIdKMeans'):
+    def plotGraph(self, attributeField = 'clusterIdSmooth'):
 
         attributeDict = dict(zip([x['author'] for x in self.dataset], [x[attributeField] for x in self.dataset]))
 
@@ -170,7 +175,7 @@ class MongoDBClient:
                 }
             },{
                 '$set': {
-                    'clusterIdSmooth': clusterId
+                    'clusterIdSimple': clusterId
                 }
             })
 
@@ -190,8 +195,6 @@ def applyLouvainSmooth(collectionName, g, gOld = None):
 
     clusters = louvainS.applyLouvain()
 
-    # plot(clusters)
-
     print('The modularity is ', clusters.modularity)
 
     updateClusters(clusters, collectionName)
@@ -209,45 +212,74 @@ def updateClusters(clusters, collectionName):
         MongoDBClient.getInstance().updateAuthors(authors, clusterId, collectionName)
         clusterId += 1
 
-def getCommentsCommunity(collectionName):
+dbClient = pymongo.MongoClient('localhost', 27017)
+db = dbClient.communityDetectionUSAElections
+
+def getCommentsCommunity(collectionName, justNodesWithEdges = False):
 
     allComments = list(db[collectionName].find())
 
     commentsCommunity = BuildAuthorsCommunityGraph(allComments)
-    commentsCommunity.buildCommunityGraph()
+    commentsCommunity.buildCommunityGraph(justNodesWithEdges)
 
     return commentsCommunity
 
-dbClient = pymongo.MongoClient('localhost', 27017)
-db = dbClient.communityDetectionUSAElections
+def getAllCollections(prefix):
 
-allCollections = db.list_collection_names()
+    allCollections = db.list_collection_names()
 
-prefix = 'quarter'
-allCollections = list(filter(lambda x: prefix in x, allCollections))
+    prefix = 'quarter'
+    allCollections = list(filter(lambda x: prefix in x, allCollections))
 
-allCollections = sorted(allCollections)
+    return sorted(allCollections)
 
-for collectionIdx in range(1, len(allCollections)):
+def applyLouvainSmoothOnAllCollections():
 
-    prevCollection = allCollections[collectionIdx - 1]
-    curCollection = allCollections[collectionIdx]
+    allCollections = getAllCollections('quarter')
 
-    print('Started processing ' + curCollection + ' prev collection is ', prevCollection)
+    for collectionIdx in range(1, len(allCollections)):
 
-    prevCommunity = getCommentsCommunity(prevCollection)
+        prevCollection = allCollections[collectionIdx - 1]
+        curCollection = allCollections[collectionIdx]
 
-    curCommunity = getCommentsCommunity(curCollection)
+        print('Started processing ' + curCollection + ' prev collection is ', prevCollection)
 
-    # print('MY LOUVAIN')
-    if (collectionIdx == 1):
-        # if first pass, need to do Louvain on the first collection
-        applyLouvainSmooth(prevCollection, prevCommunity.getGraph())
         prevCommunity = getCommentsCommunity(prevCollection)
-        prevCommunity.augumentAuthorNodesWithCommunityId()
-        applyLouvainSmooth(curCollection, curCommunity.getGraph(), prevCommunity.getGraph())
-    else:
-        prevCommunity.augumentAuthorNodesWithCommunityId()
-        applyLouvainSmooth(curCollection, curCommunity.getGraph(), prevCommunity.getGraph())
 
-    print('Finished processing')
+        curCommunity = getCommentsCommunity(curCollection)
+
+        if (collectionIdx == 1):
+            # if first pass, need to do Louvain on the first collection
+            applyLouvainSmooth(prevCollection, prevCommunity.getGraph())
+            prevCommunity = getCommentsCommunity(prevCollection)
+            prevCommunity.augumentAuthorNodesWithCommunityId()
+            applyLouvainSmooth(curCollection, curCommunity.getGraph(), prevCommunity.getGraph())
+        else:
+            prevCommunity.augumentAuthorNodesWithCommunityId()
+            applyLouvainSmooth(curCollection, curCommunity.getGraph(), prevCommunity.getGraph())
+
+        # just cleanup some stuff so we won't overflow the memory
+        del prevCommunity
+        del curCommunity
+
+        print('Finished processing')
+
+def applySimpleLouvainOnAllCollections():
+
+    allCollections = getAllCollections('quarter')
+
+    for collectionName in allCollections:
+
+        community = getCommentsCommunity(collectionName)
+        applyLouvain(collectionName, community.getGraph())
+
+
+def plotCollection(collectionName):
+
+    community = getCommentsCommunity(collectionName, True)
+    community.plotGraph()
+
+applySimpleLouvainOnAllCollections()
+
+# plotCollection('quarter_06_21_15_06_21_30')
+# plotCollection('quarter_06_21_30_06_21_45')
