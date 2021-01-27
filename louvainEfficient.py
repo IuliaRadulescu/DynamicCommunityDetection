@@ -1,6 +1,7 @@
 import numpy as np
 import time
 from random import shuffle
+import collections
 
 class LouvainEfficient():
 
@@ -44,7 +45,6 @@ class LouvainEfficient():
         node2community[node] = newCommunity
         community2nodes[oldCommunity].remove(node)
         community2nodes[newCommunity].append(node)
-
         return (node2community, community2nodes)
 
     def computeModularity(self, graphAdjMatrix, community2nodes):
@@ -100,7 +100,7 @@ class LouvainEfficient():
             for community in community2nodes[superCommunity]:
                 if (community != finalCommunity):
                     community2nodesFull[finalCommunity] += community2nodesFull[community]
-                    del community2nodesFull[community]
+                    community2nodesFull[community] = []
 
         node2communityFull = {}
 
@@ -110,11 +110,18 @@ class LouvainEfficient():
             for node in community2nodesFull[community]:
                 node2communityFull[node] = community
 
-        print(community2nodesFull)
-        print('==============')
-        print(node2communityFull)
+        community2nodesTemp = {}
 
-        return (node2communityFull, community2nodesFull)
+        for community in community2nodesFull:
+            if len(community2nodesFull[community]) > 0:
+                community2nodesTemp[community] = community2nodesFull[community]
+
+        node2communityOrederedTemp = collections.OrderedDict(sorted(node2communityFull.items()))
+        node2communityOredered = {}
+        for k, v in node2communityOrederedTemp.items():
+            node2communityOredered[k] = v
+
+        return (node2communityOredered, community2nodesFull)
 
     def louvain(self, graphAdjMatrix):
 
@@ -136,6 +143,8 @@ class LouvainEfficient():
             while True:
 
                 initialModularity = self.computeModularity(graphAdjMatrix, community2nodes)
+
+                print(initialModularity)
 
                 noNodes = np.shape(graphAdjMatrix)[0]
                 nodes = list(range(noNodes))
@@ -181,13 +190,9 @@ class LouvainEfficient():
                 
                 initialModularity = newModularity
 
-            print('COMM 2 NODES ==== ', community2nodes)
-
-            print('Finished Louvain first phase, modularity is', newModularity)
+            print('Finished Louvain first phase')
 
             print('Start Louvain second phase')
-
-            print("--- %s execution time in seconds ---" % (time.time() - start_time))
 
             if isFirstPass:
                 community2nodesFull = community2nodes
@@ -197,7 +202,7 @@ class LouvainEfficient():
             
             newModularityFull = self.computeModularity(graphAdjMatrixFull, community2nodesFull)
 
-            print('Second phase modularity', (newModularityFull - initialModularityFull))
+            print('Second phase modularity', newModularityFull)
 
             if (newModularityFull - initialModularityFull <= theta):
                 break
@@ -208,6 +213,8 @@ class LouvainEfficient():
             (node2community, community2nodes) = self.initialize(graphAdjMatrix)
 
             isFirstPass = False
+
+        print("--- %s execution time in seconds ---" % (time.time() - start_time))
 
         return node2communityFull
 
