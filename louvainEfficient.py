@@ -4,67 +4,66 @@ from random import shuffle
 
 class LouvainEfficient():
 
-    def __init__(self, graphAdjMatrix):
-        self.graphAdjMatrix = graphAdjMatrix
-        self.node2community = {}
-        self.community2nodes = {}
+    def initialize(self, graphAdjMatrix):
+        noNodes = np.shape(graphAdjMatrix)[0]
+        node2community = dict(zip(range(noNodes), range(noNodes)))
+        community2nodes = dict(zip(range(noNodes), [[node] for node in range(noNodes)]))
 
-    def initialize(self):
-        noNodes = np.shape(self.graphAdjMatrix)[0]
-        self.node2community = dict(zip(range(noNodes), range(noNodes)))
-        self.community2nodes = dict(zip(range(noNodes), [[node] for node in range(noNodes)]))
-        self.m = self.getAllWeigthsSum()
+        return (node2community, community2nodes)
 
-    def getAllWeigthsSum(self):
-        return np.sum(self.graphAdjMatrix)
+    def getNode2CommunitySum(self, node, communityId, graphAdjMatrix, community2nodes):
+        communityNodes = community2nodes[communityId]
+        return sum(list(map(lambda x: graphAdjMatrix[node][x], communityNodes)))
 
-    def getNode2CommunitySum(self, node, communityId):
-        communityNodes = self.community2nodes[communityId]
-        return sum(list(map(lambda x: self.graphAdjMatrix[node][x], communityNodes)))
-
-    def getCommunityAllNodesSum(self, communityId):
-        communityNodes = self.community2nodes[communityId]
+    def getCommunityAllNodesSum(self, communityId, graphAdjMatrix, community2nodes):
+        communityNodes = community2nodes[communityId]
         allNodesSum = 0
         for communityNode in communityNodes:
-            allNodesSum += np.sum(self.graphAdjMatrix[communityNode, :])
+            allNodesSum += np.sum(graphAdjMatrix[communityNode, :])
         return allNodesSum
 
-    def getNodeSum(self, node):
-        return np.sum(self.graphAdjMatrix[node, :])
+    def getNodeSum(self, node, graphAdjMatrix):
+        return np.sum(graphAdjMatrix[node, :])
 
-    def getNodeNeighs(self, node):
-        allNodes = list(range(np.shape(self.graphAdjMatrix)[0]))
-        return list(filter(lambda x: self.graphAdjMatrix[node][x] == 1, allNodes))
+    def getNodeNeighs(self, node, graphAdjMatrix):
+        allNodes = list(range(np.shape(graphAdjMatrix)[0]))
+        return list(filter(lambda x: graphAdjMatrix[node][x] == 1, allNodes))
 
     
-    def computeModularityGain(self, node, communityId):
-        k_n_neighCommunity = self.getNode2CommunitySum(node, communityId)
-        sum_neighCommunity = self.getCommunityAllNodesSum(communityId)
-        k_n = self.getNodeSum(node)
+    def computeModularityGain(self, node, communityId, graphAdjMatrix, community2nodes):
+        m = np.sum(graphAdjMatrix)
 
-        return (1/self.m) * ( (k_n_neighCommunity) - (sum_neighCommunity * k_n)/(2*self.m) )
+        k_n_neighCommunity = self.getNode2CommunitySum(node, communityId, graphAdjMatrix, community2nodes)
+        sum_neighCommunity = self.getCommunityAllNodesSum(communityId, graphAdjMatrix, community2nodes)
+        k_n = self.getNodeSum(node, graphAdjMatrix)
+
+        return (1/m) * ( (k_n_neighCommunity) - (sum_neighCommunity * k_n)/(2*m) )
 
 
-    def moveNodeToCommunity(self, node, oldCommunity, newCommunity):
-        self.node2community[node] = newCommunity
-        self.community2nodes[oldCommunity].remove(node)
-        self.community2nodes[newCommunity].append(node)
+    def moveNodeToCommunity(self, node, oldCommunity, newCommunity, community2nodes, node2community):
+        node2community[node] = newCommunity
+        community2nodes[oldCommunity].remove(node)
+        community2nodes[newCommunity].append(node)
 
-    def computeModularity(self):
+        return (node2community, community2nodes)
+
+    def computeModularity(self, graphAdjMatrix, community2nodes):
+
+        m = np.sum(graphAdjMatrix)
 
         partialSums = []
 
-        for community in self.community2nodes:
-            for i in self.community2nodes[community]:
-                for j in self.community2nodes[community]:
+        for community in community2nodes:
+            for i in community2nodes[community]:
+                for j in community2nodes[community]:
                     if (i == j):
                         continue
-                    partialSums.append(self.graphAdjMatrix[i][j] - (self.getNodeSum(i) * self.getNodeSum(j))/(2*self.m))
+                    partialSums.append(graphAdjMatrix[i][j] - (self.getNodeSum(i, graphAdjMatrix) * self.getNodeSum(j, graphAdjMatrix))/(2*m))
 
-        return sum(partialSums)/(2*self.m)
+        return sum(partialSums)/(2*m)
 
-    def computeNewAdjMatrix(self):
-        communities = list(filter(lambda x: len(self.community2nodes[x]) > 0, self.community2nodes.keys()))
+    def computeNewAdjMatrix(self, community2nodes, graphAdjMatrix):
+        communities = list(filter(lambda x: len(community2nodes[x]) > 0, community2nodes.keys()))
 
         temporaryAdjMatrix = np.zeros((len(communities), len(communities)))
 
@@ -72,60 +71,91 @@ class LouvainEfficient():
             for community2Id in range(len(communities)):
                 community1 = communities[community1Id]
                 community2 = communities[community2Id]
-                temporaryAdjMatrix[community1Id][community2Id] = sum(self.interCommunitiesNodeWeights(community1, community2))
+                temporaryAdjMatrix[community1Id][community2Id] = sum(self.interCommunitiesNodeWeights(community1, community2, graphAdjMatrix, community2nodes))
 
-        self.graphAdjMatrix = temporaryAdjMatrix
+        return temporaryAdjMatrix
 
-    def interCommunitiesNodeWeights(self, community1, community2):
+    def interCommunitiesNodeWeights(self, community1, community2, graphAdjMatrix, community2nodes):
 
         if (community1 == community2):
             return []
 
         interCommunitiesNodeWeights = []
 
-        for i in self.community2nodes[community1]:
-            for j in self.community2nodes[community2]:
-                if (self.graphAdjMatrix[i][j] != 0):
-                    interCommunitiesNodeWeights.append(self.graphAdjMatrix[i][j])
+        for i in community2nodes[community1]:
+            for j in community2nodes[community2]:
+                if (graphAdjMatrix[i][j] != 0):
+                    interCommunitiesNodeWeights.append(graphAdjMatrix[i][j])
 
         return interCommunitiesNodeWeights
 
-    def louvain(self):
+
+    def decompressSupergraph(self, community2nodes, community2nodesFull):
+
+        for superCommunity in community2nodes:
+            if (len(community2nodes[superCommunity]) < 2):
+                continue
+            # merge inner communities of the superCommunities
+            finalCommunity = community2nodes[superCommunity][0]
+            for community in community2nodes[superCommunity]:
+                if (community != finalCommunity):
+                    community2nodesFull[finalCommunity] += community2nodesFull[community]
+                    del community2nodesFull[community]
+
+        node2communityFull = {}
+
+        for community in community2nodesFull:
+            if (len(community2nodesFull[community]) == 0):
+                continue
+            for node in community2nodesFull[community]:
+                node2communityFull[node] = community
+
+        print(community2nodesFull)
+        print('==============')
+        print(node2communityFull)
+
+        return (node2communityFull, community2nodesFull)
+
+    def louvain(self, graphAdjMatrix):
 
         start_time = time.time()
 
-        finalNode2Community = {}
-
         theta = 0.0001
+
+        isFirstPass = True
 
         while True:
 
-            self.initialize()
-
-            noNodes = np.shape(self.graphAdjMatrix)[0]
-            nodes = list(range(noNodes))
-
-            initialModularity = self.computeModularity()
+            if isFirstPass:
+                (node2community, community2nodes) = self.initialize(graphAdjMatrix)
+                graphAdjMatrixFull = graphAdjMatrix
+                initialModularityFull = self.computeModularity(graphAdjMatrix, community2nodes)
                 
             print('Started Louvain first phase')
 
             while True:
 
+                initialModularity = self.computeModularity(graphAdjMatrix, community2nodes)
+
+                noNodes = np.shape(graphAdjMatrix)[0]
+                nodes = list(range(noNodes))
+
                 for node in nodes:
                     shuffle(nodes)
 
-                    neis = self.getNodeNeighs(node)
+                    neis = self.getNodeNeighs(node, graphAdjMatrix)
 
                     modularityGains = []
                     for neigh in neis:
                         
-                        neighCommunity = self.node2community[neigh]
-                        nodeCommunity = self.node2community[node]
+                        neighCommunity = node2community[neigh]
+                        nodeCommunity = node2community[node]
 
                         if (neighCommunity == nodeCommunity):
                             continue
 
-                        fullModularityGain = self.computeModularityGain(node, neighCommunity) + self.computeModularityGain(node, nodeCommunity)
+                        fullModularityGain = self.computeModularityGain(node, neighCommunity, graphAdjMatrix, community2nodes) + \
+                            self.computeModularityGain(node, nodeCommunity, graphAdjMatrix, community2nodes)
 
                         if (fullModularityGain > 0):
                             modularityGains.append((neighCommunity, fullModularityGain))
@@ -142,14 +172,16 @@ class LouvainEfficient():
                         newCommunity = int(modularityGains[modularityGainsIndicesSorted[last][1]][0])
 
                         # perform move
-                        self.moveNodeToCommunity(node, nodeCommunity, newCommunity)
+                        (node2community, community2nodes) = self.moveNodeToCommunity(node, nodeCommunity, newCommunity, community2nodes, node2community)
 
-                newModularity = self.computeModularity()
+                newModularity = self.computeModularity(graphAdjMatrix, community2nodes)
 
                 if (newModularity - initialModularity <= theta):
                     break
                 
                 initialModularity = newModularity
+
+            print('COMM 2 NODES ==== ', community2nodes)
 
             print('Finished Louvain first phase, modularity is', newModularity)
 
@@ -157,12 +189,26 @@ class LouvainEfficient():
 
             print("--- %s execution time in seconds ---" % (time.time() - start_time))
 
-            self.computeNewAdjMatrix()
+            if isFirstPass:
+                community2nodesFull = community2nodes
+                node2communityFull = node2community
+            else:
+                (node2communityFull, community2nodesFull) = self.decompressSupergraph(community2nodes, community2nodesFull)               
+            
+            newModularityFull = self.computeModularity(graphAdjMatrixFull, community2nodesFull)
 
-            print('Second phase', (newModularity - initialModularity))
+            print('Second phase modularity', (newModularityFull - initialModularityFull))
 
-        finalNode2Community = self.node2community
+            if (newModularityFull - initialModularityFull <= theta):
+                break
+            
+            initialModularityFull = newModularityFull
 
-        return finalNode2Community
+            graphAdjMatrix = self.computeNewAdjMatrix(community2nodes, graphAdjMatrix)
+            (node2community, community2nodes) = self.initialize(graphAdjMatrix)
+
+            isFirstPass = False
+
+        return node2communityFull
 
                 
