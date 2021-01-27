@@ -144,8 +144,6 @@ class LouvainEfficient():
 
                 initialModularity = self.computeModularity(graphAdjMatrix, community2nodes)
 
-                print(initialModularity)
-
                 noNodes = np.shape(graphAdjMatrix)[0]
                 nodes = list(range(noNodes))
 
@@ -170,15 +168,27 @@ class LouvainEfficient():
                             modularityGains.append((neighCommunity, fullModularityGain))
 
                     if (len(modularityGains) > 0):
-                        modularityGains = np.array(modularityGains)
-                        # sort modularity gains by column (the second column of the modularityGains represents the modularity gain - the first being the community)
-                        modularityGainsIndicesSorted = np.argsort(modularityGains, axis=0)
-                        # get the position of the index corresponding to the greatest modularity gain (argsort direction is asc)
-                        last = len(modularityGainsIndicesSorted) - 1
-                        # get new community associated value
-                        # the modularityGains entry corresponds to the last index
-                        # only pick the community (position 0)
-                        newCommunity = int(modularityGains[modularityGainsIndicesSorted[last][1]][0])
+                        
+                        # get max modularity community
+                        modularityGains = np.array(modularityGains, dtype = int)
+                        maxModularityGainIndex = np.argmax(modularityGains[:, 1])
+                        maxModularityGainIndices = np.where(modularityGains[:,1]==modularityGains[maxModularityGainIndex][1])
+
+                        maxModularityNeighs = [modularityGains[mIndex[0]][0] for mIndex in maxModularityGainIndices]
+
+                        maxModularityNodeId = maxModularityNeighs[0]
+
+                        if (len(maxModularityNeighs) > 0):
+                            
+                            maxNeighDeg = self.getNodeSum(maxModularityNeighs[0], graphAdjMatrix)
+
+                            for maxNeighId in maxModularityNeighs:
+                                neighDeg = self.getNodeSum(maxNeighId, graphAdjMatrix)
+                                if (neighDeg > maxNeighDeg):
+                                    maxNeighDeg = neighDeg
+                                    maxModularityNodeId = maxNeighId
+
+                        newCommunity = node2community[maxModularityNodeId]
 
                         # perform move
                         (node2community, community2nodes) = self.moveNodeToCommunity(node, nodeCommunity, newCommunity, community2nodes, node2community)
