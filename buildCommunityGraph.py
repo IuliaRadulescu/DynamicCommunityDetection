@@ -5,8 +5,8 @@ from igraph import plot
 from abc import ABC, abstractclassmethod, abstractmethod
 import re
 import louvain
-import louvainSmooth
-from sklearn.cluster import KMeans
+import louvainEfficient
+from sklearn.feature_extraction.text import TfidfVectorizer
 import numpy as np
 
 class CommunityGraphBuilder(ABC):
@@ -45,6 +45,12 @@ class CommunityGraphBuilder(ABC):
 
 class BuildAuthorsCommunityGraph(CommunityGraphBuilder):
 
+    def __init__(self, dataset):
+        super(BuildAuthorsCommunityGraph, self).__init__(dataset)
+        
+        # use a generic name for comments with no authors
+        self.genericAuthorName = 'JhonDoe25122020'
+
     def buildCommunityGraph(self, justNodesWithEdges = False):
 
         nodesList = self.getNodes()
@@ -53,17 +59,24 @@ class BuildAuthorsCommunityGraph(CommunityGraphBuilder):
 
         edgesList = self.getEdges()
         edgesList = list(filter(lambda x: x != None, edgesList))
+        
+        finalEdgesList = []
+
+        for edge in edgesList:
+            if ( ((edge[0], edge[1]) in finalEdgesList) or ((edge[1], edge[0]) in finalEdgesList) ):
+                continue
+            finalEdgesList.append(edge)
 
         # print(edgesList)
 
         self.g.add_vertices(nodesList)
-        self.g.add_edges(edgesList)
+        self.g.add_edges(finalEdgesList)
 
         if (justNodesWithEdges):
             nodesToRemove = [v.index for v in self.g.vs if v.degree() == 0]
             self.g.delete_vertices(nodesToRemove)
 
-        self.augumentAuthorNodesWithComments()
+        self.addTfIdfAsAttributes()
 
     def getEdges(self):
 
@@ -85,45 +98,54 @@ class BuildAuthorsCommunityGraph(CommunityGraphBuilder):
 
     def getNodes(self):
 
-        # use a generic name for comments with no authors
-        genericAuthorName = 'JhonDoe25122020'
-
         nodesList = list(map(lambda x: x['author'], self.dataset))
         nodesList = list(set(nodesList))
-        nodesList = list(map(lambda x: genericAuthorName if x == False else x, nodesList))
+        nodesList = list(map(lambda x: self.genericAuthorName if x == False else x, nodesList))
         
         return nodesList
 
-    def augumentNodesWithField(self, fieldName, newAttributeName, isList = False):
-        
-        if (isList):
-            self.g.vs[newAttributeName] = [[] for _ in range(len(self.g.vs))]
+    def removeLinks(self, comments):
+        return list(map(lambda x: re.sub(r'(https?://[^\s]+)', '', x), comments))
 
-        for item in self.dataset:
+    def removeRedditReferences(self, comments):
+        return list(map(lambda x: re.sub(r'(/r/[^\s]+)', '', x), comments))
 
-            author = item['author']
+    def removePunctuation(self, comments):
+        return list(map(lambda x: re.sub('[,.!?"\'\\n:*]', '', x), comments))
 
-            fieldValue = item[fieldName] if fieldName in item else -1
+    def getFeatureVectors(self, comments):
+        vectorizer = TfidfVectorizer(use_idf=True, stop_words='english')
+        return vectorizer.fit_transform(comments).toarray()
 
-            try:
-                authorNode = self.g.vs.find(name = author)
-            except ValueError:
-                print('Node ', author, ' does not exist')
-                continue               
-            
-            if (isList):
-                self.g.vs[authorNode.index][newAttributeName].append(fieldValue)
-            else:
-                self.g.vs[authorNode.index][newAttributeName] = fieldValue
+    def addTfIdfAsAttributes(self):
 
+        authorNames = [node['name'] for node in self.g.vs]
+    
+        authors2comments = {}
 
-    def augumentAuthorNodesWithComments(self):
+        for elem in self.dataset:
+            if elem['author'] == False:
+                elem['author'] = self.genericAuthorName
+            if elem['author'] not in authorNames:
+                continue
+            if (elem['author'] not in authors2comments):
+                authors2comments[elem['author']] = str(elem['body'])
+                continue
+            authors2comments[elem['author']] += ' ' + str(elem['body'])
 
-        self.augumentNodesWithField('body', 'comments', True)
+        allComments = [elem[1] for elem in authors2comments.items()]
 
-    def augumentAuthorNodesWithCommunityId(self):
+        allComments = self.removeLinks(allComments)
+        allComments = self.removeRedditReferences(allComments)
+        allComments = self.removePunctuation(allComments)
 
-        self.augumentNodesWithField('clusterIdSmooth', 'community')
+        featureVectors = self.getFeatureVectors(allComments)
+        featureVectorIterator = 0
+
+        for author in authors2comments.keys():
+            nodeId = self.g.vs.find(name = author).index
+            self.g.vs[nodeId]['tfIdf'] = featureVectors[featureVectorIterator]
+            featureVectorIterator += 1
 
     def getGraph(self):
         return self.g
@@ -166,7 +188,7 @@ class MongoDBClient:
 
     def updateAuthors(self, authors, clusterId, collectionName):
 
-        db = self.dbClient.communityDetectionUSAElections
+        db = self.dbClient.communityDetectionUSABidenInauguration
 
         db[collectionName].update_many(
             {
@@ -179,25 +201,30 @@ class MongoDBClient:
                 }
             })
 
-def applyLouvain(collectionName, g):
+def applyLouvainModule(collectionName, g):
 
     # and also show modularity
     clusters = g.community_multilevel()
     modularity_score = g.modularity(clusters.membership)
 
+    plot(clusters)
+
     print('The modularity is ', modularity_score)
 
-    updateClusters(clusters, collectionName)
+    # updateClusters(clusters, collectionName)
 
-def applyLouvainSmooth(collectionName, g, gOld = None):
+def applyLouvain(collectionName, g, louvainEfficientInstance):
 
-    louvainS = louvainSmooth.LouvainSmooth(g, gOld, False)
+    graphAdjMatrix = g.get_adjacency()
+    graphAdjMatrixNp = np.array(graphAdjMatrix.data)
 
-    clusters = louvainS.applyLouvain()
+    nodes2Communities = louvainEfficientInstance.louvain(graphAdjMatrixNp)
 
-    print('The modularity is ', clusters.modularity)
+    clusters = VertexClustering(g, nodes2Communities.values())
 
-    updateClusters(clusters, collectionName)
+    print('===> Final modularity ', clusters.modularity)
+
+    # updateClusters(clusters, collectionName)
 
 def updateClusters(clusters, collectionName):
 
@@ -213,7 +240,7 @@ def updateClusters(clusters, collectionName):
         clusterId += 1
 
 dbClient = pymongo.MongoClient('localhost', 27017)
-db = dbClient.communityDetectionUSAElections
+db = dbClient.communityDetectionUSABidenInauguration
 
 def getCommentsCommunity(collectionName, justNodesWithEdges = False):
 
@@ -233,45 +260,17 @@ def getAllCollections(prefix):
 
     return sorted(allCollections)
 
-def applyLouvainSmoothOnAllCollections():
-
-    allCollections = getAllCollections('quarter')
-
-    for collectionIdx in range(1, len(allCollections)):
-
-        prevCollection = allCollections[collectionIdx - 1]
-        curCollection = allCollections[collectionIdx]
-
-        print('Started processing ' + curCollection + ' prev collection is ', prevCollection)
-
-        prevCommunity = getCommentsCommunity(prevCollection)
-
-        curCommunity = getCommentsCommunity(curCollection)
-
-        if (collectionIdx == 1):
-            # if first pass, need to do Louvain on the first collection
-            applyLouvainSmooth(prevCollection, prevCommunity.getGraph())
-            prevCommunity = getCommentsCommunity(prevCollection)
-            prevCommunity.augumentAuthorNodesWithCommunityId()
-            applyLouvainSmooth(curCollection, curCommunity.getGraph(), prevCommunity.getGraph())
-        else:
-            prevCommunity.augumentAuthorNodesWithCommunityId()
-            applyLouvainSmooth(curCollection, curCommunity.getGraph(), prevCommunity.getGraph())
-
-        # just cleanup some stuff so we won't overflow the memory
-        del prevCommunity
-        del curCommunity
-
-        print('Finished processing')
-
 def applySimpleLouvainOnAllCollections():
 
     allCollections = getAllCollections('quarter')
+    louvainEfficientInstance = louvainEfficient.LouvainEfficient()
 
     for collectionName in allCollections:
 
+        print('===> Running Louvain on ', collectionName)
+
         community = getCommentsCommunity(collectionName)
-        applyLouvain(collectionName, community.getGraph())
+        applyLouvain(collectionName, community.getGraph(), louvainEfficientInstance)
 
 
 def plotCollection(collectionName, attributeField):
@@ -279,11 +278,42 @@ def plotCollection(collectionName, attributeField):
     community = getCommentsCommunity(collectionName, True)
     community.plotGraph(attributeField)
 
+def getCommonNodes(collectionName1, collectionName2):
 
-applyLouvainSmoothOnAllCollections()
+    community1 = getCommentsCommunity(collectionName1, True)
+    community2 = getCommentsCommunity(collectionName2, True)
 
-# plotCollection('quarter_06_21_15_06_21_30', 'clusterIdSmooth')
-# plotCollection('quarter_06_21_15_06_21_30', 'clusterIdSimple')
+    nodes1 = set([node['name'] for node in community1.getGraph().vs])
+    nodes2 = set([node['name'] for node in community2.getGraph().vs])
 
-# plotCollection('quarter_06_21_30_06_21_45', 'clusterIdSmooth')
-# plotCollection('quarter_06_21_30_06_21_45', 'clusterIdSimple')
+    return nodes1.intersection(nodes2)
+
+# applySimpleLouvainOnAllCollections()
+
+# commonNodes = getCommonNodes('quarter_05_02_30_05_02_45', 'quarter_05_02_45_05_03_00')
+
+# print('COMMON NODES = ', commonNodes)
+
+# print(len(commonNodes))
+
+community = getCommentsCommunity('quarter_20_20_15_20_20_30', True)
+
+graphAdjMatrix = community.getGraph().get_adjacency()
+graphAdjMatrixNp = np.array(graphAdjMatrix.data)
+
+nodeId2TfIdf = dict(zip([node.index for node in community.getGraph().vs], [node['tfIdf'] for node in community.getGraph().vs]))
+
+# print(nodeId2TfIdf)
+
+# print(list(community.getGraph().vs))
+
+louvainEfficientInstance = louvainEfficient.LouvainEfficient()
+nodes2Communities = louvainEfficientInstance.louvain(graphAdjMatrixNp, nodeId2TfIdf)
+
+# plotCollection('quarter_05_02_30_05_02_45', 'clusterIdSmooth')
+# plotCollection('quarter_20_20_15_20_20_30', 'clusterIdSimple')
+
+# plotCollection('quarter_05_02_45_05_03_00', 'clusterIdSmooth')
+# plotCollection('quarter_20_20_30_20_20_45', 'clusterIdSimple')
+
+# plotCollection('quarter_23_01_15_23_01_30', 'clusterIdSimple')
