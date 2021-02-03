@@ -44,6 +44,28 @@ class LouvainEfficient():
 
         return (1/m) * ( (k_n_neighCommunity) - (sum_neighCommunity * k_n)/(2*m) )
 
+    def computeModularityGainInertia(self, node, neighCommunity, distanceMatrix, node2Inertia, community2nodes, denominator):
+        a = 0
+
+        for neig in community2nodes[neighCommunity]:
+            if (node < neig):
+                distance = distanceMatrix[node][neig]
+            else:
+                distance = distanceMatrix[neig][node]
+
+            a += (node2Inertia[node] * node2Inertia[neig]) / denominator - distance
+
+        b = 0
+
+        for peer in community2nodes[node]:
+            if (node < peer):
+                distance = distanceMatrix[node][peer]
+            else:
+                distance = distanceMatrix[peer][node]
+
+            b += (node2Inertia[node] * node2Inertia[peer]) / denominator - distance
+
+        return (2/denominator)*(a-b)
 
     def moveNodeToCommunity(self, node, oldCommunity, newCommunity, community2nodes, node2community):
         node2community[node] = newCommunity
@@ -80,9 +102,10 @@ class LouvainEfficient():
         return np.sum(np.array(allDistances))
         
 
-    def computeModularityMatrixInertia(self, nodeId2TfIdf, graphAdjMatrix):
+    def computeModularityInertiaUtils(self, nodeId2TfIdf, graphAdjMatrix):
 
         modularityMatrix = np.zeros((len(nodeId2TfIdf.keys()), len(nodeId2TfIdf.keys())))
+        distanceMatrix = np.zeros((len(nodeId2TfIdf.keys()), len(nodeId2TfIdf.keys())))
 
         vectors = [elem[1] for elem in nodeId2TfIdf.items()]
 
@@ -108,12 +131,15 @@ class LouvainEfficient():
 
                 if (ijDenominator == float(0)):
                     b = 0
-                else: 
-                    b = (pow(np.dot(i, j)/ijDenominator, 2)) / denominator
+                    distanceMatrix[i][j] = 0
+                else:
+                    ijDistance = pow(np.dot(i, j)/ijDenominator, 2)
+                    distanceMatrix[i][j] = ijDistance 
+                    b = ijDistance / denominator
 
                 modularityMatrix[i][j] = a - b
                      
-        return modularityMatrix
+        return (modularityMatrix, distanceMatrix, node2inertia, denominator)
 
     def computeModularityInertia(self, modularityMatrixInertia, community2nodes):
         
@@ -248,18 +274,15 @@ class LouvainEfficient():
                 initialModularityFull = self.computeModularity(graphAdjMatrix, community2nodes)
 
                 if (nodeId2TfIdf != None):
-                    modularityMatrixInertia = self.computeModularityMatrixInertia(nodeId2TfIdf, graphAdjMatrix)
+                    (modularityMatrixInertia, distanceMatrix, node2Inertia, denominator) = self.computeModularityInertiaUtils(nodeId2TfIdf, graphAdjMatrix)
                     initialModularityFull += self.computeModularityInertia(modularityMatrixInertia, community2nodes)
                     
 
             print('Started Louvain first phase')
 
+            initialModularity = initialModularityFull
+
             while True:
-
-                initialModularity = self.computeModularity(graphAdjMatrix, community2nodes)
-
-                if (nodeId2TfIdf != None):
-                    initialModularity += self.computeModularityInertia(nodeId2TfIdf, community2nodes)
 
                 noNodes = np.shape(graphAdjMatrix)[0]
                 nodes = list(range(noNodes))
@@ -281,6 +304,9 @@ class LouvainEfficient():
 
                         fullModularityGain = self.computeModularityGain(node, neighCommunity, graphAdjMatrix, community2nodes) - \
                             self.computeModularityGain(node, nodeCommunity, graphAdjMatrix, community2nodes)
+
+                        if (nodeId2TfIdf != None):
+                            fullModularityGain += self.computeModularityGainInertia(node, neighCommunity, distanceMatrix, node2Inertia, community2nodes, denominator)
 
                         if (fullModularityGain > 0):
                             modularityGains.append((int(neighCommunity), fullModularityGain))
@@ -312,11 +338,12 @@ class LouvainEfficient():
                         (node2community, community2nodes) = self.moveNodeToCommunity(node, nodeCommunity, newCommunity, community2nodes, node2community)
 
                 newModularity = self.computeModularity(graphAdjMatrix, community2nodes)
-                print('New simple', newModularity)
-
+                
                 if (nodeId2TfIdf != None):
                     newModularity += self.computeModularityInertia(modularityMatrixInertia, community2nodes)
                     print('New with inertia', newModularity)
+
+                print('====', newModularity - initialModularity)
 
                 if (newModularity - initialModularity <= theta):
                     break
