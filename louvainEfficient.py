@@ -182,6 +182,21 @@ class LouvainEfficient():
 
         return sum(partialSums)/(2*m)
 
+    def computeNewNode2TfIdf(self, community2nodes, nodeId2TfIdf):
+
+        communities = list(filter(lambda x: len(community2nodes[x]) > 0, community2nodes.keys()))
+
+        nodeId2TfIdfTemp = {}
+
+        for communityId in range(len(communities)):
+            community = communities[communityId]
+            vectors = []
+            for node in community2nodes[community]:
+                vectors.append(nodeId2TfIdf[node])
+            nodeId2TfIdfTemp[communityId] = self.getCentroid(vectors)
+                
+        return nodeId2TfIdfTemp
+
     '''
     new2oldCommunities = contains mappings between current and prev step
     '''
@@ -341,9 +356,7 @@ class LouvainEfficient():
                 
                 if (nodeId2TfIdf != None):
                     newModularity += self.computeModularityInertia(modularityMatrixInertia, community2nodes)
-                    print('New with inertia', newModularity)
-
-                print('====', newModularity - initialModularity)
+                    # print('New with inertia', newModularity)
 
                 if (newModularity - initialModularity <= theta):
                     break
@@ -367,6 +380,9 @@ class LouvainEfficient():
             
             newModularityFull = self.computeModularity(graphAdjMatrixFull, community2nodesFull)
 
+            if (nodeId2TfIdf != None):
+                newModularityFull += self.computeModularityInertia(modularityMatrixInertia, community2nodes)
+
             print('Second phase modularity', newModularityFull)
 
             if (newModularityFull - initialModularityFull <= theta):
@@ -376,13 +392,11 @@ class LouvainEfficient():
             
             initialModularityFull = newModularityFull
 
+            nodeId2TfIdf = self.computeNewNode2TfIdf(community2nodes, nodeId2TfIdf)
             (graphAdjMatrix, new2oldCommunities) = self.computeNewAdjMatrix(community2nodes, new2oldCommunities, graphAdjMatrix)
             (node2community, community2nodes) = self.initialize(graphAdjMatrix)
-
+            (modularityMatrixInertia, distanceMatrix, node2Inertia, denominator) = self.computeModularityInertiaUtils(nodeId2TfIdf, graphAdjMatrix)
             isFirstPass = False
-
-            print('TEMPORARY BREAK TO REMOVE')
-            break
 
         print("--- %s execution time in seconds ---" % (time.time() - start_time))
 
