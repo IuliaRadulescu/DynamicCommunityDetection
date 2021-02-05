@@ -85,7 +85,7 @@ class LouvainEfficient():
     def getInertia(self, vectors, g = None):
 
         # if reference (center of gravity) not provided, use centroid
-        if (g == None):
+        if (g is None):
             g = self.getCentroid(vectors)
 
         allDistances = []
@@ -118,7 +118,7 @@ class LouvainEfficient():
         node2inertia = {}
 
         for nodeId in range(len(graphAdjMatrix)):
-            node2inertia[nodeId] = self.getInertia(vectors, nodeId)
+            node2inertia[nodeId] = self.getInertia(vectors, nodeId2TfIdf[nodeId])
 
         for i in range(len(graphAdjMatrix)):
             for j in range(len(graphAdjMatrix)):
@@ -127,13 +127,13 @@ class LouvainEfficient():
                 
                 a = (node2inertia[i] * node2inertia[j]) / pow(denominator, 2)
                 
-                ijDenominator = np.linalg.norm(i)*np.linalg.norm(j)
+                ijDenominator = np.linalg.norm(nodeId2TfIdf[i])*np.linalg.norm(nodeId2TfIdf[j])
 
                 if (ijDenominator == float(0)):
                     b = 0
                     distanceMatrix[i][j] = 0
                 else:
-                    ijDistance = pow(np.dot(i, j)/ijDenominator, 2)
+                    ijDistance = pow(np.dot(nodeId2TfIdf[i], nodeId2TfIdf[j])/ijDenominator, 2)
                     distanceMatrix[i][j] = ijDistance 
                     b = ijDistance / denominator
 
@@ -146,8 +146,12 @@ class LouvainEfficient():
         inertiaSum = 0
 
         for community in community2nodes:
+            if (len(community2nodes[community]) < 2):
+                continue
             for i in community2nodes[community]:
                 for j in community2nodes[community]:
+                    if (j <= i):
+                        continue
                     inertiaSum += modularityMatrixInertia[i][j]
 
         return inertiaSum
