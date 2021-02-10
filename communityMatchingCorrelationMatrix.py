@@ -3,18 +3,25 @@ import numpy as np
 
 def getEvents(timeAData, timeBData):
 
-    allData = timeAData + timeBData
-
     authorsA = list(set([x['author'] for x in timeAData]))
     authorsB = list(set([x['author'] for x in timeBData]))
 
     allAuthors = list(set(authorsA + authorsB))
 
     authors2Ids = dict(zip(allAuthors, range(0, len(allAuthors))))
-    authors2Clusters = dict(zip([x['author'] for x in allData], [x['clusterIdSmooth'] for x in allData]))
 
-    noLinesA = len(set([x['clusterIdSmooth'] for x in timeAData]))
-    noLinesB = len(set([x['clusterIdSmooth'] for x in timeBData]))
+    communitiesA = list(set([x['clusterIdInertia_weight07'] for x in timeAData]))
+    communitiesB = list(set([x['clusterIdInertia_weight07'] for x in timeBData]))
+
+    noLinesA = len(communitiesA)
+    noLinesB = len(communitiesB)
+
+    clusters2IdsA = dict(zip(communitiesA, range(noLinesA)))
+    clusters2IdsB = dict(zip(communitiesB, range(noLinesB)))
+
+    authors2ClustersA = dict(zip([x['author'] for x in timeAData], [clusters2IdsA[x['clusterIdInertia_weight07']] for x in timeAData]))
+    authors2ClustersB = dict(zip([x['author'] for x in timeBData], [clusters2IdsB[x['clusterIdInertia_weight07']] for x in timeBData]))
+    
     noCols = len(allAuthors)
 
     timeA = np.zeros((noLinesA, noCols), dtype=int)
@@ -22,26 +29,28 @@ def getEvents(timeAData, timeBData):
 
     for author in authors2Ids:
         authorId = authors2Ids[author]
-        clusterId = authors2Clusters[author]
 
-        if (clusterId < len(timeA)):
-            timeA[clusterId][authorId] = 1
+        if (author in authors2ClustersA):
+            clusterIdA = authors2ClustersA[author]
+            timeA[clusterIdA][authorId] = 1
 
-        if (clusterId < len(timeB)):
-            timeB[clusterId][authorId] = 1
+        if (author in authors2ClustersB):
+            clusterIdB = authors2ClustersB[author]
+            timeB[clusterIdB][authorId] = 1
 
 
-    k1 = np.zeros((len(timeA), len(timeB)), dtype=int)
-    k2 = np.zeros((len(timeA), len(timeB)), dtype=int)
+    k1 = np.zeros((len(timeA), len(timeB)), dtype=float)
+    k2 = np.zeros((len(timeA), len(timeB)), dtype=float)
 
     line = 0
 
-    for clusterIdA in range(len(timeA)):
+    for clusterIdA in range(noLinesA):
+
         column = 0
-        for clusterIdB in range(len(timeB)):
+        for clusterIdB in range(noLinesB):
             
-            normA = np.linalg.norm(timeA[clusterIdA, :], ord = 1)
-            normB = np.linalg.norm(timeB[clusterIdB, :], ord = 1)
+            normA = np.sum(timeA[clusterIdA, :])
+            normB = np.sum(timeB[clusterIdB, :])
 
             k1[line][column] = np.dot(timeA[clusterIdA, :], timeB[clusterIdB, :])/normA if normA != 0 else 0
             k2[line][column] = np.dot(timeA[clusterIdA, :], timeB[clusterIdB, :])/normB if normB != 0 else 0
@@ -51,9 +60,9 @@ def getEvents(timeAData, timeBData):
 
     # process k1 and k2
 
-    theta = 0.3
-    k1[k1 <= theta] = 0
-    k2[k2 <= theta] = 0
+    # theta = 0.001
+    # k1[k1 <= theta] = 0
+    # k2[k2 <= theta] = 0
 
     for line in range(len(k1)):
         lineMax = np.max(k1[line])
@@ -62,10 +71,10 @@ def getEvents(timeAData, timeBData):
 
     for col in range(np.shape(k2)[1]):
         colMax = np.max(k2[:, col])
-        helper = k1[:, col]
+        helper = k2[:, col]
         helper[helper < colMax] = 0
 
-    return getMergesAndGrowths(k1, theta)
+    return getMergesAndGrowths(k1)
 
     # return getSplitsAndContractions(k2, theta)
 
@@ -89,7 +98,7 @@ def getSplitsAndContractions(k2, theta):
     return (splits, contractions)
 
 
-def getMergesAndGrowths(k1, theta):
+def getMergesAndGrowths(k1):
 
     def printStats():
 
@@ -124,7 +133,7 @@ def getMergesAndGrowths(k1, theta):
 
 
 dbClient = pymongo.MongoClient('localhost', 27017)
-db = dbClient.communityDetectionUSAElections
+db = dbClient.communityDetectionUSABidenInauguration
 
 allCollections = db.list_collection_names()
 
