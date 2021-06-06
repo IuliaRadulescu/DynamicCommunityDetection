@@ -7,6 +7,7 @@ import re
 import louvain
 import louvainEfficient
 from sklearn.feature_extraction.text import TfidfVectorizer
+from nltk.stem.porter import PorterStemmer
 import numpy as np
 
 class CommunityGraphBuilder(ABC):
@@ -76,7 +77,7 @@ class BuildAuthorsCommunityGraph(CommunityGraphBuilder):
             nodesToRemove = [v.index for v in self.g.vs if v.degree() == 0]
             self.g.delete_vertices(nodesToRemove)
 
-        self.addTfIdfAsAttributes()
+        # self.addTfIdfAsAttributes()
 
     def getEdges(self):
 
@@ -162,6 +163,8 @@ class BuildAuthorsCommunityGraph(CommunityGraphBuilder):
                 
         clusters = VertexClustering(self.g, self.g.vs[attributeField])
 
+        print('MODULARITY', clusters.modularity)
+
         plot(clusters)
 
 
@@ -176,8 +179,6 @@ class MongoDBClient:
         else:
             MongoDBClient.__instance = self
 
-        self.dbClient = pymongo.MongoClient('localhost', 27017)
-
     @staticmethod
     def getInstance():
         
@@ -188,6 +189,8 @@ class MongoDBClient:
 
     def updateAuthors(self, authors, clusterId, collectionName):
 
+        self.dbClient = pymongo.MongoClient('localhost', 27017)
+
         db = self.dbClient.communityDetectionUSABidenInauguration
 
         db[collectionName].update_many(
@@ -197,9 +200,11 @@ class MongoDBClient:
                 }
             },{
                 '$set': {
-                    'clusterIdInertia': clusterId
+                    'clusterIdSimple': clusterId
                 }
             })
+            
+        self.dbClient.close()
 
 def applyLouvainModule(collectionName, g):
 
@@ -213,19 +218,16 @@ def applyLouvainModule(collectionName, g):
 
     # updateClusters(clusters, collectionName)
 
-def applyLouvain(collectionName, g, louvainEfficientInstance, withInertia = True):
+def applyLouvain(collectionName, g, louvainEfficientInstance):
 
     graphAdjMatrix = g.get_adjacency()
     graphAdjMatrixNp = np.array(graphAdjMatrix.data)
 
-    nodeId2TfIdf = None
-
-    if (withInertia):
-        nodeId2TfIdf = dict(zip([node.index for node in g.vs], [node['tfIdf'] for node in g.vs]))
-
-    nodes2Communities = louvainEfficientInstance.louvain(graphAdjMatrixNp, nodeId2TfIdf)
+    nodes2Communities = louvainEfficientInstance.louvain(graphAdjMatrixNp)
 
     clusters = VertexClustering(g, nodes2Communities.values())
+
+    # plot(clusters)
 
     print('===> Final modularity ', clusters.modularity)
 
@@ -265,7 +267,7 @@ def getAllCollections(prefix):
 
     return sorted(allCollections)
 
-def applySimpleLouvainOnAllCollections(withInertia = False):
+def applySimpleLouvainOnAllCollections():
 
     allCollections = getAllCollections('quarter')
     louvainEfficientInstance = louvainEfficient.LouvainEfficient()
@@ -275,34 +277,40 @@ def applySimpleLouvainOnAllCollections(withInertia = False):
         print('===> Running Louvain on ', collectionName)
 
         community = getCommentsCommunity(collectionName)
-        applyLouvain(collectionName, community.getGraph(), louvainEfficientInstance, withInertia)
+        applyLouvain(collectionName, community.getGraph(), louvainEfficientInstance)
 
 
 def plotCollection(collectionName, attributeField):
 
-    community = getCommentsCommunity(collectionName, True)
+    community = getCommentsCommunity(collectionName, False)
     community.plotGraph(attributeField)
 
 def getCommonNodes(collectionName1, collectionName2):
 
-    community1 = getCommentsCommunity(collectionName1, True)
-    community2 = getCommentsCommunity(collectionName2, True)
+    community1 = getCommentsCommunity(collectionName1)
+    community2 = getCommentsCommunity(collectionName2)
 
     nodes1 = set([node['name'] for node in community1.getGraph().vs])
     nodes2 = set([node['name'] for node in community2.getGraph().vs])
 
     return nodes1.intersection(nodes2)
 
-applySimpleLouvainOnAllCollections(True)
+def analyzeCommonNodes():
 
-# commonNodes = getCommonNodes('quarter_05_02_30_05_02_45', 'quarter_05_02_45_05_03_00')
-# print('COMMON NODES = ', commonNodes)
+    allCollections = getAllCollections('quarter')
 
-# print(len(commonNodes))
+    for collectionId in range(len(allCollections) - 1):
+        currentCollection = allCollections[collectionId]
+        nextCollection = allCollections[collectionId + 1]
+        commonNodes = getCommonNodes(currentCollection, nextCollection)
+        print('We have ', commonNodes)
 
-# print(nodeId2TfIdf)
+applySimpleLouvainOnAllCollections()
 
-# print(list(community.getGraph().vs))
+# analyzeCommonNodes()
+
+# commonNodes = getCommonNodes('five_20_18_30_20_18_35', 'five_20_18_35_20_18_40')
+# print('We have', len(commonNodes), 'common nodes')
 
 # louvainEfficientInstance = louvainEfficient.LouvainEfficient()
 # nodes2Communities = louvainEfficientInstance.louvain(graphAdjMatrixNp, nodeId2TfIdf)
@@ -310,5 +318,4 @@ applySimpleLouvainOnAllCollections(True)
 
 # plot(clusters)
 
-# plotCollection('quarter_20_20_15_20_20_30', 'clusterIdSimple')
-# plotCollection('quarter_20_20_15_20_20_30', 'clusterIdSimple')
+# plotCollection('quarter_21_15_00_21_15_15', 'clusterIdKMeans')

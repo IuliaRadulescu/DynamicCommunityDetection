@@ -36,86 +36,67 @@ def convertTimestampIntervalToReadableInterval(timestampInterval):
     return humanReadableInterval        
  
 intervalInSeconds = 60 * 15
-startTimestamp = 1604534436
-endTimestamp = 1608158481
+startTimestamp = 1610928000
+endTimestamp = 1611359999
 
-# 2 hours intervals
+# n minutes intervals
 timeIntervals = createTimeIntervals(startTimestamp, endTimestamp, intervalInSeconds)
 
 dbClient = pymongo.MongoClient('localhost', 27017)
-db = dbClient.communityDetectionUSAElections
+db = dbClient.communityDetectionUSABidenInauguration
 
 allComments = list(db.comments.find()) + list(db.submissions.find())
 
 # use a generic name for comments with no authors
 genericAuthorName = 'JhonDoe25122020'
 
-comments2RedditIds = {}
+timestamps2Comments = {}
+timestamps2RedditIds = {}
 interactionsDict = {}
 toInsert = {}
 
+redditIds2Comments = dict(zip([comment['redditId'] for comment in allComments], [comment for comment in allComments]))
+
 for comment in allComments:
 
     if (comment['author'] == False):
         comment['author'] = genericAuthorName
 
-    if (comment['redditId'] not in comments2RedditIds):
-        comments2RedditIds[comment['redditId']] = []
+    createdTimestamp = int(comment['created'])
+
+    if (createdTimestamp not in timestamps2Comments):
+        timestamps2Comments[createdTimestamp] = []
+
+    if (createdTimestamp not in timestamps2RedditIds):
+        timestamps2RedditIds[createdTimestamp] = []
     
-    comments2RedditIds[comment['redditId']] = comment
+    timestamps2Comments[createdTimestamp].append(comment)
+    
+    # add parent too
+    if ('parentRedditId' in comment):
+        parentRedditId = comment['parentRedditId'].split('_')[1]
 
-'''
-Get each author's intractions with other authors and generate a timestamp dependent key.
-Add the direct parent only if it is in the interval
-Do this recursively until there are no parents left
-'''
+        if (parentRedditId not in timestamps2RedditIds[createdTimestamp]):
+            timestamps2Comments[createdTimestamp].append(redditIds2Comments[parentRedditId])
+            timestamps2RedditIds[createdTimestamp].append(parentRedditId)
 
-for comment in allComments:
 
-    if (comment['author'] == False):
-        comment['author'] = genericAuthorName
+for createdTimestamp in timestamps2Comments:
 
-    # skip parents, will be added anyway
-    if ('parentAuthorId' not in comment or comment['parentAuthorId'] == False):
+    if (createdTimestamp < startTimestamp or createdTimestamp > endTimestamp):
         continue
 
-    interactionId = comment['author'] + '|*|' + str(int(comment['created']))
+    associatedInterval = round((createdTimestamp - startTimestamp) / intervalInSeconds)
 
-    if (interactionId not in interactionsDict):
-        interactionsDict[interactionId] = []
-
-    interactionsDict[interactionId] += [comment]
-
-    # check if parent should also be added
-    parentComment = comments2RedditIds[comment['parentRedditId'].split('_')[1]]
-
-    commentInterval = round(int((int(comment['created'] - startTimestamp) / intervalInSeconds)))
-    parentInterval = round(int((int(parentComment['created'] - startTimestamp) / intervalInSeconds)))
-
-    if (commentInterval == parentInterval):
-        interactionsDict[interactionId] += [parentComment]
-
-del comments2RedditIds
-del allComments
-
-print(len(interactionsDict))
-
-for interactionKey in interactionsDict:
-    
-    createdTimestamp = interactionKey.split('|*|')[1]
-
-    associatedInterval = round(int((int(createdTimestamp) - startTimestamp) / intervalInSeconds))
+    if associatedInterval >= len(timeIntervals):
+        continue
 
     dbName = convertTimestampIntervalToReadableInterval(timeIntervals[associatedInterval])
 
     if (dbName not in toInsert):
         toInsert[dbName] = []
 
-    toInsert[dbName] += interactionsDict[interactionKey]
-
-del interactionsDict
-
-print(len(toInsert))
+    toInsert[dbName] += timestamps2Comments[createdTimestamp]
 
 for dbName in toInsert:
     print('Insert into ', dbName)
