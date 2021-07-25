@@ -1,26 +1,40 @@
-import igraph
 import pymongo
-from igraph import Graph, VertexClustering
 import numpy as np
 from numpy import dot
 from numpy.linalg import norm
+from sklearn.metrics.pairwise import rbf_kernel
 
 # https://plotly.com/python/sankey-diagram/
-
-dbClient = pymongo.MongoClient('localhost', 27017)
-db = dbClient.communityDetectionUSABidenInauguration
-
+'''
+@returns: a list of sorted strings representing the database collections
+'''
 def getAllSnapshots(prefix):
+
+    dbClient = pymongo.MongoClient('localhost', 27017)
+    db = dbClient.communityDetectionUSABidenInauguration
 
     allCollections = db.list_collection_names()
 
     allCollections = list(filter(lambda x: prefix in x, allCollections))
 
+    dbClient.close()
+
     return sorted(allCollections)
 
+'''
+@returns: dictionary, where keys are strings of the form: communityId_timeStep
+            and the values are numpy arrays -> a numpy array is the centroid of distinct centroids for the objects, retrieved by communityAttribute
+'''
 def getCommunitiesForSnapshot(collectionName, timeStep, communityAttribute):
 
+    dbClient = pymongo.MongoClient('localhost', 27017)
+    db = dbClient.communityDetectionUSABidenInauguration
+
     allComments = list(db[collectionName].find())
+
+    dbClient.close()
+
+    print('Finished reading comments from mongo!', collectionName)
 
     collectionCentroids = {}
     timeStepDict = {}
@@ -29,7 +43,7 @@ def getCommunitiesForSnapshot(collectionName, timeStep, communityAttribute):
         dictKey = str(x[communityAttribute]) + '_' + str(timeStep)
 
         if (x['clusterIdKMeans'] not in collectionCentroids):
-            collectionCentroids[x['clusterIdKMeans']] = x['centroid']
+            collectionCentroids[x['clusterIdKMeans']] = tuple(x['centroid'])
         
         if dictKey in timeStepDict:
             timeStepDict[dictKey].append(x['clusterIdKMeans'])
@@ -37,8 +51,10 @@ def getCommunitiesForSnapshot(collectionName, timeStep, communityAttribute):
             timeStepDict[dictKey] = [x['clusterIdKMeans']]
 
     for dictKey in timeStepDict:
-        timeStepDict[dictKey] = set(timeStepDict[dictKey])
-        timeStepDict[dictKey] = [collectionCentroids[clusterIdKMeans] for clusterIdKMeans in timeStepDict[dictKey]]
+        # we need all centroids! so the mean will be accurate
+        dictKeyCentroids = tuple((collectionCentroids[clusterIdKMeans] for clusterIdKMeans in timeStepDict[dictKey]))
+        # compute centroid of centroids
+        timeStepDict[dictKey] = tuple(centroid(np.array(dictKeyCentroids)))
 
     return timeStepDict
 
@@ -51,23 +67,43 @@ def updateFronts(fronts, frontEvents, frontId2CommunityId):
         # remove old front
         del fronts[frontId]
         # add replacements
-        for item in frontEvents[1][frontId]:
-            fronts += [item[1]]
-            frontId2CommunityId[len(fronts)-1] = item[0]
-    
-    for frontId in frontEvents[2]:
-        for item in frontEvents[2]:
-            fronts += [item[1]]
-            frontId2CommunityId[len(fronts)-1] = item[0]
+        for frontMergeEvent in frontEvents[1][frontId]:
+            eventKey = frontMergeEvent[0]
+            centroid = frontMergeEvent[1]
+
+            fronts.append(centroid)
+            frontId2CommunityId[len(fronts)-1] = eventKey
+            
+    for frontMergeEvent in frontEvents[2]:
+        eventKey = frontMergeEvent[0]
+        centroid = frontMergeEvent[1]
+
+        fronts.append(centroid)
+        frontId2CommunityId[len(fronts)-1] = eventKey
+
+    fronts = list(set(fronts))
 
     return (frontId2CommunityId, fronts)
 
-def centroid(arr, timeStep):
+def centroid(arr):
     length = arr.shape[0]
     centroid = []
     for dim in range(arr.shape[1]):
         centroid.append(np.sum(arr[:, dim])/length)
-    return np.array(centroid)
+    return np.array(centroid) * 10
+
+def communityItemsToTuples(community):
+    return [tuple(item) for item in community]
+
+def averageEuclideanPairwise(arrA, arrB):
+
+    distances = []
+
+    for elemA in arrA:
+        for elemB in arrB:
+            distances.append(np.linalg.norm(elemA - elemB))
+
+    return np.mean(np.array(distances))
 
 allSnapshots = getAllSnapshots('quarter')
 
@@ -86,12 +122,14 @@ snapshotCommunities0 = getCommunitiesForSnapshot(allSnapshots[0], 0, 'clusterIdS
 
 # the initial communities are the initial fronts
 communitiesTimestepMapping = dict(zip(snapshotCommunities0.keys(), [[] for i in range(len(snapshotCommunities0))]))
-fronts = [item[1] for item in snapshotCommunities0.items()]
+
+'''
+fronts = list of fronts; a front = a tuple of tuples, where a tuple represents a centroid
+'''
+fronts = list(set([centroid for _, centroid in snapshotCommunities0.items()]))
 frontId2CommunityId = dict(zip(range(len(fronts)), [communityId for communityId in snapshotCommunities0.keys()]))
 
 for timeStep in range(1, len(allSnapshots)):
-
-    print('TIME STEP', timeStep, 'comm', allSnapshots[timeStep])
 
     snapshotCommunities = getCommunitiesForSnapshot(allSnapshots[timeStep], timeStep, 'clusterIdSimple')
 
@@ -104,25 +142,39 @@ for timeStep in range(1, len(allSnapshots)):
 
     # map communities from dynamicCommunities list (t-1) to the ones in snapshot (t)
     for communityIdA in snapshotCommunities:
-
-        centroidsA = snapshotCommunities[communityIdA]
-
-        centroidOfCentroidsA = centroid(np.array(centroidsA), timeStep)
+        centroidA = snapshotCommunities[communityIdA]
+        processedCentroidsA = np.array([centroidA])
         
-        bestCosine = 0.5
+        # similarity ranges from 0 to 1
+        bestSim = 0.5
         bestFrontId = None
 
+        similarities = []
+        distancesToFronts = {}
+
+        processedCentroidsB = []
+
         for frontId in range(len(fronts)):
+            centroidB = fronts[frontId]
+            processedCentroidsB.append(centroidB)
 
-            centroidsB = fronts[frontId]
+        processedCentroidsB = np.array(processedCentroidsB)
 
-            centroidOfCentroidsB = centroid(np.array(centroidsB), timeStep)
-            
-            cosine = dot(centroidOfCentroidsA, centroidOfCentroidsB)/(norm(centroidOfCentroidsA)*norm(centroidOfCentroidsB))
+        distances = rbf_kernel(processedCentroidsA, processedCentroidsB)[0]
 
-            if (cosine > bestCosine):
-                bestCosine = cosine
-                bestFrontId = frontId
+        distancesSortedIndexes = np.argsort(distances)
+        maxDistanceIndex = distancesSortedIndexes[-1]
+
+        # print('Similarity:', distances[maxDistanceIndex])
+
+        if (distances[maxDistanceIndex] > bestSim):
+            bestFrontId = maxDistanceIndex
+
+        if (distances[maxDistanceIndex] < 0.01):
+            print('=================')
+            print('Processed centroids A', processedCentroidsA)
+            print('Processed centroids B', processedCentroidsB)
+            print('Snapshot:', allSnapshots[timeStep])
         
         if (bestFrontId != None):
             # front transformation event
@@ -136,19 +188,18 @@ for timeStep in range(1, len(allSnapshots)):
             # front addition event
             frontEvents[2].append((communityIdA, snapshotCommunities[communityIdA]))
 
-    # update mappings
+    # update mappings so we have the new snapshot keys
     for key in snapshotCommunities.keys():
         communitiesTimestepMapping[key] = []
 
     (frontId2CommunityId, fronts) = updateFronts(fronts, frontEvents, frontId2CommunityId)
 
+    print('We have', len(fronts), 'fronts')
+
 finalMappings = {}
 
 for communityId in communitiesTimestepMapping:
     if (len(communitiesTimestepMapping[communityId]) > 0):
-        if (communityId not in finalMappings):
-            finalMappings[communityId] = []
         finalMappings[communityId] = communitiesTimestepMapping[communityId]
     
-
 print(finalMappings)
