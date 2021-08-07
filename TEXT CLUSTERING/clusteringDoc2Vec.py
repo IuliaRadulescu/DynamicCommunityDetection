@@ -3,7 +3,7 @@ from datetime import datetime
 import numpy as np
 import re
 import string
-from sklearn.cluster import KMeans
+from sphereclusterGit.spherecluster import spherical_kmeans
 from sklearn.metrics import silhouette_score
 from gensim.models.doc2vec import Doc2Vec, TaggedDocument
 import nltk
@@ -77,11 +77,11 @@ class Clusterer:
         self.docs2Tags = docs2Tags
 
     def computeDoc2VecEmbeddings(self):
-        X = [self.documentVectors.get_vector(self.docs2Tags[collectionName + '_' + str(documentNr)], norm=True) for documentNr in range(len(self.preprocessedDataset))]
+        X = [self.documentVectors.get_vector(self.docs2Tags[self.collectionName + '_' + str(documentNr)], norm=True) for documentNr in range(len(self.preprocessedDataset))]
         return X
 
     def doClustering(self):
-        X = self.computeDoc2VecEmbeddings()
+        X = np.array(self.computeDoc2VecEmbeddings())
 
         allCommentsLen = len(self.preprocessedDataset)
 
@@ -94,13 +94,13 @@ class Clusterer:
 
         for noClusters in range(min(3, (allCommentsLen - 1)), min(20, allCommentsLen)):
             
-            km = KMeans(n_clusters=noClusters, init='k-means++', max_iter=600, n_init=1)
-            km.fit(X)
+            skm = spherical_kmeans.SphericalKMeans(n_clusters=noClusters, init='k-means++', n_jobs=20)
+            skm.fit(X)
 
-            if (len(list(set(km.labels_))) <= 1):
+            if (len(list(set(skm.labels_))) <= 1):
                 continue
 
-            sscore = silhouette_score(X, km.labels_)
+            sscore = silhouette_score(X, skm.labels_)
 
             if (sscore > maxSilhouette):
                 maxSilhouette = sscore
@@ -108,12 +108,12 @@ class Clusterer:
 
             # print('Silhouette for', noClusters, 'is', sscore)
 
-        # print('Best noClusters is', maxNoClusters)
+        print('Best noClusters is', maxNoClusters)
 
-        km = KMeans(n_clusters=maxNoClusters, init='k-means++', max_iter=600, n_init=1)
-        km.fit(X)
+        skm = spherical_kmeans.SphericalKMeans(n_clusters=maxNoClusters, init='k-means++', n_jobs=20)
+        skm.fit(X)
 
-        return (km.labels_, km.cluster_centers_)
+        return (skm.labels_, skm.cluster_centers_)
 
     def updateClusters(self, labels, centroids):
 
@@ -157,7 +157,7 @@ class MongoDBClient:
 
         self.dbClient = pymongo.MongoClient('localhost', 27017)
 
-        db = self.dbClient.communityDetectionUSABidenInauguration
+        db = self.dbClient.communityDetectionUSAProtestPolitics
 
         db[collectionName].update_many(
             {
@@ -194,7 +194,7 @@ nltk.download('punkt')
 nltk.download('stopwords')
 
 dbClient = pymongo.MongoClient('localhost', 27017)
-db = dbClient.communityDetectionUSABidenInauguration
+db = dbClient.communityDetectionUSAProtestPolitics
 
 allCollections = getAllCollections()
 
@@ -217,7 +217,7 @@ for collectionName in allCollections:
 
 dbClient.close()
 
-print('1 === Finished preprocessing')
+# print('1 === Finished preprocessing')
 
 docs2Tags = {}
 
@@ -231,9 +231,14 @@ print('FINISHED DOCUMENTS ITERATOR', documentsIterator)
 
 # compute doc2vec model
 # 24 neurons (vector size) and 3 words window - because we have small documents
-doc2vecModel = computeDoc2VecModel(24, 3, allDocuments)
+# doc2vecModel = computeDoc2VecModel(24, 3, allDocuments)
 
-print('2 === Finished doc2vec training')
+# print('2 === Finished doc2vec training')
+
+# save model to file
+# doc2vecModel.save('doc2VecTrainingProtests')
+
+doc2vecModel = Doc2Vec.load('doc2VecTrainingProtests')
 
 for collectionName in collections2Documents:
 

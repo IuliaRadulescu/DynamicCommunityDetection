@@ -1,6 +1,7 @@
 
 import plotly.graph_objects as go
 import alluvialData
+import random
 
 alluvialData = alluvialData.getAlluvialData()
 
@@ -55,19 +56,27 @@ filteredAlluvialData = filterAlluvialData(alluvialData, list(alluvialData.keys()
 
 (label, source, target, value) = parseAlluvailData(filteredAlluvialData)
 
+generateRandomColor = lambda: 'rgba(' + str(random.randint(0,255)) + ',' + str(random.randint(0,255)) + ',' + str(random.randint(0,255)) + ', 0.8)'
+
+def generateRandomColorList(listLen):
+  return [generateRandomColor() for _ in range(listLen)]
+
+color = generateRandomColorList(len(source))
+
 fig = go.Figure(data=[go.Sankey(
     node = dict(
       pad = 15,
       thickness = 20,
       line = dict(color = "black", width = 0.5),
       label = label,
-      color = "blue"
+      color = color
     ),
     link = dict(
       source = source, # indices correspond to labels
       target = target,
-      value = value
+      value = value,
+      color = color
   ))])
 
-fig.update_layout(title_text="Community evolution", font_size=10)
-fig.show()
+fig.update_layout(title_text="Community evolution using text matching, Biden inauguration", font_size=10)
+fig.write_image("images/biden_text_communities_bugfix.png")

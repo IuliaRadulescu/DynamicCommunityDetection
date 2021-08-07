@@ -5,7 +5,13 @@ from numpy.linalg import norm
 import argparse
 import json
 
-def doComputation(dbName, optimalSim, outputFileName):
+def doComputation(dbName, alpha, optimalSim, outputFileName):
+
+    '''
+    constants
+    '''
+    TYPE_STRUCTURAL = 1
+    TYPE_TEXTUAL = 2
 
     '''
     @returns: a list of sorted strings representing the database collections
@@ -61,13 +67,19 @@ def doComputation(dbName, optimalSim, outputFileName):
             dictKey = str(author2Attributes[author]['structuralId']) + '_' + str(timeStep)
 
             if dictKey not in timeStepDict:
-                timeStepDict[dictKey] = author2Attributes[author]['textualIds']
+                timeStepDict[dictKey] = {TYPE_STRUCTURAL: [], TYPE_TEXTUAL: []}
+                timeStepDict[dictKey][TYPE_STRUCTURAL] = [author]
+                timeStepDict[dictKey][TYPE_TEXTUAL] = author2Attributes[author]['textualIds']
             else:
-                timeStepDict[dictKey].extend(author2Attributes[author]['textualIds'])
+                timeStepDict[dictKey][TYPE_STRUCTURAL].append(author)
+                timeStepDict[dictKey][TYPE_TEXTUAL].extend(author2Attributes[author]['textualIds'])
+
+        # print('TIME STEP DICT', timeStepDict)
 
         for dictKey in timeStepDict:
-            timeStepDict[dictKey] = list(set(timeStepDict[dictKey]))
-            timeStepDict[dictKey] = tuple([collectionCentroids[clusterIdKMeans] for clusterIdKMeans in timeStepDict[dictKey]])
+            timeStepDict[dictKey][TYPE_STRUCTURAL] = list(set(timeStepDict[dictKey][TYPE_STRUCTURAL]))
+            timeStepDict[dictKey][TYPE_TEXTUAL] = list(set(timeStepDict[dictKey][TYPE_TEXTUAL]))
+            timeStepDict[dictKey][TYPE_TEXTUAL] = tuple([collectionCentroids[clusterIdKMeans] for clusterIdKMeans in timeStepDict[dictKey][TYPE_TEXTUAL]])
 
         return timeStepDict
 
@@ -83,8 +95,12 @@ def doComputation(dbName, optimalSim, outputFileName):
         for frontId in frontEvents[1]:
             for frontMergeEvent in frontEvents[1][frontId]:
                 eventKey = frontMergeEvent[0]
-                staticCommunityCentroids = frontMergeEvent[1]
-                newFront = staticCommunityCentroids
+
+                staticCommunityAuthors = frontMergeEvent[1][TYPE_STRUCTURAL]
+                staticCommunityCentroids = frontMergeEvent[1][TYPE_TEXTUAL]
+
+                newFront = {TYPE_STRUCTURAL: staticCommunityAuthors, TYPE_TEXTUAL: staticCommunityCentroids}
+                
                 if newFront not in fronts:
                     fronts.append(newFront)
                     frontId2CommunityId[len(fronts)-1] = eventKey
@@ -92,14 +108,15 @@ def doComputation(dbName, optimalSim, outputFileName):
         for frontCreateEvent in frontEvents[2]:
 
             eventKey = frontCreateEvent[0]
-            staticCommunityCentroids = frontCreateEvent[1]
-            newFront = staticCommunityCentroids
+
+            staticCommunityAuthors = frontCreateEvent[1][TYPE_STRUCTURAL]
+            staticCommunityCentroids = frontCreateEvent[1][TYPE_TEXTUAL]
+
+            newFront = {TYPE_STRUCTURAL: staticCommunityAuthors, TYPE_TEXTUAL: staticCommunityCentroids}
 
             if newFront not in fronts:
                 fronts.append(newFront)
                 frontId2CommunityId[len(fronts)-1] = eventKey
-
-        fronts = list(set(fronts))
 
         return (frontId2CommunityId, fronts)
 
@@ -124,7 +141,11 @@ def doComputation(dbName, optimalSim, outputFileName):
     fronts = []
 
     for staticCommunity0 in snapshotCommunities0:
-        front = snapshotCommunities0[staticCommunity0]
+        front = {TYPE_STRUCTURAL: [], TYPE_TEXTUAL: []}
+
+        front[TYPE_STRUCTURAL] = snapshotCommunities0[staticCommunity0][TYPE_STRUCTURAL]
+        front[TYPE_TEXTUAL] = snapshotCommunities0[staticCommunity0][TYPE_TEXTUAL]
+
         fronts.append(front)
     
     '''
@@ -148,13 +169,28 @@ def doComputation(dbName, optimalSim, outputFileName):
         # map communities from dynamicCommunities list (t-1) to the ones in snapshot (t)
         for communityIdA in snapshotCommunities:
 
-            centroidsTupleA = snapshotCommunities[communityIdA] # (centroid_1, centroid_2, ..., centroid_n)        
+            authorsA = snapshotCommunities[communityIdA][TYPE_STRUCTURAL]
+            centroidsTupleA = snapshotCommunities[communityIdA][TYPE_TEXTUAL] # (centroid_1, centroid_2, ..., centroid_n)        
             
             bestFrontIds = []
 
             for frontId in range(len(fronts)):
                 
-                centroidsTupleB = fronts[frontId] # (centroid_1, centroid_2, ..., centroid_n) - a front is actually a static community
+                authorsB = list(set(fronts[frontId][TYPE_STRUCTURAL]))
+                centroidsTupleB = fronts[frontId][TYPE_TEXTUAL] # (centroid_1, centroid_2, ..., centroid_n) - a front is actually a static community
+                
+                # print('FRONT', frontId)
+                # print('==============')
+                # print('CENTROIDSB', cb)getCommunitiesForSnapshot
+                # determine structural sim
+                intersect = len(list(set(authorsA) & set(authorsB)))
+                reunion = len(list(set(authorsA + authorsB)))
+
+                jaccard = intersect/reunion
+
+                if (jaccard == 1):
+                    print('authorsA', authorsA)
+                    print('authorsB', authorsB)
 
                 # determine textual sim
                 cosineSimilarities = []
@@ -174,13 +210,16 @@ def doComputation(dbName, optimalSim, outputFileName):
                 elif (centroidsTupleB, centroidsTupleA) in centroidTuples2Distances:
                     minSimilarity = centroidTuples2Distances[(centroidsTupleB, centroidsTupleA)]
 
-                fullSimilarity = minSimilarity
+                if (minSimilarity < 0):
+                    minSimilarity = 0
+
+                fullSimilarity = alpha * jaccard + (1-alpha) * minSimilarity
 
                 if (fullSimilarity > 1):
                     print('Full similarity is greater than 1')
                 
                 if (fullSimilarity > optimalSim):
-                    print('SIM IS BIGGER', fullSimilarity)
+                    print('SIM IS BIGGER', fullSimilarity, jaccard, minSimilarity, alpha, ((1-alpha) * minSimilarity))
                     bestFrontIds.append(frontId)
 
             # print('BEST FRONTS', bestFrontIds)
@@ -217,13 +256,15 @@ def doComputation(dbName, optimalSim, outputFileName):
 parser = argparse.ArgumentParser()
 
 parser.add_argument('-db', '--db', type=str, help='The database to read from')
+parser.add_argument('-alpha', '--alpha', type=float, help='Structural vs. textual weight')
 parser.add_argument('-sim', '--sim', type=float, help='The minimum similarity to match communities')
 parser.add_argument('-o', '--o', type=str, help='The json output file')
 
 args = parser.parse_args()
 
 dbName = args.db
+alpha = args.alpha
 optimalSim = args.sim
 outputFileName = args.o
 
-doComputation(dbName, optimalSim, outputFileName)
+doComputation(dbName, alpha, optimalSim, outputFileName)

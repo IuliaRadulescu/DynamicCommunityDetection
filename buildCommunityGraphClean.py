@@ -4,10 +4,6 @@ from igraph import Graph, VertexClustering
 from igraph import plot
 from abc import ABC, abstractclassmethod, abstractmethod
 import re
-import louvain
-import louvainEfficient
-from sklearn.feature_extraction.text import TfidfVectorizer
-from nltk.stem.porter import PorterStemmer
 import numpy as np
 
 class CommunityGraphBuilder(ABC):
@@ -77,8 +73,6 @@ class BuildAuthorsCommunityGraph(CommunityGraphBuilder):
             nodesToRemove = [v.index for v in self.g.vs if v.degree() == 0]
             self.g.delete_vertices(nodesToRemove)
 
-        # self.addTfIdfAsAttributes()
-
     def getEdges(self):
 
         def getEdgesFromRecord(record, authors):
@@ -104,49 +98,6 @@ class BuildAuthorsCommunityGraph(CommunityGraphBuilder):
         nodesList = list(map(lambda x: self.genericAuthorName if x == False else x, nodesList))
         
         return nodesList
-
-    def removeLinks(self, comments):
-        return list(map(lambda x: re.sub(r'(https?://[^\s]+)', '', x), comments))
-
-    def removeRedditReferences(self, comments):
-        return list(map(lambda x: re.sub(r'(/r/[^\s]+)', '', x), comments))
-
-    def removePunctuation(self, comments):
-        return list(map(lambda x: re.sub('[,.!?"\'\\n:*]', '', x), comments))
-
-    def getFeatureVectors(self, comments):
-        vectorizer = TfidfVectorizer(use_idf=True, stop_words='english')
-        return vectorizer.fit_transform(comments).toarray()
-
-    def addTfIdfAsAttributes(self):
-
-        authorNames = [node['name'] for node in self.g.vs]
-    
-        authors2comments = {}
-
-        for elem in self.dataset:
-            if elem['author'] == False:
-                elem['author'] = self.genericAuthorName
-            if elem['author'] not in authorNames:
-                continue
-            if (elem['author'] not in authors2comments):
-                authors2comments[elem['author']] = str(elem['body'])
-                continue
-            authors2comments[elem['author']] += ' ' + str(elem['body'])
-
-        allComments = [elem[1] for elem in authors2comments.items()]
-
-        allComments = self.removeLinks(allComments)
-        allComments = self.removeRedditReferences(allComments)
-        allComments = self.removePunctuation(allComments)
-
-        featureVectors = self.getFeatureVectors(allComments)
-        featureVectorIterator = 0
-
-        for author in authors2comments.keys():
-            nodeId = self.g.vs.find(name = author).index
-            self.g.vs[nodeId]['tfIdf'] = featureVectors[featureVectorIterator]
-            featureVectorIterator += 1
 
     def getGraph(self):
         return self.g
@@ -216,21 +167,6 @@ def applyLouvainModule(collectionName, g):
 
     print('The modularity is ', modularity_score)
 
-    # updateClusters(clusters, collectionName)
-
-def applyLouvain(collectionName, g, louvainEfficientInstance):
-
-    graphAdjMatrix = g.get_adjacency()
-    graphAdjMatrixNp = np.array(graphAdjMatrix.data)
-
-    nodes2Communities = louvainEfficientInstance.louvain(graphAdjMatrixNp)
-
-    clusters = VertexClustering(g, nodes2Communities.values())
-
-    # plot(clusters)
-
-    print('===> Final modularity ', clusters.modularity)
-
     updateClusters(clusters, collectionName)
 
 def updateClusters(clusters, collectionName):
@@ -258,26 +194,34 @@ def getCommentsCommunity(collectionName, justNodesWithEdges = False):
 
     return commentsCommunity
 
-def getAllCollections(prefix):
+def getAllCollections(prefix, startWithCollection = False):
+
+    def filterCollections(c, prefix, startWithCollection):
+        startWithPrefix = prefix in c
+
+        if (startWithCollection == False):
+            return startWithPrefix
+        
+        return startWithPrefix and (c > startWithCollection)
 
     allCollections = db.list_collection_names()
 
     prefix = 'quarter'
-    allCollections = list(filter(lambda x: prefix in x, allCollections))
+    allCollections = list(filter(lambda c: filterCollections(c, prefix, startWithCollection), allCollections))
 
     return sorted(allCollections)
 
 def applySimpleLouvainOnAllCollections():
 
     allCollections = getAllCollections('quarter')
-    louvainEfficientInstance = louvainEfficient.LouvainEfficient()
 
     for collectionName in allCollections:
 
         print('===> Running Louvain on ', collectionName)
 
         community = getCommentsCommunity(collectionName)
-        applyLouvain(collectionName, community.getGraph(), louvainEfficientInstance)
+
+        applyLouvainModule(collectionName, community.getGraph())
 
 
 def plotCollection(collectionName, attributeField):
@@ -285,37 +229,4 @@ def plotCollection(collectionName, attributeField):
     community = getCommentsCommunity(collectionName, False)
     community.plotGraph(attributeField)
 
-def getCommonNodes(collectionName1, collectionName2):
-
-    community1 = getCommentsCommunity(collectionName1)
-    community2 = getCommentsCommunity(collectionName2)
-
-    nodes1 = set([node['name'] for node in community1.getGraph().vs])
-    nodes2 = set([node['name'] for node in community2.getGraph().vs])
-
-    return nodes1.intersection(nodes2)
-
-def analyzeCommonNodes():
-
-    allCollections = getAllCollections('quarter')
-
-    for collectionId in range(len(allCollections) - 1):
-        currentCollection = allCollections[collectionId]
-        nextCollection = allCollections[collectionId + 1]
-        commonNodes = getCommonNodes(currentCollection, nextCollection)
-        print('We have ', commonNodes)
-
 applySimpleLouvainOnAllCollections()
-
-# analyzeCommonNodes()
-
-# commonNodes = getCommonNodes('five_20_18_30_20_18_35', 'five_20_18_35_20_18_40')
-# print('We have', len(commonNodes), 'common nodes')
-
-# louvainEfficientInstance = louvainEfficient.LouvainEfficient()
-# nodes2Communities = louvainEfficientInstance.louvain(graphAdjMatrixNp, nodeId2TfIdf)
-# clusters = VertexClustering(community.getGraph(), nodes2Communities.values())
-
-# plot(clusters)
-
-# plotCollection('quarter_21_15_00_21_15_15', 'clusterIdKMeans')
