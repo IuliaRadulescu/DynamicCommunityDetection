@@ -66,28 +66,78 @@ def doComputation(dbName, optimalSim, outputFileName):
                 timeStepDict[dictKey].extend(author2Attributes[author]['textualIds'])
 
         for dictKey in timeStepDict:
-            timeStepDict[dictKey] = list(set(timeStepDict[dictKey]))
-            timeStepDict[dictKey] = tuple([collectionCentroids[clusterIdKMeans] for clusterIdKMeans in timeStepDict[dictKey]])
+            timeStepDict[dictKey] = [collectionCentroids[clusterIdKMeans] for clusterIdKMeans in timeStepDict[dictKey]]
+            timeStepDict[dictKey] = tuple(centeroidnp(np.array(timeStepDict[dictKey])))
 
         return timeStepDict
+
+    def centeroidnp(arr):
+        length, dim = arr.shape
+        return np.array([np.sum(arr[:, i])/length for i in range(dim)])
 
     '''
     frontsEvents = {1: {}, 2: []}
     '''
-    def updateFronts(fronts, frontEvents, frontId2CommunityId):
+    def updateFronts(fronts, frontEvents, frontId2CommunityId): 
         
-        # remove things which should be removed
-        fronts = [fronts[frontId] for frontId in range(1, len(fronts)) if frontId not in frontEvents[1]]
-        
-        # add replacements
-        for frontId in frontEvents[1]:
-            for frontMergeEvent in frontEvents[1][frontId]:
-                eventKey = frontMergeEvent[0]
-                staticCommunityCentroids = frontMergeEvent[1]
-                newFront = staticCommunityCentroids
-                if newFront not in fronts:
-                    fronts.append(newFront)
-                    frontId2CommunityId[len(fronts)-1] = eventKey
+        # remove things which should be removed if necessary
+
+        indicesToRemove = frontEvents[1].keys()
+
+        if (len(indicesToRemove) > 0):
+
+            # !!! frontId2CommunityId needs to be updated; handle replacements and deletions
+
+            # sort the indices to remove
+            indicesToRemove = sorted(indicesToRemove)
+
+            oldIdxToNewIdx = dict(zip(range(indicesToRemove[0]), range(indicesToRemove[0])))
+
+            idIdx = 0
+            step = 1
+
+            while idIdx < (len(indicesToRemove) - 1):
+
+                currentIdxToRemove = indicesToRemove[idIdx]
+                nextIdxToRemove = indicesToRemove[idIdx + 1]
+                
+                oldIdxToNewIdx[currentIdxToRemove] = -1
+                oldIdxToNewIdx[nextIdxToRemove] = -1
+
+                k = currentIdxToRemove + 1
+
+                while k < nextIdxToRemove:
+                    oldIdxToNewIdx[k] = k - step
+                    k += 1
+
+                idIdx += 1
+                step += 1
+
+            # for the rest of the indices just decrement
+            for idx in range(idIdx, len(frontId2CommunityId.keys())):
+                oldIdxToNewIdx[idx] = idx - step
+
+            newFrontId2CommunityId = {}
+
+            for frontId in frontId2CommunityId:
+
+                if (oldIdxToNewIdx[frontId] != -1):
+                    newFrontId2CommunityId[oldIdxToNewIdx[frontId]] = frontId2CommunityId[frontId]
+
+            frontId2CommunityId = newFrontId2CommunityId
+
+            # !!! remove the fronts with specific indices; take care, this changes the fronts list indices
+            fronts = [fronts[frontId] for frontId in range(len(fronts)) if frontId not in indicesToRemove]
+
+            # add replacements
+            for frontId in frontEvents[1]:
+                for frontMergeEvent in frontEvents[1][frontId]:
+                    eventKey = frontMergeEvent[0]
+                    staticCommunityCentroids = frontMergeEvent[1]
+                    newFront = staticCommunityCentroids
+                    if newFront not in fronts:
+                        fronts.append(newFront)
+                        frontId2CommunityId[len(fronts)-1] = eventKey
                 
         for frontCreateEvent in frontEvents[2]:
 
@@ -98,8 +148,6 @@ def doComputation(dbName, optimalSim, outputFileName):
             if newFront not in fronts:
                 fronts.append(newFront)
                 frontId2CommunityId[len(fronts)-1] = eventKey
-
-        fronts = list(set(fronts))
 
         return (frontId2CommunityId, fronts)
 
@@ -135,6 +183,8 @@ def doComputation(dbName, optimalSim, outputFileName):
     centroidTuples2Distances = {}
 
     for timeStep in range(1, len(allSnapshots)):
+
+        # print('timeStep', timeStep)
 
         snapshotCommunities = getCommunitiesForSnapshot(allSnapshots[timeStep], timeStep)
 
@@ -173,14 +223,9 @@ def doComputation(dbName, optimalSim, outputFileName):
                     
                 elif (centroidsTupleB, centroidsTupleA) in centroidTuples2Distances:
                     minSimilarity = centroidTuples2Distances[(centroidsTupleB, centroidsTupleA)]
-
-                fullSimilarity = minSimilarity
-
-                if (fullSimilarity > 1):
-                    print('Full similarity is greater than 1')
                 
-                if (fullSimilarity > optimalSim):
-                    print('SIM IS BIGGER', fullSimilarity)
+                if (minSimilarity > optimalSim):
+                    # print('SIM IS BIGGER', avgSimilarity)
                     bestFrontIds.append(frontId)
 
             # print('BEST FRONTS', bestFrontIds)
@@ -193,6 +238,7 @@ def doComputation(dbName, optimalSim, outputFileName):
                     if bestFrontId in frontId2CommunityId:
                         bestFrontCommunityId = frontId2CommunityId[bestFrontId]
                         communitiesTimestepMapping[bestFrontCommunityId].append(communityIdA)
+
             else:
                 # front addition event
                 frontEvents[2].append((communityIdA, snapshotCommunities[communityIdA]))

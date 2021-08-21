@@ -1,5 +1,7 @@
 import pymongo
 import numpy as np
+from numpy import dot
+from numpy.linalg import norm
 import argparse
 import json
 
@@ -19,15 +21,15 @@ def doComputation(dbName, optimalSim, outputFileName):
 
         dbClient.close()
 
-        print('Finished reading all snapshots from mongo!')
-
         return sorted(allCollections)
 
     '''
     @returns: dictionary, where keys are strings of the form: communityId_timeStep
-                and the values are lists of strings, where a list contains the author names in that community at the given timestep
+                value = a dict with two keys: TYPE_STRUCTURAL -> a list of authors 
+                            and 
+                        TYPE_TEXTUAL -> a list of tuples of tuples: ( (centroid1_1, centroid1_2), (centroid2_1), (centroid3_1, centroid3_2, centroid3_3) ) and centroidx_y = (i1, i2, ..., i24)
     '''
-    def getCommunitiesForSnapshot(collectionName, timeStep, communityAttribute):
+    def getCommunitiesForSnapshot(collectionName, timeStep):
 
         dbClient = pymongo.MongoClient('localhost', 27017)
         db = dbClient[dbName]
@@ -39,35 +41,42 @@ def doComputation(dbName, optimalSim, outputFileName):
         print('Finished reading comments from mongo!', collectionName)
 
         author2Attributes = {}
+        collectionCentroids = {}
 
         for comment in allComments:
             if comment['author'] not in author2Attributes:
                 author2Attributes[comment['author']] = {
-                    'structuralId': comment['clusterIdSimple']
+                    'structuralId': comment['clusterIdSimple'],
+                    'textualIds': [comment['clusterIdKMeans']],
                 }
+            else:
+                author2Attributes[comment['author']]['textualIds'].append(comment['clusterIdKMeans'])
+
+            if (comment['clusterIdKMeans'] not in collectionCentroids):
+                collectionCentroids[comment['clusterIdKMeans']] = tuple(comment['centroid'])
         
         timeStepDict = {}
 
         for author in author2Attributes:
             dictKey = str(author2Attributes[author]['structuralId']) + '_' + str(timeStep)
 
+            # more authors belong to the same structuralId community
             if dictKey not in timeStepDict:
-                timeStepDict[dictKey] = [author]
+                timeStepDict[dictKey] = author2Attributes[author]['textualIds']
             else:
-                timeStepDict[dictKey].append(author)
-
-        # print('TIME STEP DICT', timeStepDict)
+                timeStepDict[dictKey].extend(author2Attributes[author]['textualIds'])
 
         for dictKey in timeStepDict:
-            timeStepDict[dictKey] = list(set(timeStepDict[dictKey]))
+            timeStepDict[dictKey] = sorted(list(set(timeStepDict[dictKey])))
+            timeStepDict[dictKey] = tuple([collectionCentroids[clusterIdKMeans] for clusterIdKMeans in timeStepDict[dictKey]])
 
         return timeStepDict
 
     '''
     frontsEvents = {1: {}, 2: []}
     '''
-    def updateFronts(fronts, frontEvents, frontId2CommunityId):
-
+    def updateFronts(fronts, frontEvents, frontId2CommunityId): 
+        
         # remove things which should be removed if necessary
 
         indicesToRemove = frontEvents[1].keys()
@@ -130,41 +139,60 @@ def doComputation(dbName, optimalSim, outputFileName):
 
             # add replacements
             for frontId in frontEvents[1]:
-                for item in frontEvents[1][frontId]:
-                    if item[1] not in fronts:
-                        fronts += [item[1]]
-                        frontId2CommunityId[len(fronts)-1] = item[0]
-        
-        for item in frontEvents[2]:
-            if item[1] not in fronts:
-                fronts += [item[1]]
-                frontId2CommunityId[len(fronts)-1] = item[0]
+                for frontMergeEvent in frontEvents[1][frontId]:
+                    eventKey = frontMergeEvent[0]
+                    staticCommunityCentroids = frontMergeEvent[1]
+                    newFront = staticCommunityCentroids
+                    if newFront not in fronts:
+                        fronts.append(newFront)
+                        frontId2CommunityId[len(fronts)-1] = eventKey
+                
+        for frontCreateEvent in frontEvents[2]:
+
+            eventKey = frontCreateEvent[0]
+            staticCommunityCentroids = frontCreateEvent[1]
+            newFront = staticCommunityCentroids
+
+            if newFront not in fronts:
+                fronts.append(newFront)
+                frontId2CommunityId[len(fronts)-1] = eventKey
 
         return (frontId2CommunityId, fronts)
 
     allSnapshots = getAllSnapshots('quarter')
 
+    snapshotCommunities0 = getCommunitiesForSnapshot(allSnapshots[0], 0)
+
+    print('snapshot comms ====', snapshotCommunities0)
+
     '''
     communitiesTimestepMapping[communityId_0_1] = [communityId_1_0, communityId_1_1, ...] 
     '''
-    communitiesTimestepMapping = {}
-    fronts = []
-    '''
-    maps each front with its associated community at the associated specific timestep
-    '''
-    frontId2CommunityId = {}
-    timeStep = 0
-
-    snapshotCommunities0 = getCommunitiesForSnapshot(allSnapshots[0], 0, 'clusterIdSimple')
-
     # the initial communities are the initial fronts
     communitiesTimestepMapping = dict(zip(snapshotCommunities0.keys(), [[] for i in range(len(snapshotCommunities0))]))
-    fronts = [item[1] for item in snapshotCommunities0.items()]
+
+    '''
+    fronts = list of fronts; 
+    a front = a dict with a list of authors 
+        and 
+            a list of tuples of tuples: ( (centroid1_1, centroid1_2), (centroid2_1), (centroid3_1, centroid3_2, centroid3_3) ) and centroidx_y = (i1, i2, ..., i24)
+    '''
+    fronts = []
+
+    for staticCommunity0 in snapshotCommunities0:
+        front = snapshotCommunities0[staticCommunity0]
+        fronts.append(front)
+    
+    '''
+        maps each front with its associated community at the associated specific timestep
+    '''
     frontId2CommunityId = dict(zip(range(len(fronts)), [communityId for communityId in snapshotCommunities0.keys()]))
 
     for timeStep in range(1, len(allSnapshots)):
 
-        snapshotCommunities = getCommunitiesForSnapshot(allSnapshots[timeStep], timeStep, 'clusterIdSimple')
+        # print('timeStep', timeStep)
+
+        snapshotCommunities = getCommunitiesForSnapshot(allSnapshots[timeStep], timeStep)
 
         '''
         frontsEvents[frontEvent][frontId] = [front1, front2, ...]
@@ -172,44 +200,53 @@ def doComputation(dbName, optimalSim, outputFileName):
         2 = a new front must be added
         '''
         frontEvents = {1: {}, 2: []}
-
+        cosineCache = {}
         # map communities from dynamicCommunities list (t-1) to the ones in snapshot (t)
         for communityIdA in snapshotCommunities:
 
-            authorsA = list(set(snapshotCommunities[communityIdA]))
+            centroidsTupleA = snapshotCommunities[communityIdA] # (centroid_1, centroid_2, ..., centroid_n)        
             
             bestFrontIds = []
 
             for frontId in range(len(fronts)):
-
-                authorsB = list(set(fronts[frontId]))
                 
-                intersect = len(list(set(authorsA) & set(authorsB)))
-                reunion = len(list(set(authorsA + authorsB)))
+                centroidsTupleB = fronts[frontId] # (centroid_1, centroid_2, ..., centroid_n) - a front is actually a static community
 
-                jaccard = intersect/reunion
+                # determine textual sim
+                cosineSimilarities = []
 
-                if (jaccard == 1):
-                    print('authors a', authorsA)
+                for ca in centroidsTupleA:
+                    for cb in centroidsTupleB:
+                        if (ca, cb) in cosineCache:
+                            cosineSimilarity = cosineCache[(ca, cb)]
+                        else:
+                            cosineSimilarity = dot(ca, cb)/(norm(ca)*norm(cb))
+                            cosineCache[(ca, cb)] = cosineSimilarity
 
-                if (jaccard > optimalSim):
+                        cosineSimilarities.append(cosineSimilarity)
+
+                avgSimilarity = sum(cosineSimilarities) / len(cosineSimilarities)
+                
+                if (avgSimilarity > optimalSim):
+                    # print('SIM IS BIGGER', avgSimilarity)
                     bestFrontIds.append(frontId)
-            
+
             # print('BEST FRONTS', bestFrontIds)
             if (len(bestFrontIds) > 0):
                 for bestFrontId in bestFrontIds:
                     # front transformation event
                     if (bestFrontId not in frontEvents[1]):
                         frontEvents[1][bestFrontId] = []
-                    frontEvents[1][bestFrontId].append((communityIdA, authorsA))
+                    frontEvents[1][bestFrontId].append((communityIdA, centroidsTupleA))
                     if bestFrontId in frontId2CommunityId:
                         bestFrontCommunityId = frontId2CommunityId[bestFrontId]
                         communitiesTimestepMapping[bestFrontCommunityId].append(communityIdA)
+
             else:
                 # front addition event
-                frontEvents[2].append((communityIdA, authorsA))
+                frontEvents[2].append((communityIdA, centroidsTupleA))
 
-        # update mappings
+        # update mappings so we have the new snapshot keys
         for key in snapshotCommunities.keys():
             communitiesTimestepMapping[key] = []
 

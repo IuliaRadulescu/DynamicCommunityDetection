@@ -19,6 +19,8 @@ class TopicExtractor:
     # Helper function
     def prettyPrintTopics(self, model, count_vectorizer, n_top_words, printResults = False):
         words = count_vectorizer.get_feature_names()
+        if 'the' in words:
+            print('THE IN WORDS')
         topics = []
         for topic_idx, topic in enumerate(model.components_):
             wordsInTopic = ' '.join([words[i]
@@ -41,9 +43,9 @@ class TopicExtractor:
         self.comments = list(map(lambda x: x.strip(string.punctuation), self.comments))
 
         # remove special chars
-        specials = ['!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '.',
+        specials = ['!', '"', '#', '$', '%', '&', '(', ')', '*', '+', ',', '.',
            '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', 
-           '`', '{', '|', '}', '~', '»', '«', '“', '”', '’']
+           '`', '{', '|', '}', '~', '»', '«', '“', '”']
         pattern = re.compile("[" + re.escape("".join(specials)) + "]")
 
         self.comments = list(map(lambda x: re.sub(pattern, '', x), self.comments))
@@ -52,31 +54,38 @@ class TopicExtractor:
 
         lemmatizer = WordNetLemmatizer()
 
-        stopWords = list(get_stop_words('en')) # About 900 stopwords
-        nltkWords = list(stopwords.words('english')) # About 150 stopwords
-        stopWords.extend(nltkWords)
-        stopWords.append('like')
-        stopWords = list(set(stopWords))
+        finalStop = list(get_stop_words('english')) # About 900 stopwords
+        nltkWords = stopwords.words('english') # About 150 stopwords
+        finalStop.extend(nltkWords)
+        finalStop.extend(['like', 'the', 'this'])
+        finalStop = list(set(finalStop))
         
         def removeStopAndlemmatizeComment(comment):
+
             # tokenize comment
             tokens = word_tokenize(comment)
+            
+            # convert all to lowercase
+            tokens = [x.lower() for x in tokens]
 
             # remove stop words from comment
-            tokens = list(filter(lambda x: x not in stopWords, tokens))
+            tokens = list(filter(lambda x: (x not in finalStop) and (len(x) > 1 and x != 'i'), tokens))
 
             if len(tokens) == 0:
-                return ' '
+                return False
+
+            lemmatizedTokens = [lemmatizer.lemmatize(w) for w in tokens]
 
             # lemmatize and return result
-            return ' '.join([lemmatizer.lemmatize(w) for w in tokens])
+            return ' '.join(lemmatizedTokens)
         
         self.comments = list(map(lambda x: removeStopAndlemmatizeComment(x), self.comments))
 
         # filter potential empty values
-        self.comments = list(filter(lambda x: x != ' ', self.comments))
+        self.comments = list(filter(lambda x: x != False, self.comments))
 
     def prepareForLDA(self):
+
         vectorizer = TfidfVectorizer()
         X = vectorizer.fit_transform(self.comments)
 
@@ -129,6 +138,6 @@ dbClient.close()
 print('We have a number of', len(allComments), 'comments')
 
 topicExtractor = TopicExtractor(allComments)
-topicExtractor.getTopics(2, 5)
+topicExtractor.getTopics(1, 10)
 
     

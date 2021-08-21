@@ -31,21 +31,22 @@ class TextPreprocessor:
         textDocument = textDocument.strip(string.punctuation)
 
         # remove special chars
-        specials = ['!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '.',
+        specials = ['!', '"', '#', '$', '%', '&', '(', ')', '*', '+', ',', '.',
            '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', 
-           '`', '{', '|', '}', '~', '»', '«', '“', '”', '’']
+           '`', '{', '|', '}', '~', '»', '«', '“', '”']
         pattern = re.compile("[" + re.escape("".join(specials)) + "]")
         return re.sub(pattern, '', textDocument)
 
     @staticmethod
     def stopWordRemoval(tokenizedDocument):
-        stopWords = list(get_stop_words('en')) # About 900 stopwords
-        nltkWords = list(stopwords.words('english')) # About 150 stopwords
-        stopWords.extend(nltkWords)
-        stopWords.append('like')
-        stopWords = list(set(stopWords))
+        finalStop = list(get_stop_words('english')) # About 900 stopwords
+        nltkWords = stopwords.words('english') # About 150 stopwords
+        finalStop.extend(nltkWords)
+        finalStop.extend(['like', 'the', 'this'])
+        finalStop = list(set(finalStop))
 
-        tokenizedDocumentsNoStop = list(filter(lambda token: token not in stopWords, tokenizedDocument))
+        # filter stop words and one letter words/chars except i
+        tokenizedDocumentsNoStop = list(filter(lambda token: (token not in finalStop) and (len(token) > 1 and token != 'i'), tokenizedDocument))
         return list(filter(lambda token: len(token) > 0, tokenizedDocumentsNoStop))
 
     @staticmethod
@@ -188,7 +189,7 @@ https://radimrehurek.com/gensim/models/doc2vec.html
 '''
 def computeDoc2VecModel(vectorSize, windowSize, allDocuments):
     documents = [TaggedDocument(words=_d, tags=[str(i)]) for i, _d in enumerate(allDocuments)]
-    return Doc2Vec(documents, vector_size=vectorSize, window=windowSize, epochs=20, dm=0, min_count=1, workers=20)
+    return Doc2Vec(documents, vector_size=vectorSize, window=windowSize, epochs=50, dm=1, workers=20)
 
 nltk.download('punkt')
 nltk.download('stopwords')
@@ -231,14 +232,14 @@ print('FINISHED DOCUMENTS ITERATOR', documentsIterator)
 
 # compute doc2vec model
 # 24 neurons (vector size) and 3 words window - because we have small documents
-# doc2vecModel = computeDoc2VecModel(24, 3, allDocuments)
+doc2vecModel = computeDoc2VecModel(24, 3, allDocuments)
 
-# print('2 === Finished doc2vec training')
+print('2 === Finished doc2vec training')
 
 # save model to file
-# doc2vecModel.save('doc2VecTrainingProtests')
+doc2vecModel.save('doc2VecTrainingProtests')
 
-doc2vecModel = Doc2Vec.load('doc2VecTrainingProtests')
+# doc2vecModel = Doc2Vec.load('doc2VecTrainingProtests')
 
 for collectionName in collections2Documents:
 
