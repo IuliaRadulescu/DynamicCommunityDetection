@@ -107,8 +107,6 @@ class Clusterer:
                 maxSilhouette = sscore
                 maxNoClusters = noClusters
 
-            # print('Silhouette for', noClusters, 'is', sscore)
-
         print('Best noClusters is', maxNoClusters)
 
         skm = spherical_kmeans.SphericalKMeans(n_clusters=maxNoClusters, init='k-means++', n_jobs=20)
@@ -218,8 +216,6 @@ for collectionName in allCollections:
 
 dbClient.close()
 
-# print('1 === Finished preprocessing')
-
 docs2Tags = {}
 
 documentsIterator = 0
@@ -228,13 +224,9 @@ for collectionName in collections2Documents:
         docs2Tags[collectionName + '_' + str(documentNr)] = str(documentsIterator)
         documentsIterator += 1
 
-print('FINISHED DOCUMENTS ITERATOR', documentsIterator)
-
 # compute doc2vec model
 # 24 neurons (vector size) and 3 words window - because we have small documents
 doc2vecModel = computeDoc2VecModel(24, 3, allDocuments)
-
-print('2 === Finished doc2vec training')
 
 # save model to file
 doc2vecModel.save('doc2VecTrainingProtests')

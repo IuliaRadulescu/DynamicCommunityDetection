@@ -1,10 +1,7 @@
-import igraph
 import pymongo
 from igraph import Graph, VertexClustering
 from igraph import plot
-from abc import ABC, abstractclassmethod, abstractmethod
-import re
-import numpy as np
+from abc import ABC, abstractmethod
 
 class CommunityGraphBuilder(ABC):
 

@@ -19,8 +19,6 @@ class TopicExtractor:
     # Helper function
     def prettyPrintTopics(self, model, count_vectorizer, n_top_words, printResults = False):
         words = count_vectorizer.get_feature_names()
-        if 'the' in words:
-            print('THE IN WORDS')
         topics = []
         for topic_idx, topic in enumerate(model.components_):
             wordsInTopic = ' '.join([words[i]

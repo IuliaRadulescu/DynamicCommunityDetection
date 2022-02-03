@@ -56,8 +56,6 @@ def doComputation(dbName, optimalSim, outputFileName):
             else:
                 timeStepDict[dictKey].append(author)
 
-        # print('TIME STEP DICT', timeStepDict)
-
         for dictKey in timeStepDict:
             timeStepDict[dictKey] = list(set(timeStepDict[dictKey]))
 
@@ -112,10 +110,6 @@ def doComputation(dbName, optimalSim, outputFileName):
             # for the rest of the indices just decrement
             for idx in range(indicesToRemove[idIdx] + 1, len(frontId2CommunityId.keys())):
                 oldIdxToNewIdx[idx] = idx - step
-
-            for idxToRemove in indicesToRemove:
-                if (oldIdxToNewIdx[idxToRemove] != -1):
-                    print('WRONG!')
 
             newFrontId2CommunityId = {}
 
@@ -189,13 +183,9 @@ def doComputation(dbName, optimalSim, outputFileName):
 
                 jaccard = intersect/reunion
 
-                if (jaccard == 1):
-                    print('authors a', authorsA)
-
                 if (jaccard > optimalSim):
                     bestFrontIds.append(frontId)
             
-            # print('BEST FRONTS', bestFrontIds)
             if (len(bestFrontIds) > 0):
                 for bestFrontId in bestFrontIds:
                     # front transformation event
@@ -214,8 +204,6 @@ def doComputation(dbName, optimalSim, outputFileName):
             communitiesTimestepMapping[key] = []
 
         (frontId2CommunityId, fronts) = updateFronts(fronts, frontEvents, frontId2CommunityId)
-
-        print('We have', len(fronts), 'fronts')
 
     finalMappings = {}
 
