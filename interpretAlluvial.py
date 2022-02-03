@@ -4,7 +4,7 @@ import plotAlluvial
 
 def determineDynamicCommunitiesDFS(alluvialData):
 
-    # determine leafs
+    # determine leaves
     nonLeaves = list(set(alluvialData.keys()))
 
     alreadyParsedGlobal = set()
