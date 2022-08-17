@@ -1,68 +1,38 @@
 import json
 import os
 
-def getAlluvialDataHybridText(dataset='biden', similarity=50):
+def getAlluvialDataHybrid(dataset='tennis', similarity=70):
 
-    if (dataset == 'biden'):
-        if (similarity == 50):
-                jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/BIDEN_HYBRID/SIMILARITY05CommunitiesText.json',)
-        elif (similarity == 60):
-                jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/BIDEN_HYBRID/SIMILARITY06CommunitiesText.json',)
-        elif (similarity == 70):
-                jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/BIDEN_HYBRID/SIMILARITY07CommunitiesText.json',)
+    if (dataset == 'tennis'):
+        if (similarity == 70):
+                jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/RAW_OUTPUTS/hybridDynamicSim70.json',)
+        elif (similarity == 75):
+                jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/RAW_OUTPUTS/hybridDynamicSim75.json',)
         elif (similarity == 80):
-                jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/BIDEN_HYBRID/SIMILARITY08CommunitiesText.json',)
+                jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/RAW_OUTPUTS/hybridDynamicSim80.json',)
         elif (similarity == 85):
-                jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/BIDEN_HYBRID/SIMILARITY085CommunitiesText.json',)
+                jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/RAW_OUTPUTS/hybridDynamicSim85.json',)
         elif (similarity == 90):
-                jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/BIDEN_HYBRID/SIMILARITY09CommunitiesText.json',)
+                jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/RAW_OUTPUTS/hybridDynamicSim90.json',)
         elif (similarity == 95):
-                jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/BIDEN_HYBRID/SIMILARITY095CommunitiesText.json',)
-    elif (dataset == 'protests'):
-        if (similarity == 50):
-                jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/PROTESTS_HYBRID/SIMILARITY05CommunitiesText.json',)
-        elif (similarity == 60):
-                jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/PROTESTS_HYBRID/SIMILARITY06CommunitiesText.json',)
-        elif (similarity == 70):
-                jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/PROTESTS_HYBRID/SIMILARITY07CommunitiesText.json',)
-        elif (similarity == 80):
-                jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/PROTESTS_HYBRID/SIMILARITY08CommunitiesText.json',)
-        elif (similarity == 85):
-                jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/PROTESTS_HYBRID/SIMILARITY085CommunitiesText.json',)
-        elif (similarity == 90):
-                jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/PROTESTS_HYBRID/SIMILARITY09CommunitiesText.json',)
-        elif (similarity == 95):
-                jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/PROTESTS_HYBRID/SIMILARITY095CommunitiesText.json',)
+                jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/RAW_OUTPUTS/hybridDynamicSim95.json',)
 
     return json.load(jsonFile)
 
-def getAlluvialDataClassic(dataset='biden', similarity=50):
+def getAlluvialDataClassic(dataset='tennis', similarity=70):
 
-    if (dataset == 'biden'):
-        if (similarity == 30):
-            jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/BIDEN_CLASSIC/SIMILARITY03ClassicCommunities.json',)
-        elif (similarity == 50):
-            jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/BIDEN_CLASSIC/SIMILARITY05ClassicCommunities.json',)
-        elif (similarity == 70):
-            jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/BIDEN_CLASSIC/SIMILARITY07ClassicCommunities.json',)
+    if (dataset == 'tennis'):
+        if (similarity == 70):
+            jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/RAW_OUTPUTS/classicDynamicSim70.json',)
+        elif (similarity == 75):
+            jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/RAW_OUTPUTS/classicDynamicSim75.json',)
         elif (similarity == 80):
-            jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/BIDEN_CLASSIC/SIMILARITY08ClassicCommunities.json',)
+            jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/RAW_OUTPUTS/classicDynamicSim80.json',)
         elif (similarity == 85):
-            jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/BIDEN_CLASSIC/SIMILARITY085ClassicCommunities.json',)
+            jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/RAW_OUTPUTS/classicDynamicSim85.json',)
         elif (similarity == 90):
-            jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/BIDEN_CLASSIC/SIMILARITY09ClassicCommunities.json',)
-    elif (dataset == 'protests'):
-        if (similarity == 30):
-            jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/PROTESTS_CLASSIC/SIMILARITY03ClassicCommunities.json',)
-        elif (similarity == 50):
-            jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/PROTESTS_CLASSIC/SIMILARITY05ClassicCommunities.json',)
-        elif (similarity == 70):
-            jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/PROTESTS_CLASSIC/SIMILARITY07ClassicCommunities.json',)
-        elif (similarity == 80):
-            jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/PROTESTS_CLASSIC/SIMILARITY08ClassicCommunities.json',)
-        elif (similarity == 85):
-            jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/PROTESTS_CLASSIC/SIMILARITY085ClassicCommunities.json',)
-        elif (similarity == 90):
-            jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/PROTESTS_CLASSIC/SIMILARITY09ClassicCommunities.json',)
+            jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/RAW_OUTPUTS/classicDynamicSim90.json',)
+        elif (similarity == 95):
+            jsonFile = open(os.path.dirname(os.path.realpath(__file__)) + '/RAW_OUTPUTS/classicDynamicSim95.json',)
 
     return json.load(jsonFile)

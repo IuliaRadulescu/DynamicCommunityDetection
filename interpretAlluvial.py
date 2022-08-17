@@ -60,16 +60,16 @@ def computeStats():
 
     print('GENERATING STATS FOR HYBRID')
 
-    datasets = ['biden', 'protests']
+    datasets = ['tennis']
 
-    similarities = [70, 80, 85, 90]
+    similarities = [75, 80, 85, 90, 95]
 
     for dataset in datasets:
         for similarity in similarities:
             print('')
             print('STATS FOR', 'dataset', dataset, 'similarity', similarity)
 
-            alluvialData = alluvialDataRetriever.getAlluvialDataHybridText(dataset, similarity)
+            alluvialData = alluvialDataRetriever.getAlluvialDataHybrid(dataset, similarity)
 
             print('--> width')
             communityWidths = [len(list(set(alluvialData[key]))) for key in alluvialData]
@@ -87,9 +87,7 @@ def computeStats():
 
     print('GENERATING STATS FOR CLASSIC')
 
-    datasets = ['biden', 'protests']
-
-    similarities = [70, 80, 85, 90]
+    similarities = [75, 80, 85, 90, 95]
 
     for dataset in datasets:
         for similarity in similarities:
@@ -123,7 +121,7 @@ def generateDynamicAndPlot(datasetType, dataset, similarity, alpha = None):
         alluvialData = alluvialDataRetriever.getAlluvialDataClassic(dataset, similarity)
     else:
         print('HYBRID TEXT ALLUVIAL')
-        alluvialData = alluvialDataRetriever.getAlluvialDataHybridText(dataset, similarity)
+        alluvialData = alluvialDataRetriever.getAlluvialDataHybrid(dataset, similarity)
 
     print('STARTED GENERATION DYNAMIC')
 
@@ -146,29 +144,17 @@ def generateDynamicAndPlot(datasetType, dataset, similarity, alpha = None):
     else:
         plotAlluvial.feedSankeyJsonHybrid(filteredAlluvialData, outputFileName)
 
-# generateDynamicAndPlot('hybridText', 'biden', 70)
-# generateDynamicAndPlot('hybridText', 'protests', 70)
-# generateDynamicAndPlot('hybridText', 'biden', 80)
-# generateDynamicAndPlot('hybridText', 'protests', 80)
-# generateDynamicAndPlot('hybridText', 'biden', 85)
-# generateDynamicAndPlot('hybridText', 'protests', 85)
-# generateDynamicAndPlot('hybridText', 'biden', 90)
-# generateDynamicAndPlot('hybridText', 'protests', 90)
+generateDynamicAndPlot('hybrid', 'tennis', 75)
+generateDynamicAndPlot('hybrid', 'tennis', 80)
+generateDynamicAndPlot('hybrid', 'tennis', 85)
+generateDynamicAndPlot('hybrid', 'tennis', 90)
+generateDynamicAndPlot('hybrid', 'tennis', 95)
 
-# generateDynamicAndPlot('hybridText', 'biden', 85)
-# generateDynamicAndPlot('hybridText', 'biden', 95)
-
-# generateDynamicAndPlot('hybridText', 'protests', 85)
-# generateDynamicAndPlot('hybridText', 'protests', 95)
-
-# generateDynamicAndPlot('classic', 'biden', 70)
-# generateDynamicAndPlot('classic', 'protests', 70)
-# generateDynamicAndPlot('classic', 'biden', 80)
-# generateDynamicAndPlot('classic', 'protests', 80)
-# generateDynamicAndPlot('classic', 'biden', 85)
-# generateDynamicAndPlot('classic', 'protests', 85)
-# generateDynamicAndPlot('classic', 'biden', 90)
-# generateDynamicAndPlot('classic', 'protests', 90)
+generateDynamicAndPlot('classic', 'tennis', 75)
+generateDynamicAndPlot('classic', 'tennis', 80)
+generateDynamicAndPlot('classic', 'tennis', 85)
+generateDynamicAndPlot('classic', 'tennis', 90)
+generateDynamicAndPlot('classic', 'tennis', 95)
 
 computeStats()
                 
