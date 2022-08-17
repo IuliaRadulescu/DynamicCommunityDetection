@@ -1,4 +1,6 @@
+from louvainInertia import LouvainEfficient
 import pymongo
+import numpy as np
 from igraph import Graph, VertexClustering
 from igraph import plot
 from abc import ABC, abstractmethod
@@ -47,7 +49,7 @@ class BuildAuthorsCommunityGraph(CommunityGraphBuilder):
 
     def buildCommunityGraph(self, justNodesWithEdges = False):
 
-        nodesList = self.getNodes()
+        nodeAttrsList, nodesList = self.getNodes()
 
         print('Initial N nodes: ', len(nodesList))
 
@@ -57,13 +59,15 @@ class BuildAuthorsCommunityGraph(CommunityGraphBuilder):
         finalEdgesList = []
 
         for edge in edgesList:
-            if ( ((edge[0], edge[1]) in finalEdgesList) or ((edge[1], edge[0]) in finalEdgesList) ):
+            if ( ((edge[0], edge[1]) in finalEdgesList) or ((edge[1], edge[0]) in finalEdgesList) or edge[0] == edge[1]):
                 continue
             finalEdgesList.append(edge)
 
         # print(edgesList)
 
         self.g.add_vertices(nodesList)
+        self.g.vs['doc2Vec'] = np.array(nodeAttrsList)
+
         self.g.add_edges(finalEdgesList)
 
         if (justNodesWithEdges):
@@ -93,8 +97,10 @@ class BuildAuthorsCommunityGraph(CommunityGraphBuilder):
         nodesList = list(map(lambda x: x['author'], self.dataset))
         nodesList = list(set(nodesList))
         nodesList = list(map(lambda x: self.genericAuthorName if x == False else x, nodesList))
+
+        nodeAttrsList = list(map(lambda x: x['doc2Vec'], self.dataset))
         
-        return nodesList
+        return (nodeAttrsList, nodesList)
 
     def getGraph(self):
         return self.g
@@ -135,11 +141,11 @@ class MongoDBClient:
 
         return MongoDBClient.__instance
 
-    def updateAuthors(self, authors, clusterId, collectionName):
+    def updateAuthors(self, authors, clusterId, collectionName, attrName = 'clusterIdSimple'):
 
         self.dbClient = pymongo.MongoClient('localhost', 27017)
 
-        db = self.dbClient.communityDetectionUSABidenInauguration
+        db = self.dbClient.communityDetectionWimbledon
 
         db[collectionName].update_many(
             {
@@ -148,7 +154,7 @@ class MongoDBClient:
                 }
             },{
                 '$set': {
-                    'clusterIdSimple': clusterId
+                    attrName: clusterId
                 }
             })
             
@@ -166,7 +172,7 @@ def applyLouvainModule(collectionName, g):
 
     updateClusters(clusters, collectionName)
 
-def updateClusters(clusters, collectionName):
+def updateClusters(clusters, collectionName, attrName = 'clusterIdSimple'):
 
     subgraphs = clusters.subgraphs()
 
@@ -176,11 +182,11 @@ def updateClusters(clusters, collectionName):
         authors = []
         for vertex in subgraph.vs:
             authors.append(vertex['name'])
-        MongoDBClient.getInstance().updateAuthors(authors, clusterId, collectionName)
+        MongoDBClient.getInstance().updateAuthors(authors, clusterId, collectionName, attrName)
         clusterId += 1
 
 dbClient = pymongo.MongoClient('localhost', 27017)
-db = dbClient.communityDetectionUSABidenInauguration
+db = dbClient.communityDetectionWimbledon
 
 def getCommentsCommunity(collectionName, justNodesWithEdges = False):
 
@@ -199,18 +205,18 @@ def getAllCollections(prefix, startWithCollection = False):
         if (startWithCollection == False):
             return startWithPrefix
         
-        return startWithPrefix and (c > startWithCollection)
+        return startWithPrefix and (int(c.split('_')[1]) >= int(startWithCollection.split('_')[1])) and (int(c.split('_')[2]) >= int(startWithCollection.split('_')[2])) and (int(c.split('_')[3]) >= int(startWithCollection.split('_')[3]))
 
     allCollections = db.list_collection_names()
 
-    prefix = 'quarter'
+    prefix = 'twelveHours'
     allCollections = list(filter(lambda c: filterCollections(c, prefix, startWithCollection), allCollections))
 
     return sorted(allCollections)
 
 def applySimpleLouvainOnAllCollections():
 
-    allCollections = getAllCollections('quarter')
+    allCollections = getAllCollections('twelveHours')
 
     for collectionName in allCollections:
 
@@ -220,10 +226,52 @@ def applySimpleLouvainOnAllCollections():
 
         applyLouvainModule(collectionName, community.getGraph())
 
+def applyInertiaLouvainOnAllCollections():
+    
+    allCollections = getAllCollections('twelveHours', 'twelveHours_06_05_15_00_06_06_03_00')
+
+    for collectionName in allCollections:
+
+        print('===> Running Louvain on ', collectionName)
+
+        community = getCommentsCommunity(collectionName)
+        communityGraph = community.getGraph()
+
+        nodeId2Doc2Vec = {}
+
+        for v in communityGraph.vs:
+            nodeId2Doc2Vec[v.index] = v['doc2Vec']
+
+        louvainEfficient = LouvainEfficient()
+        communities = louvainEfficient.louvain(np.array(list(communityGraph.get_adjacency())), nodeId2Doc2Vec)
+        partition = VertexClustering(communityGraph, list(communities.values()))
+        # plot(partition)
+
+        updateClusters(partition, collectionName, 'clusterIdInertia')
+
 
 def plotCollection(collectionName, attributeField):
 
     community = getCommentsCommunity(collectionName, False)
     community.plotGraph(attributeField)
 
-applySimpleLouvainOnAllCollections()
+def getSharedAuthorsStats():
+
+    allCollections = getAllCollections('twelveHours')
+    commonAuthorsNr = []
+
+    for collectionId1 in range(len(allCollections)):
+        for collectionId2 in range(len(allCollections)):
+            if (collectionId1 < collectionId2):
+                authors1 = db[allCollections[collectionId1]].distinct('author')
+                authors2 = db[allCollections[collectionId2]].distinct('author')
+                commonAuthorsNr.append(len(list(set(authors1).intersection(set(authors2)))))
+
+    return (min(commonAuthorsNr), sum(commonAuthorsNr)/len(commonAuthorsNr), max(commonAuthorsNr))
+
+# (min, mean, max) = getSharedAuthorsStats()
+# print('common authors: min', min, 'mean', mean, 'max', max)
+
+# applySimpleLouvainOnAllCollections()
+
+applyInertiaLouvainOnAllCollections()
