@@ -7,7 +7,7 @@ Note: the database with the comment collections (see the zip file within the DAT
 
 Template:
 
-python buildDynamicCommunitiesHybrid.py -db <<database name>> -sim <<similarity threshold>> -o <<output file name>>
+python buildDynamicCommunitiesHybrid.py -db database_name -sim similarity_threshold -o output_file_name
 
 Example:
 
