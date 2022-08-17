@@ -63,8 +63,6 @@ class BuildAuthorsCommunityGraph(CommunityGraphBuilder):
                 continue
             finalEdgesList.append(edge)
 
-        # print(edgesList)
-
         self.g.add_vertices(nodesList)
         self.g.vs['doc2Vec'] = np.array(nodeAttrsList)
 
@@ -228,7 +226,7 @@ def applySimpleLouvainOnAllCollections():
 
 def applyInertiaLouvainOnAllCollections():
     
-    allCollections = getAllCollections('twelveHours', 'twelveHours_06_05_15_00_06_06_03_00')
+    allCollections = getAllCollections('twelveHours')
 
     for collectionName in allCollections:
 
@@ -245,7 +243,6 @@ def applyInertiaLouvainOnAllCollections():
         louvainEfficient = LouvainEfficient()
         communities = louvainEfficient.louvain(np.array(list(communityGraph.get_adjacency())), nodeId2Doc2Vec)
         partition = VertexClustering(communityGraph, list(communities.values()))
-        # plot(partition)
 
         updateClusters(partition, collectionName, 'clusterIdInertia')
 
@@ -268,10 +265,5 @@ def getSharedAuthorsStats():
                 commonAuthorsNr.append(len(list(set(authors1).intersection(set(authors2)))))
 
     return (min(commonAuthorsNr), sum(commonAuthorsNr)/len(commonAuthorsNr), max(commonAuthorsNr))
-
-# (min, mean, max) = getSharedAuthorsStats()
-# print('common authors: min', min, 'mean', mean, 'max', max)
-
-# applySimpleLouvainOnAllCollections()
 
 applyInertiaLouvainOnAllCollections()
