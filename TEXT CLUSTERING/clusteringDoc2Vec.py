@@ -3,7 +3,7 @@ from datetime import datetime
 import numpy as np
 import re
 import string
-from sphereclusterGit.spherecluster import spherical_kmeans
+from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 from gensim.models.doc2vec import Doc2Vec, TaggedDocument
 import nltk
@@ -11,6 +11,9 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
 from stop_words import get_stop_words
+
+nltk.download('wordnet')
+nltk.download('omw-1.4')
 
 '''
 text preprocessing pipeline - for a single unit of text corpus (a single document)
@@ -95,7 +98,7 @@ class Clusterer:
 
         for noClusters in range(min(3, (allCommentsLen - 1)), min(20, allCommentsLen)):
             
-            skm = spherical_kmeans.SphericalKMeans(n_clusters=noClusters, init='k-means++', n_jobs=20)
+            skm = KMeans(n_clusters=noClusters, init='k-means++')
             skm.fit(X)
 
             if (len(list(set(skm.labels_))) <= 1):
@@ -109,7 +112,7 @@ class Clusterer:
 
         print('Best noClusters is', maxNoClusters)
 
-        skm = spherical_kmeans.SphericalKMeans(n_clusters=maxNoClusters, init='k-means++', n_jobs=20)
+        skm = KMeans(n_clusters=maxNoClusters, init='k-means++')
         skm.fit(X)
 
         return (skm.labels_, skm.cluster_centers_)
@@ -156,7 +159,7 @@ class MongoDBClient:
 
         self.dbClient = pymongo.MongoClient('localhost', 27017)
 
-        db = self.dbClient.communityDetectionUSAProtestPolitics
+        db = self.dbClient.communityDetectionWimbledon
 
         db[collectionName].update_many(
             {
@@ -172,8 +175,7 @@ class MongoDBClient:
 
         self.dbClient.close()
 
-
-def getAllCollections(prefix='quarter'):
+def getAllCollections(prefix='twelveHours'):
 
     allCollections = db.list_collection_names()
 
@@ -193,7 +195,7 @@ nltk.download('punkt')
 nltk.download('stopwords')
 
 dbClient = pymongo.MongoClient('localhost', 27017)
-db = dbClient.communityDetectionUSAProtestPolitics
+db = dbClient.communityDetectionWimbledon
 
 allCollections = getAllCollections()
 
@@ -226,12 +228,12 @@ for collectionName in collections2Documents:
 
 # compute doc2vec model
 # 24 neurons (vector size) and 3 words window - because we have small documents
-doc2vecModel = computeDoc2VecModel(24, 3, allDocuments)
+# doc2vecModel = computeDoc2VecModel(24, 3, allDocuments)
 
 # save model to file
-doc2vecModel.save('doc2VecTrainingProtests')
+# doc2vecModel.save('doc2VecTrainingWimbledon')
 
-# doc2vecModel = Doc2Vec.load('doc2VecTrainingProtests')
+doc2vecModel = Doc2Vec.load('doc2VecTrainingWimbledon')
 
 for collectionName in collections2Documents:
 

@@ -47,9 +47,12 @@ class BuildAuthorsCommunityGraph(CommunityGraphBuilder):
         # use a generic name for comments with no authors
         self.genericAuthorName = 'JhonDoe25122020'
 
-    def buildCommunityGraph(self, justNodesWithEdges = False):
+    def buildCommunityGraph(self, justNodesWithEdges = False, justNodesList = True):
 
-        nodeAttrsList, nodesList = self.getNodes()
+        if justNodesList:
+            nodesList = self.getNodes()
+        else:
+            nodeAttrsList, nodesList = self.getNodes()
 
         print('Initial N nodes: ', len(nodesList))
 
@@ -59,16 +62,18 @@ class BuildAuthorsCommunityGraph(CommunityGraphBuilder):
         finalEdgesList = []
 
         for edge in edgesList:
-            if ( ((edge[0], edge[1]) in finalEdgesList) or ((edge[1], edge[0]) in finalEdgesList) or edge[0] == edge[1]):
+            if ((edge[0], edge[1]) in finalEdgesList) or ((edge[1], edge[0]) in finalEdgesList) or edge[0] == edge[1]:
                 continue
             finalEdgesList.append(edge)
 
         self.g.add_vertices(nodesList)
-        self.g.vs['doc2Vec'] = np.array(nodeAttrsList)
+
+        if not justNodesList:
+            self.g.vs['doc2Vec'] = np.array(nodeAttrsList)
 
         self.g.add_edges(finalEdgesList)
 
-        if (justNodesWithEdges):
+        if justNodesWithEdges:
             nodesToRemove = [v.index for v in self.g.vs if v.degree() == 0]
             self.g.delete_vertices(nodesToRemove)
 
@@ -90,11 +95,14 @@ class BuildAuthorsCommunityGraph(CommunityGraphBuilder):
 
         return list(set(map(lambda x: getEdgesFromRecord(x, authors), self.dataset)))
 
-    def getNodes(self):
+    def getNodes(self, justNodes = True):
 
         nodesList = list(map(lambda x: x['author'], self.dataset))
         nodesList = list(set(nodesList))
         nodesList = list(map(lambda x: self.genericAuthorName if x == False else x, nodesList))
+
+        if (justNodes):
+            return nodesList
 
         nodeAttrsList = list(map(lambda x: x['doc2Vec'], self.dataset))
         
@@ -266,4 +274,5 @@ def getSharedAuthorsStats():
 
     return (min(commonAuthorsNr), sum(commonAuthorsNr)/len(commonAuthorsNr), max(commonAuthorsNr))
 
-applyInertiaLouvainOnAllCollections()
+# applyInertiaLouvainOnAllCollections()
+applySimpleLouvainOnAllCollections()
