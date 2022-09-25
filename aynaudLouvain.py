@@ -1,6 +1,5 @@
 import numpy as np
 import time
-import math
 from random import shuffle
 import collections
 
@@ -40,7 +39,7 @@ class AynaudLouvain():
         sum_neighCommunity = self.getCommunityAllNodesSum(communityId, graphAdjMatrix, community2nodes)
         k_n = self.getNodeSum(node, graphAdjMatrix)
 
-        return (1/m) * ( (k_n_neighCommunity) - (sum_neighCommunity * k_n)/(2*m) )
+        return k_n_neighCommunity - (sum_neighCommunity * k_n) / (2 * m)
 
     def moveNodeToCommunity(self, node, oldCommunity, newCommunity, community2nodes, node2community):
         node2community[node] = newCommunity
@@ -63,8 +62,8 @@ class AynaudLouvain():
     def computeM(self, graphAdjMatrix):
         m = 0
 
-        for k in range(len(graphAdjMatrix)):
-            m += np.sum(graphAdjMatrix[k, 0:k])
+        for k in range(len(graphAdjMatrix[0])):
+            m += np.sum(graphAdjMatrix[k, k+1:len(graphAdjMatrix[0])])
 
         return m
 
@@ -80,7 +79,7 @@ class AynaudLouvain():
         for community in community2nodes:
             for i in community2nodes[community]:
                 for j in community2nodes[community]:
-                    if (i == j or graphAdjMatrix[i][j] == 0):
+                    if (i == j):
                         continue
                     partialSums.append(graphAdjMatrix[i][j] - (self.getNodeSum(i, graphAdjMatrix) * self.getNodeSum(j, graphAdjMatrix))/(2*m))
 
@@ -166,7 +165,7 @@ class AynaudLouvain():
 
         start_time = time.time()
 
-        theta = 0.0001
+        theta = 0.001
 
         isFirstPass = True
 
@@ -185,10 +184,11 @@ class AynaudLouvain():
             while True:
 
                 nodes = list(node2community.keys())
+                shuffle(nodes)
 
                 for node in nodes:
 
-                    shuffle(nodes)
+                    nodeCommunity = node2community[node]
 
                     neighs = self.getNodeNeighs(node, graphAdjMatrix, nodes)
 
@@ -197,7 +197,6 @@ class AynaudLouvain():
                     for neigh in neighs:
                         
                         neighCommunity = node2community[neigh]
-                        nodeCommunity = node2community[node]
 
                         if (neighCommunity == nodeCommunity):
                             continue
