@@ -1,4 +1,4 @@
-from louvainInertia import LouvainEfficient
+from aynaudLouvain import AynaudLouvain
 import pymongo
 import numpy as np
 from igraph import Graph, VertexClustering
@@ -47,12 +47,9 @@ class BuildAuthorsCommunityGraph(CommunityGraphBuilder):
         # use a generic name for comments with no authors
         self.genericAuthorName = 'JhonDoe25122020'
 
-    def buildCommunityGraph(self, justNodesWithEdges = False, justNodesList = True):
+    def buildCommunityGraph(self, justNodesWithEdges = False):
 
-        if justNodesList:
-            nodesList = self.getNodes()
-        else:
-            nodeAttrsList, nodesList = self.getNodes()
+        nodesList = self.getNodes()
 
         print('Initial N nodes: ', len(nodesList))
 
@@ -67,10 +64,6 @@ class BuildAuthorsCommunityGraph(CommunityGraphBuilder):
             finalEdgesList.append(edge)
 
         self.g.add_vertices(nodesList)
-
-        if not justNodesList:
-            self.g.vs['doc2Vec'] = np.array(nodeAttrsList)
-
         self.g.add_edges(finalEdgesList)
 
         if justNodesWithEdges:
@@ -95,18 +88,13 @@ class BuildAuthorsCommunityGraph(CommunityGraphBuilder):
 
         return list(set(map(lambda x: getEdgesFromRecord(x, authors), self.dataset)))
 
-    def getNodes(self, justNodes = True):
+    def getNodes(self):
 
         nodesList = list(map(lambda x: x['author'], self.dataset))
         nodesList = list(set(nodesList))
         nodesList = list(map(lambda x: self.genericAuthorName if x == False else x, nodesList))
 
-        if (justNodes):
-            return nodesList
-
-        nodeAttrsList = list(map(lambda x: x['doc2Vec'], self.dataset))
-        
-        return (nodeAttrsList, nodesList)
+        return nodesList
 
     def getGraph(self):
         return self.g
@@ -134,7 +122,7 @@ class MongoDBClient:
 
     def __init__(self):
 
-        if MongoDBClient.__instance != None:
+        if MongoDBClient.__instance is not None:
             raise Exception('The MongoDBClient is a singleton')
         else:
             MongoDBClient.__instance = self
@@ -142,7 +130,7 @@ class MongoDBClient:
     @staticmethod
     def getInstance():
         
-        if MongoDBClient.__instance == None:
+        if MongoDBClient.__instance is None:
             MongoDBClient()
 
         return MongoDBClient.__instance
@@ -232,27 +220,59 @@ def applySimpleLouvainOnAllCollections():
 
         applyLouvainModule(collectionName, community.getGraph())
 
-def applyInertiaLouvainOnAllCollections():
+def applyAynaudLouvainOnAllCollections():
     
     allCollections = getAllCollections('twelveHours')
 
+    k = 1
+
+    partition = None
+    nodes2communities = None
+
     for collectionName in allCollections:
 
-        print('===> Running Louvain on ', collectionName)
+        print('===> Running Aynaud Louvain on ', collectionName)
 
         community = getCommentsCommunity(collectionName)
         communityGraph = community.getGraph()
 
-        nodeId2Doc2Vec = {}
+        aynaudLouvain = AynaudLouvain()
 
-        for v in communityGraph.vs:
-            nodeId2Doc2Vec[v.index] = v['doc2Vec']
+        if partition is None and nodes2communities is None:
+            nodes2communities = dict(zip(range(len(communityGraph.vs)), range(len(communityGraph.vs))))
+        else:
+            commonNodes = set(partition.graph.vs["name"]).intersection(communityGraph.vs["name"])
 
-        louvainEfficient = LouvainEfficient()
-        communities = louvainEfficient.louvain(np.array(list(communityGraph.get_adjacency())), nodeId2Doc2Vec)
-        partition = VertexClustering(communityGraph, list(communities.values()))
+            # get common nodes indexes in the new graph and in the partition
+            commonNodesIndexes = list(map(lambda nodeName: communityGraph.vs.find(nodeName).index, commonNodes))
+            partitionNodesIndexes = list(map(lambda nodeName: partition.graph.vs.find(nodeName).index, commonNodes))
 
-        updateClusters(partition, collectionName, 'clusterIdInertia')
+            # community ids must be unique, so use consecutive numbers starting from 0
+            membershipToCommunityId = dict(zip(list(set(partition.membership)), range(len(set(partition.membership)))))
+            commonNodesMembership = [membershipToCommunityId[partition.membership[partitionNodeIndex]] for partitionNodeIndex in partitionNodesIndexes]
+            nodes2communities = dict(zip(commonNodesIndexes, commonNodesMembership))
+            communityId = max(membershipToCommunityId.values()) + 1
+
+            for v in communityGraph.vs:
+                if v.index in commonNodesIndexes:
+                    continue
+                nodes2communities[v.index] = communityId
+                communityId += 1
+
+        nodes2communities = aynaudLouvain.louvain(np.array(list(communityGraph.get_adjacency())), nodes2communities)
+        partition = VertexClustering(communityGraph, list(nodes2communities.values()))
+
+        print('Real modularity:', partition.modularity)
+
+        out = plot(partition)
+        out.save(str(k) + '_lovainAynaud.png')
+
+        if (k == 2):
+            break
+
+        k += 1
+
+        # updateClusters(partition, collectionName, 'clusterIdAynaud')
 
 
 def plotCollection(collectionName, attributeField):
@@ -274,5 +294,5 @@ def getSharedAuthorsStats():
 
     return (min(commonAuthorsNr), sum(commonAuthorsNr)/len(commonAuthorsNr), max(commonAuthorsNr))
 
-# applyInertiaLouvainOnAllCollections()
-applySimpleLouvainOnAllCollections()
+applyAynaudLouvainOnAllCollections()
+# applySimpleLouvainOnAllCollections()
