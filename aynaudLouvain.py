@@ -2,6 +2,7 @@ import numpy as np
 import time
 from random import shuffle
 import collections
+import copy
 
 class AynaudLouvain():
 
@@ -201,8 +202,11 @@ class AynaudLouvain():
                         if (neighCommunity == nodeCommunity):
                             continue
 
-                        fullModularityGain = self.computeModularityGain(node, neighCommunity, graphAdjMatrix, community2nodes) - \
-                            self.computeModularityGain(node, nodeCommunity, graphAdjMatrix, community2nodes)
+                        (_, community2nodesTemp) = self.moveNodeToCommunity(node, nodeCommunity, neighCommunity, \
+                                                            copy.deepcopy(community2nodes), copy.deepcopy(node2community))
+
+                        fullModularityGain = self.computeModularityGain(node, neighCommunity, graphAdjMatrix, community2nodesTemp) - \
+                                             self.computeModularityGain(node, nodeCommunity, graphAdjMatrix, community2nodesTemp)
 
                         if (fullModularityGain > 0):
                             modularityGains.append((int(neighCommunity), fullModularityGain))
