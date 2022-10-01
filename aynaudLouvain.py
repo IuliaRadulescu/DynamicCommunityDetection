@@ -1,5 +1,6 @@
 import numpy as np
 import time
+import math
 from random import shuffle
 import collections
 import copy
@@ -17,15 +18,18 @@ class AynaudLouvain():
         communityNodes = community2nodes[communityId]
         return sum(list(map(lambda x: graphAdjMatrix[node][x], communityNodes)))
 
-    def getCommunityAllNodesSum(self, communityId, graphAdjMatrix, community2nodes):
+    def getNode2CommunityNumberOfEdges(self, node, communityId, graphAdjMatrix, community2nodes):
         communityNodes = community2nodes[communityId]
-        allNodesSum = 0
-        for communityNode in communityNodes:
-            allNodesSum += np.sum(graphAdjMatrix[communityNode, :])
-        return allNodesSum
+        onlyCommunityNodesWithEdgesToNode = list(filter(lambda x: graphAdjMatrix[node][x] == 1, communityNodes))
+        return len(onlyCommunityNodesWithEdgesToNode)
 
-    def getNodeSum(self, node, graphAdjMatrix):
-        return np.sum(graphAdjMatrix[node, :])
+    def getCommunityAllNodeDegreesSum(self, communityId, graphAdjMatrix, community2nodes):
+        communityNodes = community2nodes[communityId]
+        return sum([self.getNodeDegree(communityNode, graphAdjMatrix) for communityNode in communityNodes])
+
+    def getNodeDegree(self, node, graphAdjMatrix):
+        nodeEdges = graphAdjMatrix[node, :]
+        return len(nodeEdges[nodeEdges > 1])
 
     def getNodeNeighs(self, node, graphAdjMatrix, allNodes):
         return list(filter(lambda x: graphAdjMatrix[node][x] == 1, allNodes))
@@ -36,26 +40,17 @@ class AynaudLouvain():
         if (m == 0):
             return 0
 
-        k_n_neighCommunity = self.getNode2CommunitySum(node, communityId, graphAdjMatrix, community2nodes)
-        sum_neighCommunity = self.getCommunityAllNodesSum(communityId, graphAdjMatrix, community2nodes)
-        k_n = self.getNodeSum(node, graphAdjMatrix)
+        l_n_neighCommunity = self.getNode2CommunityNumberOfEdges(node, communityId, graphAdjMatrix, community2nodes)
+        sum_neighCommunity = self.getCommunityAllNodeDegreesSum(communityId, graphAdjMatrix, community2nodes)
+        k_n = self.getNodeDegree(node, graphAdjMatrix)
 
-        return k_n_neighCommunity - (sum_neighCommunity * k_n) / (2 * m)
+        return 1/m * (l_n_neighCommunity - (sum_neighCommunity * k_n) / (2 * m))
 
     def moveNodeToCommunity(self, node, oldCommunity, newCommunity, community2nodes, node2community):
         node2community[node] = newCommunity
         community2nodes[oldCommunity].remove(node)
         community2nodes[newCommunity].append(node)
         return (node2community, community2nodes)
-
-    def getCentroid(self, vectors):
-
-        vectors = np.array(vectors)
-
-        if (len(vectors) == 0):
-            return np.array([])
-
-        return np.mean(vectors, axis = 0)                    
 
     '''
     Graph is undirected, get only upper/lower side
@@ -82,7 +77,7 @@ class AynaudLouvain():
                 for j in community2nodes[community]:
                     if (i == j):
                         continue
-                    partialSums.append(graphAdjMatrix[i][j] - (self.getNodeSum(i, graphAdjMatrix) * self.getNodeSum(j, graphAdjMatrix))/(2*m))
+                    partialSums.append(graphAdjMatrix[i][j] - (self.getNodeDegree(i, graphAdjMatrix) * self.getNodeDegree(j, graphAdjMatrix)) / (2 * m))
 
         return sum(partialSums)/(2*m)
 
@@ -92,8 +87,6 @@ class AynaudLouvain():
     def computeNewAdjMatrix(self, community2nodes, new2oldCommunities, graphAdjMatrix):
         
         communities = list(filter(lambda x: len(community2nodes[x]) > 0, community2nodes.keys()))
-
-        print(communities)
 
         temporaryAdjMatrix = np.zeros((len(communities), len(communities)))
 
@@ -166,7 +159,7 @@ class AynaudLouvain():
 
         start_time = time.time()
 
-        theta = 0.001
+        theta = 0.0001
 
         isFirstPass = True
 
@@ -185,57 +178,31 @@ class AynaudLouvain():
             while True:
 
                 nodes = list(node2community.keys())
+
                 shuffle(nodes)
 
                 for node in nodes:
 
-                    nodeCommunity = node2community[node]
-
                     neighs = self.getNodeNeighs(node, graphAdjMatrix, nodes)
 
-                    modularityGains = []
-
                     for neigh in neighs:
-                        
+
+                        nodeCommunity = node2community[node]
                         neighCommunity = node2community[neigh]
 
                         if (neighCommunity == nodeCommunity):
                             continue
 
-                        (_, community2nodesTemp) = self.moveNodeToCommunity(node, nodeCommunity, neighCommunity, \
+                        # try to move node
+                        (node2communityTemp, community2nodesTemp) = self.moveNodeToCommunity(node, nodeCommunity, neighCommunity, \
                                                             copy.deepcopy(community2nodes), copy.deepcopy(node2community))
 
                         fullModularityGain = self.computeModularityGain(node, neighCommunity, graphAdjMatrix, community2nodesTemp) - \
                                              self.computeModularityGain(node, nodeCommunity, graphAdjMatrix, community2nodesTemp)
 
+                        # if modularity gain is positive, perform move
                         if (fullModularityGain > 0):
-                            modularityGains.append((int(neighCommunity), fullModularityGain))
-
-                    if (len(modularityGains) > 0):
-                        
-                        # get max modularity community
-                        modularityGains = np.array(modularityGains, dtype = float)
-                        maxModularityGainIndex = np.argmax(modularityGains[:, 1])
-                        maxModularityGainIndices = np.where(modularityGains[:, 1]==modularityGains[maxModularityGainIndex][1])
-
-                        maxModularityNeighs = [int(modularityGains[mIndex[0]][0]) for mIndex in maxModularityGainIndices]
-
-                        maxModularityNodeId = maxModularityNeighs[0]
-
-                        if (len(maxModularityNeighs) > 0):
-                            
-                            maxNeighDeg = self.getNodeSum(maxModularityNeighs[0], graphAdjMatrix)
-
-                            for maxNeighId in maxModularityNeighs:
-                                neighDeg = self.getNodeSum(maxNeighId, graphAdjMatrix)
-                                if (neighDeg > maxNeighDeg):
-                                    maxNeighDeg = neighDeg
-                                    maxModularityNodeId = maxNeighId
-
-                        newCommunity = node2community[maxModularityNodeId]
-
-                        # perform move
-                        (node2community, community2nodes) = self.moveNodeToCommunity(node, nodeCommunity, newCommunity, community2nodes, node2community)
+                            (node2community, community2nodes) = (node2communityTemp, community2nodesTemp)
 
                 newModularity = self.computeModularity(graphAdjMatrix, community2nodes)
 
