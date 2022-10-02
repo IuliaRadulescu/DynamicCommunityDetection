@@ -1,6 +1,5 @@
 import numpy as np
 import time
-import math
 from random import shuffle
 import collections
 import copy
@@ -59,7 +58,7 @@ class AynaudLouvain():
         m = 0
 
         for k in range(len(graphAdjMatrix[0])):
-            m += np.sum(graphAdjMatrix[k, k+1:len(graphAdjMatrix[0])])
+            m += np.sum(graphAdjMatrix[k, k:len(graphAdjMatrix[0])])
 
         return m
 
@@ -86,7 +85,7 @@ class AynaudLouvain():
     '''
     def computeNewAdjMatrix(self, community2nodes, new2oldCommunities, graphAdjMatrix):
         
-        communities = list(filter(lambda x: len(community2nodes[x]) > 0, community2nodes.keys()))
+        communities = list(community2nodes.keys())
 
         temporaryAdjMatrix = np.zeros((len(communities), len(communities)))
 
@@ -99,9 +98,6 @@ class AynaudLouvain():
         newCommunityIterator = 0
 
         for community in community2nodes:
-            # if community is empty, leave it alone
-            if (len(community2nodes[community]) == 0):
-                continue
             # otherwise, replace it
             new2oldCommunities[newCommunityIterator] = community
             newCommunityIterator += 1
@@ -109,8 +105,6 @@ class AynaudLouvain():
         return (temporaryAdjMatrix, new2oldCommunities)
 
     def interCommunitiesNodeWeights(self, community1, community2, graphAdjMatrix, community2nodes):
-        if (community1 == community2):
-            return []
 
         interCommunitiesNodeWeights = []
 
@@ -121,39 +115,26 @@ class AynaudLouvain():
 
         return interCommunitiesNodeWeights
 
+    def expandSuperNode(self, superNode, community2nodesFull):
+        return community2nodesFull[superNode]
 
     def decompressSupergraph(self, community2nodes, community2nodesFull, new2oldCommunities):
+        community2expandedNodes = {}
+        node2communityOrdered = {}
 
+        # take each super community and expand its super nodes (the super nodes are actually communities of nodes at the previous step)
         for superCommunity in community2nodes:
-            if (len(community2nodes[superCommunity]) < 2):
-                continue
-            # merge inner communities of the superCommunities
-            finalCommunity = community2nodes[superCommunity][0]
-            for community in community2nodes[superCommunity]:
-                if (community != finalCommunity):
-                    community2nodesFull[new2oldCommunities[finalCommunity]] += community2nodesFull[new2oldCommunities[community]]
-                    community2nodesFull[new2oldCommunities[community]] = []
+            oldCommunity = new2oldCommunities[superCommunity]
+            expandedNodes = [self.expandSuperNode(new2oldCommunities[superNode], community2nodesFull) for superNode in community2nodes[superCommunity]]
+            # flatten expanded nodes
+            expandedNodes = [item for sublist in expandedNodes for item in sublist]
+            community2expandedNodes[oldCommunity] = expandedNodes
+            for node in community2expandedNodes[oldCommunity]:
+                node2communityOrdered[node] = oldCommunity
 
-        node2communityFull = {}
+        node2communityOrdered = collections.OrderedDict(sorted(node2communityOrdered.items()))
 
-        for community in community2nodesFull:
-            if (len(community2nodesFull[community]) == 0):
-                continue
-            for node in community2nodesFull[community]:
-                node2communityFull[node] = community
-
-        community2nodesTemp = {}
-
-        for community in community2nodesFull:
-            if len(community2nodesFull[community]) > 0:
-                community2nodesTemp[community] = community2nodesFull[community]
-
-        node2communityOrederedTemp = collections.OrderedDict(sorted(node2communityFull.items()))
-        node2communityOredered = {}
-        for k, v in node2communityOrederedTemp.items():
-            node2communityOredered[k] = v
-
-        return (node2communityOredered, community2nodesFull)
+        return (node2communityOrdered, community2expandedNodes)
 
     def louvain(self, graphAdjMatrix, node2community):
 
@@ -169,11 +150,11 @@ class AynaudLouvain():
                 (node2community, community2nodes) = self.initialize(node2community)
                 graphAdjMatrixFull = graphAdjMatrix
 
-                initialModularityFull = self.computeModularity(graphAdjMatrix, community2nodes)
+                graphModularity = self.computeModularity(graphAdjMatrix, community2nodes)
 
             print('Started Louvain first phase')
 
-            initialModularity = initialModularityFull
+            modularityFirstPhase = graphModularity
 
             while True:
 
@@ -206,38 +187,34 @@ class AynaudLouvain():
 
                 newModularity = self.computeModularity(graphAdjMatrix, community2nodes)
 
-                print(initialModularity, newModularity)
+                print(modularityFirstPhase, newModularity)
 
-                if (newModularity - initialModularity <= theta):
+                if (newModularity - modularityFirstPhase <= theta):
                     break
                 
-                initialModularity = newModularity
+                modularityFirstPhase = newModularity
 
             print('Finished Louvain first phase')
 
             print('Start Louvain second phase')
 
+            # filter communities with no nodes
+            community2nodes = {i: j for i, j in community2nodes.items() if j != []}
+
             if isFirstPass:
                 community2nodesFull = community2nodes
                 node2communityFull = node2community
                 # cache previous step configuration in case modularity decreases instead of increasing
-                prevNode2communityFull = node2community
                 new2oldCommunities = dict(zip(community2nodes.keys(), community2nodes.keys()))
             else:
                 # cache previous step configuration in case modularity decreases instead of increasing
-                prevNode2communityFull = node2communityFull
                 (node2communityFull, community2nodesFull) = self.decompressSupergraph(community2nodes, community2nodesFull, new2oldCommunities)
-            
-            newModularityFull = self.computeModularity(graphAdjMatrixFull, community2nodesFull)
 
-            print('Second phase modularity', newModularityFull)
-
-            if (newModularityFull - initialModularityFull <= theta):
-                # restore previous step configuration
-                node2communityFull = prevNode2communityFull
+            # if modularity of the first phase is smaller than previous modularity, break
+            if (modularityFirstPhase <= graphModularity):
                 break
             
-            initialModularityFull = newModularityFull
+            graphModularity = modularityFirstPhase
 
             (graphAdjMatrix, new2oldCommunities) = self.computeNewAdjMatrix(community2nodes, new2oldCommunities, graphAdjMatrix)
             nodes2communities = dict(zip(range(len(graphAdjMatrix[0])), range(len(graphAdjMatrix[0]))))
