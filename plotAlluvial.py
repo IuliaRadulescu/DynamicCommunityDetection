@@ -38,7 +38,8 @@ def feedSankeyJsonClassic(alluvialData, outputFileName):
   def generateRandomColorList(listLen):
     return [generateRandomColor() for _ in range(listLen)]
 
-  color = generateRandomColorList(len(source))
+  # color = generateRandomColorList(len(source))
+  color = ['rgb(255,255,255)'] * (len(source) + 1)
 
   data = [dict(
             type = 'sankey',
@@ -68,7 +69,8 @@ def feedSankeyJsonHybrid(alluvialData, outputFileName):
   def generateRandomColorList(listLen):
     return [generateRandomColor() for _ in range(listLen)]
 
-  color = generateRandomColorList(len(source))
+  # color = generateRandomColorList(len(source))
+  color = ['rgb(255,255,255)'] * (len(source) + 1)
 
   data = [dict(
             type = 'sankey',

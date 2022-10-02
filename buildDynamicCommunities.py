@@ -43,7 +43,7 @@ def doComputation(dbName, optimalSim, outputFileName):
         for comment in allComments:
             if comment['author'] not in author2Attributes:
                 author2Attributes[comment['author']] = {
-                    'structuralId': comment['clusterIdSimple']
+                    'structuralId': comment['clusterIdAynaud']
                 }
         
         timeStepDict = {}
@@ -136,7 +136,7 @@ def doComputation(dbName, optimalSim, outputFileName):
 
         return (frontId2CommunityId, fronts)
 
-    allSnapshots = getAllSnapshots('quarter')
+    allSnapshots = getAllSnapshots('twelveHours')
 
     '''
     communitiesTimestepMapping[communityId_0_1] = [communityId_1_0, communityId_1_1, ...] 
@@ -149,7 +149,7 @@ def doComputation(dbName, optimalSim, outputFileName):
     frontId2CommunityId = {}
     timeStep = 0
 
-    snapshotCommunities0 = getCommunitiesForSnapshot(allSnapshots[0], 0, 'clusterIdSimple')
+    snapshotCommunities0 = getCommunitiesForSnapshot(allSnapshots[0], 0, 'clusterIdAynaud')
 
     # the initial communities are the initial fronts
     communitiesTimestepMapping = dict(zip(snapshotCommunities0.keys(), [[] for i in range(len(snapshotCommunities0))]))
@@ -158,7 +158,7 @@ def doComputation(dbName, optimalSim, outputFileName):
 
     for timeStep in range(1, len(allSnapshots)):
 
-        snapshotCommunities = getCommunitiesForSnapshot(allSnapshots[timeStep], timeStep, 'clusterIdSimple')
+        snapshotCommunities = getCommunitiesForSnapshot(allSnapshots[timeStep], timeStep, 'clusterIdAynaud')
 
         '''
         frontsEvents[frontEvent][frontId] = [front1, front2, ...]
