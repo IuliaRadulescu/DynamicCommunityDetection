@@ -224,8 +224,6 @@ def applyAynaudLouvainOnAllCollections():
     
     allCollections = getAllCollections('twelveHours')
 
-    k = 1
-
     partition = None
     nodes2communities = None
 
@@ -264,16 +262,7 @@ def applyAynaudLouvainOnAllCollections():
 
         print('Real modularity:', partition.modularity)
 
-        out = plot(partition)
-        out.save(str(k) + '_lovainAynaud.png')
-
-        if (k == 2):
-            break
-
-        k += 1
-
-        # updateClusters(partition, collectionName, 'clusterIdAynaud')
-
+        updateClusters(partition, collectionName, 'clusterIdAynaud')
 
 def plotCollection(collectionName, attributeField):
 

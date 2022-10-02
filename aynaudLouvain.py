@@ -13,25 +13,30 @@ class AynaudLouvain():
 
         return (node2community, community2nodes)
 
-    def getNode2CommunitySum(self, node, communityId, graphAdjMatrix, community2nodes):
-        communityNodes = community2nodes[communityId]
-        return sum(list(map(lambda x: graphAdjMatrix[node][x], communityNodes)))
-
-    def getNode2CommunityNumberOfEdges(self, node, communityId, graphAdjMatrix, community2nodes):
-        communityNodes = community2nodes[communityId]
-        onlyCommunityNodesWithEdgesToNode = list(filter(lambda x: graphAdjMatrix[node][x] == 1, communityNodes))
+    '''
+    Get the number of edges between node _node_ and community _communityId_
+    '''
+    def getNode2CommunityNumberOfEdges(self, node, community, graphAdjMatrix, community2nodes):
+        communityNodes = community2nodes[community]
+        onlyCommunityNodesWithEdgesToNode = list(filter(lambda x: graphAdjMatrix[node][x] > 0, communityNodes))
         return len(onlyCommunityNodesWithEdgesToNode)
 
-    def getCommunityAllNodeDegreesSum(self, communityId, graphAdjMatrix, community2nodes):
-        communityNodes = community2nodes[communityId]
+    '''
+    Get the sum of all nodes' degrees in community _communityId_
+    '''
+    def getCommunityAllNodeDegreesSum(self, community, graphAdjMatrix, community2nodes):
+        communityNodes = community2nodes[community]
         return sum([self.getNodeDegree(communityNode, graphAdjMatrix) for communityNode in communityNodes])
 
     def getNodeDegree(self, node, graphAdjMatrix):
-        nodeEdges = graphAdjMatrix[node, :]
-        return len(nodeEdges[nodeEdges > 1])
+        nodeEdges = graphAdjMatrix[node]
+        return np.sum(nodeEdges[nodeEdges > 0])
 
+    '''
+    Get all nodes interconnected with a node
+    '''
     def getNodeNeighs(self, node, graphAdjMatrix, allNodes):
-        return list(filter(lambda x: graphAdjMatrix[node][x] == 1, allNodes))
+        return list(filter(lambda x: graphAdjMatrix[node][x] > 0, allNodes))
 
     def computeModularityGain(self, node, communityId, graphAdjMatrix, community2nodes):
         m = self.computeM(graphAdjMatrix)
@@ -52,7 +57,7 @@ class AynaudLouvain():
         return (node2community, community2nodes)
 
     '''
-    Graph is undirected, get only upper/lower side
+    Total number of edges in graph
     '''
     def computeM(self, graphAdjMatrix):
         m = 0
@@ -60,9 +65,9 @@ class AynaudLouvain():
         for k in range(len(graphAdjMatrix[0])):
             m += np.sum(graphAdjMatrix[k, k:len(graphAdjMatrix[0])])
 
-        return m
+        return m/2
 
-    def computeModularity(self, graphAdjMatrix, community2nodes):
+    def computeModularity(self, graphAdjMatrix, node2community):
 
         m = self.computeM(graphAdjMatrix)
 
@@ -71,11 +76,9 @@ class AynaudLouvain():
 
         partialSums = []
 
-        for community in community2nodes:
-            for i in community2nodes[community]:
-                for j in community2nodes[community]:
-                    if (i == j):
-                        continue
+        for i in range(len(graphAdjMatrix[0]) - 1):
+            for j in range(i + 1, len(graphAdjMatrix[0])):
+                if (node2community[i] == node2community[j]):
                     partialSums.append(graphAdjMatrix[i][j] - (self.getNodeDegree(i, graphAdjMatrix) * self.getNodeDegree(j, graphAdjMatrix)) / (2 * m))
 
         return sum(partialSums)/(2*m)
@@ -110,6 +113,9 @@ class AynaudLouvain():
 
         for i in community2nodes[community1]:
             for j in community2nodes[community2]:
+                # don't parse same edge twice
+                if (i >= j):
+                    continue
                 if (graphAdjMatrix[i][j] != 0):
                     interCommunitiesNodeWeights.append(graphAdjMatrix[i][j])
 
@@ -150,7 +156,7 @@ class AynaudLouvain():
                 (node2community, community2nodes) = self.initialize(node2community)
                 graphAdjMatrixFull = graphAdjMatrix
 
-                graphModularity = self.computeModularity(graphAdjMatrix, community2nodes)
+                graphModularity = self.computeModularity(graphAdjMatrix, node2community)
 
             print('Started Louvain first phase')
 
@@ -185,7 +191,7 @@ class AynaudLouvain():
                         if (fullModularityGain > 0):
                             (node2community, community2nodes) = (node2communityTemp, community2nodesTemp)
 
-                newModularity = self.computeModularity(graphAdjMatrix, community2nodes)
+                newModularity = self.computeModularity(graphAdjMatrix, node2community)
 
                 print(modularityFirstPhase, newModularity)
 
